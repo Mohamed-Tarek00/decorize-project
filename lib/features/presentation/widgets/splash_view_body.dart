@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/constants.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -5,6 +6,13 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack();
+    return Center(
+      child: Stack(
+        children: [
+          Center(child: Image.asset(kLogo, height: 80)),
+          Center(child: Image.asset(kSplashBackground, height: 450)),
+        ],
+      ),
+    );
   }
 }
