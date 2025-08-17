@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/constants.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
@@ -5,6 +6,6 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(backgroundColor: kPrimaryColor);
   }
 }
