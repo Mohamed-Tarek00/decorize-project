@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class Styles {
   static final textStyle28 = GoogleFonts.ibmPlexSansArabic(
     fontSize: 28,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w300,
   );
   static final textStyle20 = GoogleFonts.ibmPlexSansArabic(
     fontSize: 20,
