@@ -1,24 +1,32 @@
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 
 abstract class Styles {
-  static final textStyle28 = GoogleFonts.ibmPlexSansArabic(
+  static final TextStyle textStyle28 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
     fontSize: 28,
-    fontWeight: FontWeight.w300,
+    fontWeight: FontWeight.w600,
   );
-  static final textStyle20 = GoogleFonts.ibmPlexSansArabic(
+
+  static final TextStyle textStyle20 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
     fontSize: 20,
     fontWeight: FontWeight.w400,
   );
-  static final textStyle30 = GoogleFonts.ibmPlexSansArabic(
-    fontSize: 30,
-    fontWeight: FontWeight.normal,
+
+  static final TextStyle textStyle32 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
+    fontSize: 32,
+    fontWeight: FontWeight.w600,
   );
-  static final textStyle14 = GoogleFonts.ibmPlexSansArabic(
+
+  static final TextStyle textStyle14 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
     fontSize: 14,
     fontWeight: FontWeight.normal,
   );
-  static final textStyle16 = GoogleFonts.ibmPlexSansArabic(
+
+  static final TextStyle textStyle16 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
