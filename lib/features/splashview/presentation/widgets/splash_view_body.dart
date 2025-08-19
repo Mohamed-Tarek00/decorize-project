@@ -1,7 +1,9 @@
 import 'package:decorize_project/core/constants.dart';
+import 'package:decorize_project/core/utils/app_router.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -13,8 +15,13 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 3), () {
+        context.go(AppRouter.kOnboardingview);
+      });
+    });
   }
 
   @override
