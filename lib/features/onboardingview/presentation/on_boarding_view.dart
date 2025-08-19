@@ -1,3 +1,4 @@
+import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_view_body.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatelessWidget {
@@ -5,6 +6,6 @@ class OnBoardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(backgroundColor: Colors.white, body: OnBoardingViewBody());
   }
 }
