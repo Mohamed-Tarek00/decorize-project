@@ -2,8 +2,15 @@ import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingItem extends StatelessWidget {
-  const OnBoardingItem({super.key});
-
+  const OnBoardingItem({
+    super.key,
+    required this.imagePath,
+    required this.title,
+    required this.description,
+  });
+  final String imagePath;
+  final String title;
+  final String description;
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -21,24 +28,22 @@ class OnBoardingItem extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.13,
-                left: screenWidth * .05,
-                child: Image.asset(
-                  'assets/onBoardingImages/firstOnboarding.png',
-                ),
-                height: screenHeight * 0.42,
+                top: screenHeight * 0.125,
+                left: screenWidth * .07,
+                child: Image.asset(imagePath),
+                height: screenHeight * 0.38,
               ),
             ],
           ),
         ),
         Text(
-          'اكتشف مساحتك الجديدة',
+          title,
           style: Styles.textStyle28.copyWith(color: Color(0xff0C5137)),
         ),
         SizedBox(
           width: screenWidth * 0.9,
           child: Text(
-            'صمم، تخيل، وحقق أحلامك في تصميم منزلك أو مكتبك بكل سهولة',
+            description,
             textAlign: TextAlign.center,
             style: Styles.textStyle20,
           ),
