@@ -1,6 +1,7 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -49,7 +50,11 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
 
                   child: Row(
                     children: [
-                      SvgPicture.asset('assets/icons/arrow-right.svg'),
+                      SvgPicture.asset(
+                        'assets/icons/arrow-right.svg',
+                        height: 20.h,
+                        width: 20.w,
+                      ),
                       Text('رجوع', style: Styles.textStyle14),
                     ],
                   ),
