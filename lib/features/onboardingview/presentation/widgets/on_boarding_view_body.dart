@@ -1,5 +1,6 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,18 +16,18 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   List<Widget> onBoardingItems = [
     OnBoardingItem(
       imagePath: 'assets/onBoardingImages/firstOnboarding.png',
-      title: 'اكتشف مساحتك الجديدة',
-      description: 'صمم، تخيل، وحقق أحلامك في تصميم منزلك أو مكتبك بكل سهولة',
+      title: 'onBoarding.step1.title'.tr(),
+      description: 'onBoarding.step1.description'.tr(),
     ),
     OnBoardingItem(
       imagePath: 'assets/onBoardingImages/secondOnboarding.png',
-      title: 'اكتشف مساحتك الجديدة',
-      description: 'صمم، تخيل، وحقق أحلامك في تصميم منزلك أو مكتبك بكل سهولة',
+      title: 'onBoarding.step2.title'.tr(),
+      description: 'onBoarding.step2.description'.tr(),
     ),
     OnBoardingItem(
       imagePath: 'assets/onBoardingImages/thirdOnboarding.png',
-      title: 'اكتشف مساحتك الجديدة',
-      description: 'صمم، تخيل، وحقق أحلامك في تصميم منزلك أو مكتبك بكل سهولة',
+      title: 'onBoarding.step3.title'.tr(),
+      description: 'onBoarding.step3.description'.tr(),
     ),
   ];
   @override
