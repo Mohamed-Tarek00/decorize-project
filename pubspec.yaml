@@ -54,6 +54,7 @@ flutter:
     - assets/translations/
     - assets/logo/
     - assets/onBoardingImages/
+    - assets/icons/
 
   fonts:
     - family: IBMPlexSansArabic

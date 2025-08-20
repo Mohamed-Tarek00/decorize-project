@@ -1,5 +1,7 @@
+import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -28,13 +30,47 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          // هنا خليه ياخد كل المساحة المتاحة
-          child: PageView(children: onBoardingItems),
-        ),
-      ],
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return SizedBox(
+      height: screenHeight,
+      child: Stack(
+        children: [
+          PageView(children: onBoardingItems),
+          Positioned(
+            top: .03 * screenHeight,
+            left: 0,
+            right: 0,
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(foregroundColor: Colors.grey),
+
+                  child: Row(
+                    children: [
+                      SvgPicture.asset('assets/icons/arrow-right.svg'),
+                      Text('رجوع', style: Styles.textStyle14),
+                    ],
+                  ),
+                ),
+                Spacer(),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(foregroundColor: Colors.black),
+                  child: Text(
+                    'تخطي',
+
+                    style: Styles.textStyle14.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
