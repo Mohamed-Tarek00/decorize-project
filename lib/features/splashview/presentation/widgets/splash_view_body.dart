@@ -14,25 +14,27 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 3), () {
-        context.go(AppRouter.kOnboardingview);
-      });
-    });
-  }
-
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     Future.delayed(const Duration(seconds: 3), () {
+  //       context.go(AppRouter.kOnboardingview);
+  //     });
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
       child: Stack(
         children: [
-          Center(child: Image.asset(kLogo, height: 80)),
-          Center(child: Image.asset(kSplashBackground, height: 450)),
+          Center(child: Image.asset(kLogo, height: screenHeight * 0.1)),
+          Center(
+            child: Image.asset(kSplashBackground, height: screenHeight * .6),
+          ),
           Positioned(
-            top: 450,
+            bottom: screenHeight * 0.38,
             left: 0,
             right: 0,
             child: Align(

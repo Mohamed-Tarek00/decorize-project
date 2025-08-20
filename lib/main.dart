@@ -10,6 +10,8 @@ void main() async {
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: Locale('ar'),
+      startLocale: Locale('ar'),
+
       child: const DecorizeApp(),
     ),
   );
