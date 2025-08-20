@@ -5,13 +5,13 @@ abstract class Styles {
   static final TextStyle textStyle28 = TextStyle(
     fontFamily: 'IBMPlexSansArabic',
     fontSize: 28.sp,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
 
   static final TextStyle textStyle20 = TextStyle(
     fontFamily: 'IBMPlexSansArabic',
     fontSize: 20.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
   );
 
   static final TextStyle textStyle32 = TextStyle(
