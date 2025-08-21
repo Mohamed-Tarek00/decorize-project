@@ -1,9 +1,8 @@
-import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/onboardingview/presentation/widgets/next_on_boarding.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
+import 'package:decorize_project/features/onboardingview/presentation/widgets/return_on_boarding.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -30,7 +29,14 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
       description: 'onBoarding.step3.description'.tr(),
     ),
   ];
+  int currentPageIndex = 0;
+  final PageController _pageController = PageController();
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -38,39 +44,34 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
       height: screenHeight,
       child: Stack(
         children: [
-          PageView(children: onBoardingItems),
+          PageView(
+            controller: _pageController,
+            children: onBoardingItems,
+            physics: NeverScrollableScrollPhysics(),
+            onPageChanged: (value) {
+              setState(() {
+                currentPageIndex = value;
+              });
+            },
+          ),
           Positioned(
             top: .03 * screenHeight,
             left: 0,
             right: 0,
             child: Row(
               children: [
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(foregroundColor: Colors.grey),
-
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/arrow-right.svg',
-                        height: 20.h,
-                        width: 20.w,
+                currentPageIndex == 0
+                    ? SizedBox.shrink()
+                    : ReturnOnBoarding(
+                        currentPageIndex: currentPageIndex,
+                        pageController: _pageController,
                       ),
-                      Text('رجوع', style: Styles.textStyle14),
-                    ],
-                  ),
-                ),
                 Spacer(),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(foregroundColor: Colors.black),
-                  child: Text(
-                    'تخطي',
 
-                    style: Styles.textStyle14.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                NextOnBoarding(
+                  currentPageIndex: currentPageIndex,
+                  onBoardingItems: onBoardingItems,
+                  pageController: _pageController,
                 ),
               ],
             ),
