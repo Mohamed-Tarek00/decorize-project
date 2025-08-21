@@ -12,13 +12,20 @@ class UserWorkerSelection extends StatefulWidget {
 }
 
 class _UserWorkerSelectionState extends State<UserWorkerSelection> {
-  int isSelected = 0;
+int isSelected = 0;
+List<Map> UserType = [{
+  'title': 'مستخدم',
+  'image': 'assets/icons/user.png',
+}, {
+  'title': 'عامل',
+  'image': 'assets/icons/worker.png',
+}] ;
 
   @override
   Widget build(BuildContext context) {
     return  Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(2, (index) {
+                        children: List.generate(UserType.length, (index) {
                           return GestureDetector(
                             onTap: () {
                               setState(() {
@@ -73,11 +80,12 @@ class _UserWorkerSelectionState extends State<UserWorkerSelection> {
                                         height: 64.h,
                                         width: 64.h,
                                         child: Image.asset(
-                                          'assets/icons/user.png',
+                                          UserType[index]['image']!,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                       SizedBox(height: 10.h),
-                                      Text('مستخدم', style: Styles.textStyle18),
+                                      Text(UserType[index]['title']!, style: Styles.textStyle18),
                                     ],
                                   ),
                                 ),
