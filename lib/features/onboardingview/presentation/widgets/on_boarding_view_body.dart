@@ -1,3 +1,4 @@
+import 'package:decorize_project/features/onboardingview/presentation/widgets/custom_on_boarding_button.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/next_on_boarding.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/return_on_boarding.dart';
@@ -74,6 +75,22 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   pageController: _pageController,
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: screenHeight * .05,
+            left: 0,
+            right: 0,
+            child: CustomOnboardingButton(
+              onPressed: () {
+                currentPageIndex < onBoardingItems.length - 1
+                    ? _pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      )
+                    : null;
+              },
+              text: currentPageIndex == 0 ? "ابدأ" : "التالي",
             ),
           ),
         ],
