@@ -1,13 +1,13 @@
-import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/AnimatedContainers.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/next_on_boarding.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/return_on_boarding.dart';
+import 'package:decorize_project/features/onboardingview/presentation/widgets/show_modal.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+
+import 'package:flutter/widgets.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -17,58 +17,6 @@ class OnBoardingViewBody extends StatefulWidget {
 }
 
 class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
-  void _showbottomsheet() {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(40.r)),
-      ),
-      context: context,
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: Container(
-            height: 285.h,
-            child: Center(
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: SvgPicture.asset(
-                        'assets/icons/close-circle.svg',
-                        height: 24.h,
-                        width: 24.w,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text('نوع المستخدم', style: Styles.textStyle20),
-                  SizedBox(height: 10.h),
-                  Container(
-                    height: 159.h,
-                    width: 150.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.r),
-                      border: Border.all(
-                        color: Colors.grey.shade300,
-                        width: 1.5,
-                      ),
-                    ),
-                    child: Center(
-                      child: Text('نوع المستخدم', style: Styles.textStyle14),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   List<Widget> onBoardingItems = [
     OnBoardingItem(
       imagePath: 'assets/onBoardingImages/firstOnboarding.png',
@@ -126,7 +74,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 Spacer(),
 
                 NextOnBoarding(
-                  onPressedLastPage: _showbottomsheet,
+                  onPressedLastPage: () {
+                    ShowModal.showbottomsheet(context);
+                  },
                   currentPageIndex: currentPageIndex,
                   onBoardingItems: onBoardingItems,
                   pageController: _pageController,
@@ -149,12 +99,14 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             right: 0,
             child: CustomButton(
               onPressed: () {
-                currentPageIndex < onBoardingItems.length - 1
-                    ? _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      )
-                    : _showbottomsheet();
+                if (currentPageIndex < onBoardingItems.length - 1) {
+                  _pageController.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                } else {
+                  ShowModal.showbottomsheet(context);
+                }
               },
               text: currentPageIndex == 0 ? 'start'.tr() : 'next'.tr(),
             ),
