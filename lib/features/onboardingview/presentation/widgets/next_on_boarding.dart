@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NextOnBoarding extends StatelessWidget {
@@ -26,7 +27,7 @@ class NextOnBoarding extends StatelessWidget {
       },
       style: TextButton.styleFrom(foregroundColor: Colors.black),
       child: Text(
-        'تخطي',
+        "skip".tr(),
 
         style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
       ),

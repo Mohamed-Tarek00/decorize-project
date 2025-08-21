@@ -100,7 +100,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                       )
                     : null;
               },
-              text: currentPageIndex == 0 ? "ابدأ" : "التالي",
+              text: currentPageIndex == 0 ? 'start'.tr() : 'next'.tr(),
             ),
           ),
         ],

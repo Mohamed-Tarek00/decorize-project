@@ -1,5 +1,9 @@
 {
   "Decorize": "Decorize",
+  "start": "Start",
+    "next": "Next",
+    "skip": "Skip",
+    "back": "Back",
   "onBoarding": {
     "step1": {
       "title": "Discover Your New Space",
