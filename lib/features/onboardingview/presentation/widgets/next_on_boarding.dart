@@ -8,23 +8,25 @@ class NextOnBoarding extends StatelessWidget {
     required this.currentPageIndex,
     required this.onBoardingItems,
     required PageController pageController,
+    required this.onPressedLastPage,
   }) : _pageController = pageController;
 
   final int currentPageIndex;
   final List<Widget> onBoardingItems;
   final PageController _pageController;
 
+  final void Function()? onPressedLastPage;
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        currentPageIndex < onBoardingItems.length - 1
-            ? _pageController.nextPage(
+      onPressed: currentPageIndex < onBoardingItems.length - 1
+          ? () {
+              _pageController.nextPage(
                 duration: Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
-              )
-            : null;
-      },
+              );
+            }
+          : onPressedLastPage,
       style: TextButton.styleFrom(foregroundColor: Colors.black),
       child: Text(
         "skip".tr(),

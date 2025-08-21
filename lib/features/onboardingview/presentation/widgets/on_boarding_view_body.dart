@@ -28,7 +28,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         return Padding(
           padding: const EdgeInsets.all(16),
           child: Container(
-            height: 290.h,
+            height: 285.h,
             child: Center(
               child: Column(
                 children: [
@@ -46,6 +46,20 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   SizedBox(height: 10.h),
                   Text('نوع المستخدم', style: Styles.textStyle20),
                   SizedBox(height: 10.h),
+                  Container(
+                    height: 159.h,
+                    width: 150.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      border: Border.all(
+                        color: Colors.grey.shade300,
+                        width: 1.5,
+                      ),
+                    ),
+                    child: Center(
+                      child: Text('نوع المستخدم', style: Styles.textStyle14),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -112,6 +126,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 Spacer(),
 
                 NextOnBoarding(
+                  onPressedLastPage: _showbottomsheet,
                   currentPageIndex: currentPageIndex,
                   onBoardingItems: onBoardingItems,
                   pageController: _pageController,
