@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserWorkerSelection extends StatefulWidget {
-  const UserWorkerSelection({super.key});
+  const UserWorkerSelection({super.key, required this.onChoiceSelected});
+      final Function(int) onChoiceSelected;
+
 
   @override
   State<UserWorkerSelection> createState() => _UserWorkerSelectionState();
@@ -11,6 +13,7 @@ class UserWorkerSelection extends StatefulWidget {
 
 class _UserWorkerSelectionState extends State<UserWorkerSelection> {
   int isSelected = 0;
+
   @override
   Widget build(BuildContext context) {
     return  Row(
@@ -20,6 +23,7 @@ class _UserWorkerSelectionState extends State<UserWorkerSelection> {
                             onTap: () {
                               setState(() {
                                 isSelected = index;
+                                widget.onChoiceSelected(isSelected);
                               });
                             },
                             child: Padding(

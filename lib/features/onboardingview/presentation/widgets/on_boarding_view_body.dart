@@ -75,7 +75,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
 
                 NextOnBoarding(
                   onPressedLastPage: () {
-                    ShowModal.showbottomsheet(context);
+          ShowModal().showBottomSheet(context);
                   },
                   currentPageIndex: currentPageIndex,
                   onBoardingItems: onBoardingItems,
@@ -105,7 +105,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                     curve: Curves.easeInOut,
                   );
                 } else {
-                  ShowModal.showbottomsheet(context);
+          ShowModal().showBottomSheet(context);
+
+
                 }
               },
               text: currentPageIndex == 0 ? 'start'.tr() : 'next'.tr(),

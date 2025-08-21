@@ -7,7 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ShowModal {
-  static void showbottomsheet(BuildContext context) {
+  int selectedIndex =  0 ;
+  void _handlingChoice (int index) {
+    selectedIndex = index;
+  }
+ void showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -37,7 +41,7 @@ class ShowModal {
                       ),
                       Text('نوع المستخدم', style: Styles.textStyle20),
                       SizedBox(height: 5.h),
-                      UserWorkerSelection(),
+                      UserWorkerSelection(onChoiceSelected: _handlingChoice,),
                       SizedBox(height: 10.h),
                       CustomButton(onPressed: () {}, text: 'التالي'.tr()),
                     ],
