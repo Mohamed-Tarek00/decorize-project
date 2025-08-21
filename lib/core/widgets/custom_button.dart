@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomOnboardingButton extends StatelessWidget {
-  const CustomOnboardingButton({
-    super.key,
-    required this.onPressed,
-    required this.text,
-  });
+class CustomButton extends StatelessWidget {
+  const CustomButton({super.key, required this.onPressed, required this.text});
   final void Function()? onPressed;
   final String text;
   @override

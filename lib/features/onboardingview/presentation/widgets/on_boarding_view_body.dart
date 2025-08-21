@@ -1,5 +1,5 @@
 import 'package:decorize_project/features/onboardingview/presentation/widgets/AnimatedContainers.dart';
-import 'package:decorize_project/features/onboardingview/presentation/widgets/custom_on_boarding_button.dart';
+import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/next_on_boarding.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/on_boarding_item.dart';
 import 'package:decorize_project/features/onboardingview/presentation/widgets/return_on_boarding.dart';
@@ -91,7 +91,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             bottom: screenHeight * .05,
             left: 0,
             right: 0,
-            child: CustomOnboardingButton(
+            child: CustomButton(
               onPressed: () {
                 currentPageIndex < onBoardingItems.length - 1
                     ? _pageController.nextPage(
