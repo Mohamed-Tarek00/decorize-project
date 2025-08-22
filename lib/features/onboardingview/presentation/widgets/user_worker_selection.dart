@@ -4,95 +4,86 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserWorkerSelection extends StatefulWidget {
   const UserWorkerSelection({super.key, required this.onChoiceSelected});
-      final Function(int) onChoiceSelected;
-
+  final Function(int) onChoiceSelected;
 
   @override
   State<UserWorkerSelection> createState() => _UserWorkerSelectionState();
 }
 
 class _UserWorkerSelectionState extends State<UserWorkerSelection> {
-int isSelected = 0;
-List<Map> UserType = [{
-  'title': 'مستخدم',
-  'image': 'assets/icons/user.png',
-}, {
-  'title': 'عامل',
-  'image': 'assets/icons/worker.png',
-}] ;
+  int isSelected = 0;
+  List<Map> UserType = [
+    {'title': 'مستخدم', 'image': 'assets/icons/user.png'},
+    {'title': 'عامل', 'image': 'assets/icons/worker.png'},
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(UserType.length, (index) {
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                isSelected = index;
-                                widget.onChoiceSelected(isSelected);
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Container(
-                                height: 155.h,
-                                width: 145.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  border: Border.all(
-                                    color: const Color(0xffE7EEEB),
-                                    width: 1.5,
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Container(
-                                            height: 20.h,
-                                            width: 20.h,
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                color: const Color(0xff0C5137),
-                                                width: 1.5,
-                                              ),
-                                              shape: BoxShape.circle,
-                                            ),
-                                            child: isSelected == index
-                                                ? Container(
-                                                    margin: EdgeInsets.all(4),
-                                                    decoration: BoxDecoration(
-                                                      color: const Color(
-                                                        0xff0C5137,
-                                                      ),
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                  )
-                                                : null,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 64.h,
-                                        width: 64.h,
-                                        child: Image.asset(
-                                          UserType[index]['image']!,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      SizedBox(height: 10.h),
-                                      Text(UserType[index]['title']!, style: Styles.textStyle18),
-                                    ],
-                                  ),
-                                ),
-                              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(UserType.length, (index) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              isSelected = index;
+              widget.onChoiceSelected(isSelected);
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Container(
+              height: 140.h,
+              width: 130.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(color: const Color(0xffE7EEEB), width: 1.5),
+              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          height: 20.h,
+                          width: 20.h,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xff0C5137),
+                              width: 1.5,
                             ),
-                          );
-                        }).reversed.toList(),
-                      );
+                            shape: BoxShape.circle,
+                          ),
+                          child: isSelected == index
+                              ? Container(
+                                  margin: EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff0C5137),
+                                    shape: BoxShape.circle,
+                                  ),
+                                )
+                              : null,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 64.h,
+                      width: 64.h,
+                      child: Image.asset(
+                        UserType[index]['image']!,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    Text(UserType[index]['title']!, style: Styles.textStyle18),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      }).reversed.toList(),
+    );
   }
 }
