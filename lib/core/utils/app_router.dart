@@ -25,7 +25,7 @@ abstract class AppRouter {
       GoRoute(
         path: kUserLogin,
         builder: (BuildContext context, GoRouterState state) {
-          return const Userlogin();
+          return const UserLoginView();
         },
       ),
     ],
