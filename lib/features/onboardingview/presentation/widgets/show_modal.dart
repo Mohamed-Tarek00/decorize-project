@@ -49,7 +49,7 @@ class ShowModal {
                       CustomButton(
                         onPressed: () {
                           selectedIndex == 0
-                              ? context.go(AppRouter.kUserLogin)
+                              ? context.go(AppRouter.kUserRegister)
                               : null;
                         },
                         text: 'التالي'.tr(),
