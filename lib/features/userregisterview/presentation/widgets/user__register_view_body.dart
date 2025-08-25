@@ -16,7 +16,26 @@ class UserRegisterViewBody extends StatelessWidget {
           Image.asset(kMainLogo, height: 80.h, width: 70.w),
           Text('انشاء حساب', style: Styles.textStyle28),
           SizedBox(height: 20.h),
-          CustomTextFormField(),
+          CustomTextFormField(
+            name: 'الاسم',
+            hintText: 'ادخل الاسم',
+            iconPath: 'assets/icons/profile.svg',
+          ),
+          CustomTextFormField(
+            name: 'البريد الإلكتروني',
+            hintText: 'ادخل البريد الإلكتروني',
+            iconPath: 'assets/icons/sms.svg',
+          ),
+          CustomTextFormField(
+            name: 'كلمة المرور',
+            hintText: 'ادخل كلمة المرور',
+            iconPath: 'assets/icons/lock.svg',
+          ),
+          CustomTextFormField(
+            name: 'تأكيد كلمة المرور',
+            hintText: 'ادخل كلمة المرور',
+            iconPath: 'assets/icons/lock.svg',
+          ),
         ],
       ),
     );

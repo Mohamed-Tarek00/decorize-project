@@ -5,7 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key});
+  const CustomTextFormField({
+    super.key,
+    required this.name,
+    required this.hintText,
+    required this.iconPath,
+  });
+  final String name;
+  final String hintText;
+  final String iconPath;
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +22,18 @@ class CustomTextFormField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('الاسم', style: Styles.textStyle14),
-          SizedBox(height: 10.h),
+          Text(name, style: Styles.textStyle14),
+          SizedBox(height: 14.h),
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: Padding(
-                padding: EdgeInsets.all(6.h),
-                child: SvgPicture.asset(
-                  'assets/icons/profile.svg',
-                  width: 16.w,
-                  height: 16.h,
-                ),
+                padding: EdgeInsets.all(8.h),
+                child: SvgPicture.asset(iconPath, width: 16.w, height: 16.h),
               ),
               filled: true,
               fillColor: Colors.white,
-              hintText: 'ادخل الاسم',
+              hintText: hintText,
+              hintStyle: Styles.textStyle14,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -42,6 +47,7 @@ class CustomTextFormField extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 14.h),
         ],
       ),
     );
