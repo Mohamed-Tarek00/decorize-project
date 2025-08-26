@@ -120,9 +120,47 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                         ),
                       ),
                       SizedBox(width: 8.w),
-                      Text(
-                        'الموافقة على الشروط والأحكام',
-                        style: Styles.textStyle14,
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(20),
+                              ),
+                            ),
+                            builder: (BuildContext context) {
+                              return Container(
+                                padding: EdgeInsets.all(16),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      ' الموافقه علي الشروط والاحكام',
+                                      style: Styles.textStyle16.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف    إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.',
+                                      style: Styles.textStyle14,
+                                    ),
+                                    SizedBox(height: 20),
+                                    ElevatedButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('موافق'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Text(
+                          'الموافقة على الشروط والأحكام',
+                          style: Styles.textStyle14,
+                        ),
                       ),
                     ],
                   ),
@@ -138,7 +176,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                         );
                         return;
                       }
-//ايه الي هيحصل بعد كده
+                      //ايه الي هيحصل بعد كده
                       print('Name: ${nameController.text}');
                       print('Email: ${emailController.text}');
                       print('Password: ${passwordController.text}');
