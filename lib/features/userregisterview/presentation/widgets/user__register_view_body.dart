@@ -16,69 +16,144 @@ class UserRegisterViewBody extends StatefulWidget {
 
 class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   bool isAgreed = false;
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
         padding: EdgeInsets.all(8.h),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(kMainLogo, height: 80.h, width: 70.w),
-            Text('انشاء حساب', style: Styles.textStyle28),
-            SizedBox(height: 20.h),
-            CustomTextFormField(
-              name: 'الاسم',
-              hintText: 'ادخل الاسم',
-              iconPath: 'assets/icons/profile.svg',
-            ),
-            CustomTextFormField(
-              name: 'البريد الإلكتروني',
-              hintText: 'ادخل البريد الإلكتروني',
-              iconPath: 'assets/icons/sms.svg',
-            ),
-            CustomTextFormField(
-              name: 'كلمة المرور',
-              hintText: 'ادخل كلمة المرور',
-              iconPath: 'assets/icons/lock.svg',
-            ),
-            CustomTextFormField(
-              name: 'تأكيد كلمة المرور',
-              hintText: 'ادخل كلمة المرور',
-              iconPath: 'assets/icons/lock.svg',
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.h),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isAgreed = !isAgreed;
-                      });
-                    },
-                    child: SvgPicture.asset(
-                      'assets/icons/tick-square.svg',
-                      width: 20.w,
-                      height: 20.h,
-                      color: isAgreed ? Colors.blue : Colors.grey,
-                    ),
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(kMainLogo, height: 80.h, width: 70.w),
+                Text('انشاء حساب', style: Styles.textStyle28),
+                SizedBox(height: 20.h),
+                CustomTextFormField(
+                  name: 'الاسم',
+                  hintText: 'ادخل الاسم',
+                  iconPath: 'assets/icons/profile.svg',
+                  controller: nameController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'من فضلك ادخل الاسم';
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  name: 'البريد الإلكتروني',
+                  hintText: 'ادخل البريد الإلكتروني',
+                  iconPath: 'assets/icons/sms.svg',
+                  controller: emailController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'من فضلك ادخل البريد الإلكتروني';
+                    } else if (!RegExp(
+                      r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}',
+                    ).hasMatch(value)) {
+                      return 'صيغة البريد الإلكتروني غير صحيحة';
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  name: 'كلمة المرور',
+                  hintText: 'ادخل كلمة المرور',
+                  iconPath: 'assets/icons/lock.svg',
+                  controller: passwordController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'من فضلك ادخل كلمة المرور';
+                    } else if (value.length < 6) {
+                      return 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  name: 'تأكيد كلمة المرور',
+                  hintText: 'ادخل كلمة المرور مرة أخرى',
+                  iconPath: 'assets/icons/lock.svg',
+                  controller: confirmPasswordController,
+                  validator: (value) {
+                    if (value != passwordController.text) {
+                      return 'كلمة المرور غير متطابقة';
+                    }
+                    return null;
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.h),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            isAgreed = !isAgreed;
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          'assets/icons/tick-square.svg',
+                          width: 20.w,
+                          height: 20.h,
+                          color: isAgreed ? Colors.blue : Colors.grey,
+                        ),
+                      ),
+                      SizedBox(width: 8.w),
+                      Text(
+                        'الموافقة على الشروط والأحكام',
+                        style: Styles.textStyle14,
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 8.w),
-                  Text(
-                    'الموافقة على الشروط والأحكام',
-                    style: Styles.textStyle14,
-                  ),
-                ],
-              ),
+                ),
+                CustomButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      if (isAgreed == false) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('يجب الموافقة على الشروط والأحكام'),
+                          ),
+                        );
+                        return;
+                      }
+//ايه الي هيحصل بعد كده
+                      print('Name: ${nameController.text}');
+                      print('Email: ${emailController.text}');
+                      print('Password: ${passwordController.text}');
+                    }
+                  },
+                  text: 'انشاء حساب',
+                ),
+                CustomNavigationButton(
+                  onPressed: () {},
+                  solidText: 'لديك حساب؟',
+                  navigationText: 'تسجيل الدخول',
+                ),
+              ],
             ),
-            CustomButton(onPressed: () {}, text: 'انشاء حساب'),
-            CustomNavigationButton(
-              onPressed: () {},
-              solidText: 'لديك حساب؟',
-              navigationText: 'تسجيل الدخول',
-            ),
-          ],
+          ),
         ),
       ),
     );
