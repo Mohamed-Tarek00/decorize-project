@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/constants.dart';
+import 'package:decorize_project/core/utils/app_router.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
@@ -7,6 +8,7 @@ import 'package:decorize_project/features/userregisterview/presentation/widgets/
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class UserRegisterViewBody extends StatefulWidget {
   const UserRegisterViewBody({super.key});
@@ -154,10 +156,8 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                         );
                         return;
                       }
-                      //ايه الي هيحصل بعد كده
-                      print('Name: ${nameController.text}');
-                      print('Email: ${emailController.text}');
-                      print('Password: ${passwordController.text}');
+
+                      context.go(AppRouter.kotpAuth);
                     }
                   },
                   text: 'انشاء حساب',
@@ -175,4 +175,3 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
     );
   }
 }
-
