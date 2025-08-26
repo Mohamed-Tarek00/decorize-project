@@ -3,6 +3,7 @@ import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/userregisterview/presentation/widgets/custom_text_form_field.dart';
+import 'package:decorize_project/features/userregisterview/presentation/widgets/show_modal_button_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -116,7 +117,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                           'assets/icons/tick-square.svg',
                           width: 20.w,
                           height: 20.h,
-                          color: isAgreed ? Colors.blue : Colors.grey,
+                          color: isAgreed ? kPrimaryColor : Colors.grey,
                         ),
                       ),
                       SizedBox(width: 8.w),
@@ -130,30 +131,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                               ),
                             ),
                             builder: (BuildContext context) {
-                              return Container(
-                                padding: EdgeInsets.all(16),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      ' الموافقه علي الشروط والاحكام',
-                                      style: Styles.textStyle16.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف    إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.',
-                                      style: Styles.textStyle14,
-                                    ),
-                                    SizedBox(height: 20),
-                                    ElevatedButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text('موافق'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              return ShowModalButtonSheet();
                             },
                           );
                         },
@@ -197,3 +175,4 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
     );
   }
 }
+
