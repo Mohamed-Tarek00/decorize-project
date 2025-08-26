@@ -23,7 +23,7 @@ class CustomTextFormField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(name, style: Styles.textStyle14),
-          SizedBox(height: 14.h),
+          SizedBox(height: 8.h),
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: Padding(
@@ -47,7 +47,7 @@ class CustomTextFormField extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 14.h),
+          SizedBox(height: 8.h),
         ],
       ),
     );
