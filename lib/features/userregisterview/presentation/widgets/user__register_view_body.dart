@@ -1,6 +1,7 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
+import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/userregisterview/presentation/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,35 +73,10 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
               ),
             ),
             CustomButton(onPressed: () {}, text: 'انشاء حساب'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'لديك حساب؟',
-                  style: Styles.textStyle14.copyWith(
-                    color: Color(0xFF8B8B8B),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Column(
-                    children: [
-                      Text(
-                        'تسجيل الدخول',
-                        style: Styles.textStyle14.copyWith(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 2.h),
-                      Container(height: 2.h, width: 85.w, color: kPrimaryColor),
-                    ],
-                  ),
-                ),
-              ],
+            CustomNavigationButton(
+              onPressed: () {},
+              solidText: 'لديك حساب؟',
+              navigationText: 'تسجيل الدخول',
             ),
           ],
         ),
