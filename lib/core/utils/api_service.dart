@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
-  final String _baseUrl = 'https://docorizer.ghonim.makkah.solutions/v1/';
+  static const String _baseUrl =
+      'https://docorizer.ghonim.makkah.solutions/v1/';
   final Dio _dio;
 
   ApiService(this._dio);

@@ -1,4 +1,4 @@
-import 'package:decorize_project/features/userregisterview/presentation/widgets/user__register_view_body.dart';
+import 'package:decorize_project/features/authantication/presentation/widgets/user__register_view_body.dart';
 import 'package:flutter/material.dart';
 
 class UserRegisterView extends StatelessWidget {
