@@ -3,6 +3,7 @@ import 'package:decorize_project/core/utils/app_router.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
+import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/custom_text_form_field.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/show_modal_button_sheet.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class UserRegisterViewBody extends StatefulWidget {
 
 class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   bool isAgreed = false;
+  Governorate? selectedGovernorate;
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

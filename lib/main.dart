@@ -1,9 +1,11 @@
 import 'package:decorize_project/core/utils/app_router.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
+  setupServiceLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
