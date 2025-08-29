@@ -8,7 +8,7 @@ class GetGovernoratesUseCase {
 
   GetGovernoratesUseCase(this.repository);
 
-  Future<Either<Failure, List<Governorate>>> get() async {
+  Future<Either<Failure, List<Governorate>>> call() async {
     return await repository.getGovernorates();
   }
 }
