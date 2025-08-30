@@ -5,6 +5,7 @@ import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/custom_text_form_field.dart';
+import 'package:decorize_project/features/authantication/presentation/widgets/governorate_dropdown.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/show_modal_button_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -107,6 +108,14 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     return null;
                   },
                 ),
+                GovernorateDropdown(
+                  selectedGovernorate: selectedGovernorate,
+                  onChanged: (gov) {
+                    setState(() {
+                      selectedGovernorate = gov;
+                    });
+                  },
+                ),
                 Padding(
                   padding: EdgeInsets.all(8.h),
                   child: Row(
@@ -147,6 +156,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     ],
                   ),
                 ),
+
                 CustomButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -164,6 +174,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                   },
                   text: 'انشاء حساب',
                 ),
+
                 CustomNavigationButton(
                   onPressed: () {},
                   solidText: 'لديك حساب؟',
