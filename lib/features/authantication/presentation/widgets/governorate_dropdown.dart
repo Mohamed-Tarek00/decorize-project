@@ -1,11 +1,13 @@
+import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
+import 'package:decorize_project/features/authantication/presentation/cubits/governorate_cubit/cubit/governorate_cubit_cubit.dart';
 import 'package:decorize_project/features/authantication/presentation/cubits/governorate_cubit/cubit/governorate_cubit_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:decorize_project/features/authantication/presentation/cubits/governorate_cubit/cubit/governorate_cubit_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class GovernorateDropdown extends StatefulWidget {
+class GovernorateDropdown extends StatelessWidget {
   final Governorate? selectedGovernorate;
   final ValueChanged<Governorate?> onChanged;
 
@@ -16,42 +18,82 @@ class GovernorateDropdown extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GovernorateDropdownState createState() => _GovernorateDropdownState();
-}
-
-class _GovernorateDropdownState extends State<GovernorateDropdown> {
-  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GovernorateCubit, GovernorateState>(
-      builder: (context, state) {
-        List<Governorate> governorates = [];
-        Widget dropdownWidget = SizedBox();
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('المحافظة', style: Styles.textStyle14),
+          SizedBox(height: 8.h),
+          Container(
+            height: 44.h,
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(color: Colors.grey.shade300, width: 1.5),
+            ),
+            child: BlocBuilder<GovernorateCubit, GovernorateState>(
+              builder: (context, state) {
+                if (state is GovernorateLoading) {
+                  return Padding(
+                    padding: EdgeInsets.all(12.h),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else if (state is GovernorateLoaded) {
+                  final governorates = state.governorates;
 
-        if (state is GovernorateLoading) {
-          dropdownWidget = CircularProgressIndicator();
-        } else if (state is GovernorateLoaded) {
-          governorates = state.governorates;
-          dropdownWidget = DropdownButton<Governorate>(
-            hint: Text('اختر المحافظة'),
-            value: widget.selectedGovernorate,
-            isExpanded: true,
-            items: governorates.map((gov) {
-              return DropdownMenuItem<Governorate>(
-                value: gov,
-                child: Text(gov.nameAr),
-              );
-            }).toList(),
-            onChanged: widget.onChanged,
-          );
-        } else if (state is GovernorateError) {
-          dropdownWidget = Text('حدث خطأ: ${state.message}');
-        }
-
-        return Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.h),
-          child: dropdownWidget,
-        );
-      },
+                  return Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/city.svg',
+                        height: 20.h,
+                        width: 20.w,
+                      ),
+                      SizedBox(width: 12.w),
+                      Expanded(
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<Governorate>(
+                            hint: Text(
+                              'اختر المحافظة',
+                              style: Styles.textStyle14,
+                            ),
+                            value: selectedGovernorate,
+                            isExpanded: true,
+                            icon: Icon(Icons.keyboard_arrow_down),
+                            alignment: Alignment.centerRight,
+                            items: governorates.map((gov) {
+                              return DropdownMenuItem<Governorate>(
+                                value: gov,
+                                child: Text(
+                                  gov.nameAr,
+                                  style: Styles.textStyle14,
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: onChanged,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                } else if (state is GovernorateError) {
+                  return Padding(
+                    padding: EdgeInsets.all(12.h),
+                    child: Text(
+                      'حدث خطأ: ${state.message}',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  );
+                } else {
+                  return SizedBox.shrink();
+                }
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
