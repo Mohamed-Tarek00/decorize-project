@@ -62,7 +62,6 @@ class GovernorateDropdown extends StatelessWidget {
                             value: selectedGovernorate,
                             isExpanded: true,
                             icon: Icon(Icons.keyboard_arrow_down),
-                            alignment: Alignment.centerRight,
                             items: governorates.map((gov) {
                               return DropdownMenuItem<Governorate>(
                                 value: gov,
