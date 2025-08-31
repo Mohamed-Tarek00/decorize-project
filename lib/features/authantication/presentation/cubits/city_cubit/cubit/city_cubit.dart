@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_cities_use_case.dart';
 import 'package:decorize_project/features/authantication/presentation/cubits/city_cubit/cubit/city_state.dart';
-import 'package:meta/meta.dart';
 
 class CityCubit extends Cubit<CityState> {
   CityCubit(this.getCitiesUseCase) : super(CityInitial());

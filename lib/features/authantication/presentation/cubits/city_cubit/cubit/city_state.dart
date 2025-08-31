@@ -1,5 +1,4 @@
 import 'package:decorize_project/features/authantication/domain/entities/city.dart';
-import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
 
 abstract class CityState {}
 

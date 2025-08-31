@@ -3,11 +3,14 @@ import 'package:decorize_project/core/utils/app_router.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
+import 'package:decorize_project/features/authantication/domain/entities/city.dart';
 import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
+import 'package:decorize_project/features/authantication/presentation/cubits/city_cubit/cubit/city_cubit.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/custom_text_form_field.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/governorate_dropdown.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/show_modal_button_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +25,7 @@ class UserRegisterViewBody extends StatefulWidget {
 class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   bool isAgreed = false;
   Governorate? selectedGovernorate;
+  City? selectedCity;
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -114,8 +118,12 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     setState(() {
                       selectedGovernorate = gov;
                     });
+                    if (gov != null) {
+                      context.read<CityCubit>().fetchCities(gov.id);
+                    }
                   },
                 ),
+
                 Padding(
                   padding: EdgeInsets.all(8.h),
                   child: Row(
