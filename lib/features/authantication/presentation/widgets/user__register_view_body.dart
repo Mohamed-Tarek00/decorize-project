@@ -6,6 +6,7 @@ import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/authantication/domain/entities/city.dart';
 import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
 import 'package:decorize_project/features/authantication/presentation/cubits/city_cubit/cubit/city_cubit.dart';
+import 'package:decorize_project/features/authantication/presentation/widgets/city_dropdown.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/custom_text_form_field.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/governorate_dropdown.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/show_modal_button_sheet.dart';
@@ -117,12 +118,23 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                   onChanged: (gov) {
                     setState(() {
                       selectedGovernorate = gov;
+                      selectedCity = null;
                     });
                     if (gov != null) {
                       context.read<CityCubit>().fetchCities(gov.id);
                     }
                   },
                 ),
+                selectedGovernorate == null
+                    ? SizedBox.shrink()
+                    : CityDropdown(
+                        onChanged: (city) {
+                          setState(() {
+                            selectedCity = city;
+                          });
+                        },
+                        selectedCity: selectedCity,
+                      ),
 
                 Padding(
                   padding: EdgeInsets.all(8.h),
