@@ -17,7 +17,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class UserRegisterViewBody extends StatefulWidget {
-  const UserRegisterViewBody({super.key});
+  const UserRegisterViewBody({super.key, required this.role});
+  final String role;
 
   @override
   State<UserRegisterViewBody> createState() => _UserRegisterViewBodyState();

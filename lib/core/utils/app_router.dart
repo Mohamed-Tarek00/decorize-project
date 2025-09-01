@@ -26,7 +26,8 @@ abstract class AppRouter {
       GoRoute(
         path: kUserRegister,
         builder: (BuildContext context, GoRouterState state) {
-          return const UserRegisterView();
+          final role = state.extra as String;
+          return UserRegisterView(role: role);
         },
       ),
       GoRoute(

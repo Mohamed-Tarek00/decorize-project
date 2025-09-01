@@ -6,9 +6,11 @@ import 'package:decorize_project/features/authantication/presentation/cubits/gov
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/user__register_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class UserRegisterView extends StatelessWidget {
-  const UserRegisterView({super.key});
+  const UserRegisterView({super.key, required this.role});
+  final String role;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class UserRegisterView extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: const Color(0xfff5f5f5),
-        body: const UserRegisterViewBody(),
+        body: UserRegisterViewBody(role: role),
       ),
     );
   }
