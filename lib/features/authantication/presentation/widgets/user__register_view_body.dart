@@ -32,6 +32,8 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
@@ -89,6 +91,28 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                   },
                 ),
                 CustomTextFormField(
+                  name: ' رقم الهاتف',
+                  hintText: 'ادخل رقم الهاتف',
+                  iconPath: 'assets/icons/phone.svg',
+                  controller: phoneController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'من فضلك ادخل رقم الهاتف';
+                    }
+
+                    if (value.length != 11) {
+                      return 'رقم الهاتف يجب أن يحتوي على 11 رقمًا';
+                    }
+
+                    final phoneRegex = RegExp(r'^(01)[0-9]{9}$');
+                    if (!phoneRegex.hasMatch(value)) {
+                      return 'من فضلك أدخل رقم هاتف مصري صحيح';
+                    }
+
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
                   name: 'كلمة المرور',
                   hintText: 'ادخل كلمة المرور',
                   iconPath: 'assets/icons/lock.svg',
@@ -102,6 +126,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     return null;
                   },
                 ),
+
                 CustomTextFormField(
                   name: 'تأكيد كلمة المرور',
                   hintText: 'ادخل كلمة المرور مرة أخرى',

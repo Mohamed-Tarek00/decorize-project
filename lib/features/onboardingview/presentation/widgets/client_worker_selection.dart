@@ -2,15 +2,15 @@ import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UserWorkerSelection extends StatefulWidget {
-  const UserWorkerSelection({super.key, required this.onChoiceSelected});
+class ClientWorkerSelection extends StatefulWidget {
+  const ClientWorkerSelection({super.key, required this.onChoiceSelected});
   final Function(int) onChoiceSelected;
 
   @override
-  State<UserWorkerSelection> createState() => _UserWorkerSelectionState();
+  State<ClientWorkerSelection> createState() => _ClientWorkerSelectionState();
 }
 
-class _UserWorkerSelectionState extends State<UserWorkerSelection> {
+class _ClientWorkerSelectionState extends State<ClientWorkerSelection> {
   int isSelected = 0;
   List<Map> UserType = [
     {'title': 'مستخدم', 'image': 'assets/icons/user.png'},

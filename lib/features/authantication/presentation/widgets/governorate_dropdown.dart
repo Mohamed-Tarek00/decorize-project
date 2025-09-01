@@ -27,7 +27,7 @@ class GovernorateDropdown extends StatelessWidget {
           Text('المحافظة', style: Styles.textStyle14),
           SizedBox(height: 8.h),
           Container(
-            height: 44.h,
+            height: 54.h,
             padding: EdgeInsets.symmetric(horizontal: 12.w),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -47,9 +47,9 @@ class GovernorateDropdown extends StatelessWidget {
                   return Row(
                     children: [
                       SvgPicture.asset(
-                        'assets/icons/city.svg',
-                        height: 20.h,
-                        width: 20.w,
+                        'assets/icons/location.svg',
+                        height: 27.h,
+                        width: 27.w,
                       ),
                       SizedBox(width: 12.w),
                       Expanded(

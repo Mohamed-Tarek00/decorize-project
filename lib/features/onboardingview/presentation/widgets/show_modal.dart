@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/utils/app_router.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
-import 'package:decorize_project/features/onboardingview/presentation/widgets/user_worker_selection.dart';
+import 'package:decorize_project/features/onboardingview/presentation/widgets/client_worker_selection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,18 +44,18 @@ class ShowModal {
                       ),
                       Text('نوع المستخدم', style: Styles.textStyle20),
                       SizedBox(height: 5.h),
-                      UserWorkerSelection(onChoiceSelected: _handlingChoice),
+                      ClientWorkerSelection(onChoiceSelected: _handlingChoice),
                       SizedBox(height: 10.h),
                       CustomButton(
                         onPressed: () {
                           selectedIndex == 0
                               ? context.go(
                                   AppRouter.kUserRegister,
-                                  extra: {'role': 'client'},
+                                  extra: 'client',
                                 )
                               : context.go(
                                   AppRouter.kUserRegister,
-                                  extra: {'role': 'worker'},
+                                  extra: 'worker',
                                 );
                         },
                         text: 'التالي'.tr(),
