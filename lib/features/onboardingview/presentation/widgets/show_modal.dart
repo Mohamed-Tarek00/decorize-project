@@ -25,7 +25,7 @@ class ShowModal {
         return StatefulBuilder(
           builder: (context, setModalState) {
             return Container(
-              height: 310.h,
+              height: 340.h,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),

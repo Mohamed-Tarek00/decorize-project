@@ -20,7 +20,7 @@ class _UserWorkerSelectionState extends State<UserWorkerSelection> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(UserType.length, (index) {
         return GestureDetector(
           onTap: () {
@@ -32,8 +32,8 @@ class _UserWorkerSelectionState extends State<UserWorkerSelection> {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Container(
-              height: 140.h,
-              width: 130.h,
+              height: 170.h,
+              width: 160.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(color: const Color(0xffE7EEEB), width: 1.5),

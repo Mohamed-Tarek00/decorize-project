@@ -15,37 +15,47 @@ class OnBoardingItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    return Column(
+    return Stack(
       children: [
         SizedBox(
-          height: screenHeight * 0.65,
+          width: screenWidth,
           child: Stack(
             children: [
               Positioned(
+                top: -screenHeight * 0.125,
                 child: Image.asset(
                   'assets/onBoardingImages/backgroundOnboarding.png',
-                  height: screenHeight * 0.55,
+                  width: screenWidth,
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.125,
-                left: screenWidth * .07,
+                top: screenHeight * 0.08,
+                left: screenWidth * .09,
                 child: Image.asset(imagePath),
-                height: screenHeight * 0.38,
+                height: screenHeight * 0.47,
               ),
             ],
           ),
         ),
-        Text(
-          title,
-          style: Styles.textStyle28.copyWith(color: Color(0xff0C5137)),
-        ),
-        SizedBox(
-          width: screenWidth * 0.9,
-          child: Text(
-            description,
-            textAlign: TextAlign.center,
-            style: Styles.textStyle20,
+        Center(
+          child: Column(
+            children: [
+              SizedBox(height: screenHeight * 0.6),
+              Text(
+                title,
+                style: Styles.textStyle28.copyWith(color: Color(0xff0C5137)),
+              ),
+              SizedBox(
+                width: screenWidth * 0.9,
+                child: Text(
+                  description,
+                  textAlign: TextAlign.center,
+                  style: Styles.textStyle20.copyWith(
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
