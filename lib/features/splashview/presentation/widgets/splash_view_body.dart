@@ -51,15 +51,17 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     }
   }
 
+  void _startSplashSequence() async {
+    await _getLocation();
+    await Future.delayed(const Duration(seconds: 3), () {
+      context.go(AppRouter.kOnboardingview);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    _getLocation();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 3), () {
-        context.go(AppRouter.kOnboardingview);
-      });
-    });
+    _startSplashSequence();
   }
 
   @override
