@@ -33,7 +33,7 @@ class _ClientWorkerSelectionState extends State<ClientWorkerSelection> {
             padding: const EdgeInsets.all(4.0),
             child: Container(
               height: 170.h,
-              width: 160.h,
+              width: 140.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(color: const Color(0xffE7EEEB), width: 1.5),

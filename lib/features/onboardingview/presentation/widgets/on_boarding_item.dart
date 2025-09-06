@@ -1,5 +1,6 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingItem extends StatelessWidget {
   const OnBoardingItem({
@@ -13,26 +14,25 @@ class OnBoardingItem extends StatelessWidget {
   final String description;
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         SizedBox(
-          width: screenWidth,
+          width: 375.w,
           child: Stack(
             children: [
               Positioned(
-                top: -screenHeight * 0.125,
+                top: -20.h,
                 child: Image.asset(
                   'assets/onBoardingImages/backgroundOnboarding.png',
-                  width: screenWidth,
+                  width: 375.w,
                 ),
               ),
               Positioned(
-                top: screenHeight * 0.08,
-                left: screenWidth * .09,
+                top: 70.h,
+                left: 5.w,
                 child: Image.asset(imagePath),
-                height: screenHeight * 0.47,
+                height: 310.h,
+                width: 350.w,
               ),
             ],
           ),
@@ -40,13 +40,13 @@ class OnBoardingItem extends StatelessWidget {
         Center(
           child: Column(
             children: [
-              SizedBox(height: screenHeight * 0.6),
+              SizedBox(height: 450.h),
               Text(
                 title,
                 style: Styles.textStyle28.copyWith(color: Color(0xff0C5137)),
               ),
               SizedBox(
-                width: screenWidth * 0.9,
+                width: 350.w,
                 child: Text(
                   description,
                   textAlign: TextAlign.center,

@@ -3,6 +3,7 @@ import 'package:decorize_project/features/splashview/presentation/splash_view.da
 import 'package:decorize_project/features/authantication/presentation/user_otp_auth.dart';
 import 'package:decorize_project/features/authantication/presentation/user_register_view.dart';
 import 'package:flutter/widgets.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
@@ -20,14 +21,18 @@ abstract class AppRouter {
       GoRoute(
         path: kOnboardingview,
         builder: (BuildContext context, GoRouterState state) {
-          return const OnBoardingView();
+          final position = state.extra as Position;
+          return OnBoardingView(position: position);
         },
       ),
       GoRoute(
         path: kUserRegister,
         builder: (BuildContext context, GoRouterState state) {
-          final role = state.extra as String;
-          return UserRegisterView(role: role);
+          final extra = state.extra as Map<String, dynamic>;
+          final role = extra['type'] as String;
+          final position = extra['position'] as Position?;
+
+          return UserRegisterView(role: role, position: position);
         },
       ),
       GoRoute(

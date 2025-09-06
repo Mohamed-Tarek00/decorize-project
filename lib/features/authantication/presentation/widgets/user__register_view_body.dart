@@ -14,11 +14,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
 class UserRegisterViewBody extends StatefulWidget {
-  const UserRegisterViewBody({super.key, required this.role});
+  const UserRegisterViewBody({
+    super.key,
+    required this.role,
+    required this.position,
+  });
   final String role;
+  final Position? position;
 
   @override
   State<UserRegisterViewBody> createState() => _UserRegisterViewBodyState();

@@ -16,7 +16,7 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-  Position? _currentPosition;
+  Position? currentPosition;
   Future<void> _getLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -33,20 +33,20 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     if (permission == LocationPermission.deniedForever) {
       return;
     }
-    Position position;
+    Position? position;
     if (Platform.isAndroid) {
       position = await Geolocator.getCurrentPosition(
         locationSettings: AndroidSettings(accuracy: LocationAccuracy.high),
       );
       setState(() {
-        _currentPosition = position;
+        currentPosition = position;
       });
     } else if (Platform.isIOS) {
       position = await Geolocator.getCurrentPosition(
         locationSettings: AppleSettings(accuracy: LocationAccuracy.best),
       );
       setState(() {
-        _currentPosition = position;
+        currentPosition = position;
       });
     }
   }
@@ -54,7 +54,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void _startSplashSequence() async {
     await _getLocation();
     await Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRouter.kOnboardingview);
+      context.go(AppRouter.kOnboardingview, extra: currentPosition);
     });
   }
 

@@ -6,11 +6,13 @@ import 'package:decorize_project/features/onboardingview/presentation/widgets/re
 import 'package:decorize_project/features/onboardingview/presentation/widgets/show_modal.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geolocator/geolocator.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
-  const OnBoardingViewBody({super.key});
+  const OnBoardingViewBody({super.key, required this.position});
+  final Position? position;
 
   @override
   State<OnBoardingViewBody> createState() => _OnBoardingViewBodyState();
@@ -60,7 +62,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             },
           ),
           Positioned(
-            top: .03 * screenHeight,
+            top: screenHeight * .01,
             left: 0,
             right: 0,
             child: Row(
@@ -75,7 +77,17 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
 
                 NextOnBoarding(
                   onPressedLastPage: () {
-          ShowModal().showBottomSheet(context);
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20.r),
+                        ),
+                      ),
+                      context: context,
+                      builder: (context) =>
+                          ShowModal(position: widget.position),
+                    );
                   },
                   currentPageIndex: currentPageIndex,
                   onBoardingItems: onBoardingItems,
@@ -105,9 +117,16 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                     curve: Curves.easeInOut,
                   );
                 } else {
-          ShowModal().showBottomSheet(context);
-
-
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20.r),
+                      ),
+                    ),
+                    context: context,
+                    builder: (context) => ShowModal(position: widget.position),
+                  );
                 }
               },
               text: currentPageIndex == 0 ? 'start'.tr() : 'next'.tr(),

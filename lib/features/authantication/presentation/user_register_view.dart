@@ -6,10 +6,12 @@ import 'package:decorize_project/features/authantication/presentation/cubits/gov
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/user__register_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class UserRegisterView extends StatelessWidget {
-  const UserRegisterView({super.key, required this.role});
+  const UserRegisterView({super.key, required this.role, this.position});
   final String role;
+  final Position? position;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class UserRegisterView extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: const Color(0xfff5f5f5),
-        body: UserRegisterViewBody(role: role),
+        body: UserRegisterViewBody(role: role, position: position),
       ),
     );
   }
