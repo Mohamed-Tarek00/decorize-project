@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/utils/api_service.dart';
-import 'package:decorize_project/features/authantication/data/data_source/location_remote_data_source.dart';
-import 'package:decorize_project/features/authantication/data/data_source/location_remote_data_source_Impl.dart';
-import 'package:decorize_project/features/authantication/data/models/location_repository_impl.dart';
+import 'package:decorize_project/features/authantication/data/data_source/location/location_remote_data_source.dart';
+import 'package:decorize_project/features/authantication/data/data_source/location/location_remote_data_source_Impl.dart';
+import 'package:decorize_project/features/authantication/data/repo_impl/location_repository_impl.dart';
 import 'package:decorize_project/features/authantication/domain/repositories/location_repository.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_cities_use_case.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_governorates_use_case.dart';

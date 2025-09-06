@@ -1,5 +1,5 @@
 import 'package:decorize_project/core/utils/api_service.dart';
-import 'package:decorize_project/features/authantication/data/data_source/location_remote_data_source.dart';
+import 'package:decorize_project/features/authantication/data/data_source/location/location_remote_data_source.dart';
 import 'package:decorize_project/features/authantication/data/models/city_model.dart';
 import 'package:decorize_project/features/authantication/data/models/governorate_model.dart';
 
