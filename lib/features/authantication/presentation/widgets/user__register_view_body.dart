@@ -225,7 +225,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                 CustomButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      if (isAgreed == false) {
+                      if (!isAgreed) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('يجب الموافقة على الشروط والأحكام'),
@@ -234,7 +234,25 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                         return;
                       }
 
-                      context.go(AppRouter.kotpAuth);
+                      if (selectedGovernorate == null || selectedCity == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('من فضلك اختر المحافظة والمدينة'),
+                          ),
+                        );
+                        return;
+                      }
+
+                      if (widget.role == 'worker' && selectedJob == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('من فضلك اختر الوظيفة')),
+                        );
+                        return;
+                      }
+                      context.go(
+                        AppRouter.kotpAuth,
+                        extra: emailController.text.trim(),
+                      );
                     }
                   },
                   text: 'انشاء حساب',

@@ -38,7 +38,9 @@ abstract class AppRouter {
       GoRoute(
         path: kotpAuth,
         builder: (BuildContext context, GoRouterState state) {
-          return const UserOtpAuth();
+          final email = state.extra as String;
+
+          return UserOtpAuth(email: email);
         },
       ),
     ],
