@@ -4,6 +4,7 @@ import 'package:decorize_project/features/authantication/data/models/city_model.
 import 'package:decorize_project/features/authantication/data/models/governorate_model.dart';
 import 'package:decorize_project/features/authantication/data/models/job_model.dart'
     show JobModel;
+import 'package:decorize_project/features/authantication/data/models/register_request_model.dart';
 
 class LocationRemoteDataSourceImpl implements RemoteDataSource {
   final ApiService apiService;
@@ -31,5 +32,10 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
     final data = await apiService.get(endPoint: 'auth/get-types');
     final listOfJobs = data['data'] as List;
     return listOfJobs.map((item) => JobModel.fromJson(item)).toList();
+  }
+
+  Future<void> sendRegisterRequest(RegisterRequestModel model) async {
+    final data = model.toJson();
+    await apiService.post(endPoint: 'auth/register', data: data);
   }
 }
