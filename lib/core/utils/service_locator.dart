@@ -6,6 +6,7 @@ import 'package:decorize_project/features/authantication/domain/repositories/Rep
 import 'package:decorize_project/features/authantication/domain/usecases/get_cities_use_case.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_governorates_use_case.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_jobs_use_case.dart';
+import 'package:decorize_project/features/authantication/domain/usecases/register_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -32,5 +33,8 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<GetJobsUseCase>(
     () => GetJobsUseCase(getIt<Repositoryinterface>()),
+  );
+  getIt.registerLazySingleton<RegisterUseCase>(
+    () => RegisterUseCase(getIt<Repositoryinterface>()),
   );
 }
