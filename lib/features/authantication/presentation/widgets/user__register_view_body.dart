@@ -5,10 +5,12 @@ import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/authantication/domain/entities/city.dart';
 import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
+import 'package:decorize_project/features/authantication/domain/entities/job.dart';
 import 'package:decorize_project/features/authantication/presentation/cubits/city_cubit/cubit/city_cubit.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/city_dropdown.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/custom_text_form_field.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/governorate_dropdown.dart';
+import 'package:decorize_project/features/authantication/presentation/widgets/job_dropdown.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/show_modal_button_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +36,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   bool isAgreed = false;
   Governorate? selectedGovernorate;
   City? selectedCity;
+  Job? selectedJob;
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -145,7 +148,16 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     return null;
                   },
                 ),
-
+                widget.role == 'worker'
+                    ? JobDropdown(
+                        onChanged: (job) {
+                          setState(() {
+                            selectedJob = job;
+                          });
+                        },
+                        selectedJob: selectedJob,
+                      )
+                    : SizedBox.shrink(),
                 GovernorateDropdown(
                   selectedGovernorate: selectedGovernorate,
                   onChanged: (gov) {
