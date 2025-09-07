@@ -249,7 +249,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                         );
                         return;
                       }
-                      context.go(
+                      context.push(
                         AppRouter.kotpAuth,
                         extra: emailController.text.trim(),
                       );
