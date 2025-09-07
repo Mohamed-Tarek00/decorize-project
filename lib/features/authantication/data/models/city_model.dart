@@ -13,6 +13,6 @@ class CityModel {
     );
   }
   City toEntity() {
-    return City(nameAr: nameAr, nameEn: nameEn, governorateId: id);
+    return City(id: id, nameAr: nameAr, nameEn: nameEn);
   }
 }

@@ -1,10 +1,11 @@
 class City {
+  final int id;
   final String nameAr;
   final String nameEn;
-  final int governorateId;
+
   City({
+    required this.id,
     required this.nameAr,
     required this.nameEn,
-    required this.governorateId,
   });
 }

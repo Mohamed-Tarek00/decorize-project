@@ -4,7 +4,7 @@ class RegisterRequest {
   final String password;
   final String phone;
   final String type;
-  final String? typeId; //painter or plumber
+  final String? typeId;
   final int governorateId;
   final int cityId;
   final double? lat;
