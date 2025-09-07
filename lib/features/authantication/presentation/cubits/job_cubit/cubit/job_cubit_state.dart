@@ -1,4 +1,3 @@
-import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';
 import 'package:decorize_project/features/authantication/domain/entities/job.dart';
 
 abstract class JobState {}

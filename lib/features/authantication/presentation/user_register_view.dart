@@ -1,8 +1,10 @@
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_cities_use_case.dart';
 import 'package:decorize_project/features/authantication/domain/usecases/get_governorates_use_case.dart';
+import 'package:decorize_project/features/authantication/domain/usecases/get_jobs_use_case.dart';
 import 'package:decorize_project/features/authantication/presentation/cubits/city_cubit/cubit/city_cubit.dart';
 import 'package:decorize_project/features/authantication/presentation/cubits/governorate_cubit/cubit/governorate_cubit_cubit.dart';
+import 'package:decorize_project/features/authantication/presentation/cubits/job_cubit/cubit/job_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:decorize_project/features/authantication/presentation/widgets/user__register_view_body.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,11 @@ class UserRegisterView extends StatelessWidget {
           create: (_) {
             return GovernorateCubit(getIt<GetGovernoratesUseCase>())
               ..fetchGovernorates();
+          },
+        ),
+        BlocProvider(
+          create: (_) {
+            return JobCubit(getIt<GetJobsUseCase>())..fetchJobs();
           },
         ),
         BlocProvider(create: (context) => CityCubit(getIt<GetCitiesUseCase>())),

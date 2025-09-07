@@ -145,6 +145,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     return null;
                   },
                 ),
+
                 GovernorateDropdown(
                   selectedGovernorate: selectedGovernorate,
                   onChanged: (gov) {

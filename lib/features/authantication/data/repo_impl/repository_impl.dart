@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:decorize_project/features/authantication/data/data_source/location_remote_data_source.dart';
+import 'package:decorize_project/features/authantication/data/data_source/remote_data_source.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/authantication/domain/entities/city.dart';
 import 'package:decorize_project/features/authantication/domain/entities/governorate.dart';

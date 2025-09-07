@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/authantication/domain/entities/job.dart';
 import 'package:decorize_project/features/authantication/domain/repositories/Repo_Interface.dart';
-import 'package:decorize_project/features/authantication/domain/repositories/jobs_repository.dart';
 
 class GetJobsUseCase {
   GetJobsUseCase(this.repositoryinterface);
