@@ -1,0 +1,21 @@
+{
+  "Decorize": "Decorize",
+  "start": "Start",
+    "next": "Next",
+    "skip": "Skip",
+    "back": "Back",
+  "onBoarding": {
+    "step1": {
+      "title": "Discover Your New Space",
+      "description": "Design, imagine, and bring your dream home or office to life with ease"
+    },
+    "step2": {
+      "title": "Trusted Labor at Your Fingertips",
+      "description": "Choose the best workers to execute your designs and connect with them easily"
+    },
+    "step3": {
+      "title": "Connect and Rate",
+      "description": "Communicate with workers and rate your experience to achieve the best results"
+    }
+  }
+}
