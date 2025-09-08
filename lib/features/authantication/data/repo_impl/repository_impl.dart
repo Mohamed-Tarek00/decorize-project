@@ -51,7 +51,15 @@ class RepositoryImpl implements Repositoryinterface {
   Future<Either<Failure, void>> sendRequest(RegisterRequest entity) async {
     try {
       final model = RegisterRequestModel(entity: entity);
-      await remoteDataSource.sendRegisterRequest(model);
+      final response = await remoteDataSource.sendRegisterRequest(model);
+
+      if (response.containsKey('errors')) {
+        final errors = response['errors'] as Map<String, dynamic>;
+        final errorMessage = errors.values.first[0];
+        print('Error message extracted: $errorMessage');
+        return left(ServiceFailure(errorMessage));
+      }
+
       return right(null);
     } catch (e) {
       return left(ServiceFailure(e.toString()));

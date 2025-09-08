@@ -15,7 +15,7 @@ void setupServiceLocator() {
   final dio = Dio(
     BaseOptions(
       baseUrl: 'https://docorizer.ghonim.makkah.solutions/v1/',
-      validateStatus: (status) => status == 200,
+      validateStatus: (_) => true,
       followRedirects: true,
       headers: {
         'Accept': 'application/json',
