@@ -34,8 +34,10 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
     return listOfJobs.map((item) => JobModel.fromJson(item)).toList();
   }
 
-  Future<void> sendRegisterRequest(RegisterRequestModel model) async {
+  Future<Map<String, dynamic>> sendRegisterRequest(
+    RegisterRequestModel model,
+  ) async {
     final data = model.toJson();
-    await apiService.post(endPoint: 'auth/register', data: data);
+    return await apiService.post(endPoint: 'auth/register', data: data);
   }
 }

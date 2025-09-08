@@ -11,9 +11,31 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
-
 void setupServiceLocator() {
-  getIt.registerLazySingleton<Dio>(() => Dio());
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: 'https://docorizer.ghonim.makkah.solutions/v1/',
+      validateStatus: (status) => status == 200,
+      followRedirects: true,
+      headers: {
+        'Accept': 'application/json',
+        'Accept-Language': 'ar',
+        'Content-Type': 'application/json',
+      },
+    ),
+  );
+
+  dio.interceptors.add(
+    LogInterceptor(
+      request: true,
+      requestBody: true,
+      responseBody: true,
+      responseHeader: false,
+      error: true,
+    ),
+  );
+
+  getIt.registerLazySingleton<Dio>(() => dio);
 
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
 
@@ -28,12 +50,15 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<GetGovernoratesUseCase>(
     () => GetGovernoratesUseCase(getIt<Repositoryinterface>()),
   );
+
   getIt.registerLazySingleton<GetCitiesUseCase>(
     () => GetCitiesUseCase(getIt<Repositoryinterface>()),
   );
+
   getIt.registerLazySingleton<GetJobsUseCase>(
     () => GetJobsUseCase(getIt<Repositoryinterface>()),
   );
+
   getIt.registerLazySingleton<RegisterUseCase>(
     () => RegisterUseCase(getIt<Repositoryinterface>()),
   );

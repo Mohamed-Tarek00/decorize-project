@@ -76,6 +76,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
           Navigator.of(context, rootNavigator: true).pop();
           context.push(AppRouter.kotpAuth, extra: emailController.text.trim());
         } else if (state is RegisterFailure) {
+          print(state.message);
           Navigator.of(context, rootNavigator: true).pop();
           ScaffoldMessenger.of(
             context,
@@ -283,8 +284,8 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                             governorateId: selectedGovernorate!.id,
                             cityId: selectedCity!.id,
                             typeId: widget.role == 'worker'
-    ? selectedJob?.id.toString()
-    : null,
+                                ? selectedJob?.id.toString()
+                                : null,
                           ),
                         );
                       }

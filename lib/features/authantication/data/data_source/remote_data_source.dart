@@ -7,5 +7,5 @@ abstract class RemoteDataSource {
   Future<List<GovernorateModel>> getGovernorates();
   Future<List<CityModel>> getCitiesByGovernorateId(int governorateId);
   Future<List<JobModel>> getJobs();
-  Future<void> sendRegisterRequest(RegisterRequestModel model);
+  Future<Map<String, dynamic>> sendRegisterRequest(RegisterRequestModel model);
 }
