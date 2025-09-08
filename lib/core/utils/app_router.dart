@@ -1,7 +1,7 @@
-import 'package:decorize_project/features/onboarding/presentation/on_boarding_view.dart';
-import 'package:decorize_project/features/splash/presentation/splash_view.dart';
-import 'package:decorize_project/features/auth/presentation/user_otp_auth.dart';
-import 'package:decorize_project/features/auth/presentation/user_register_view.dart';
+import 'package:decorize_project/features/shared/onboarding/presentation/on_boarding_view.dart';
+import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
+import 'package:decorize_project/features/shared/auth/presentation/user_otp_auth.dart';
+import 'package:decorize_project/features/shared/auth/presentation/user_register_view.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
