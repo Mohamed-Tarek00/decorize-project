@@ -2,6 +2,7 @@ import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/core/utils/validator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/city.dart';
@@ -104,64 +105,28 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     hintText: 'ادخل الاسم',
                     iconPath: 'assets/icons/profile.svg',
                     controller: nameController,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'من فضلك ادخل الاسم';
-                      }
-                      return null;
-                    },
+                    validator: Validator.nameValidator,
                   ),
                   CustomTextFormField(
                     name: 'البريد الإلكتروني',
                     hintText: 'ادخل البريد الإلكتروني',
                     iconPath: 'assets/icons/sms.svg',
                     controller: emailController,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'من فضلك ادخل البريد الإلكتروني';
-                      } else if (!RegExp(
-                        r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}',
-                      ).hasMatch(value)) {
-                        return 'صيغة البريد الإلكتروني غير صحيحة';
-                      }
-                      return null;
-                    },
+                    validator: Validator.emailValidator,
                   ),
                   CustomTextFormField(
                     name: ' رقم الهاتف',
                     hintText: 'ادخل رقم الهاتف',
                     iconPath: 'assets/icons/phone.svg',
                     controller: phoneController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'من فضلك ادخل رقم الهاتف';
-                      }
-
-                      if (value.length != 11) {
-                        return 'رقم الهاتف يجب أن يحتوي على 11 رقمًا';
-                      }
-
-                      final phoneRegex = RegExp(r'^(01)[0-9]{9}$');
-                      if (!phoneRegex.hasMatch(value)) {
-                        return 'من فضلك أدخل رقم هاتف مصري صحيح';
-                      }
-
-                      return null;
-                    },
+                    validator: Validator.phoneValidator,
                   ),
                   CustomTextFormField(
                     name: 'كلمة المرور',
                     hintText: 'ادخل كلمة المرور',
                     iconPath: 'assets/icons/lock.svg',
                     controller: passwordController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'من فضلك ادخل كلمة المرور';
-                      } else if (value.length < 6) {
-                        return 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
-                      }
-                      return null;
-                    },
+                    validator: Validator.passwordValidator,
                   ),
 
                   CustomTextFormField(
