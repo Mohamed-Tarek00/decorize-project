@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 class Validator {
   static String? nameValidator(value) {
     if (value == null || value.trim().isEmpty) {
@@ -37,6 +39,16 @@ class Validator {
       return 'من فضلك ادخل كلمة المرور';
     } else if (value.length < 6) {
       return 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+    }
+    return null;
+  }
+
+  static String? confirmPasswordValidator(String? value, String password) {
+    if (value == null || value.isEmpty) {
+      return 'من فضلك أدخل تأكيد كلمة المرور';
+    }
+    if (value != password) {
+      return 'كلمة المرور غير متطابقة';
     }
     return null;
   }

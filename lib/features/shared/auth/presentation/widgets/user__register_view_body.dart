@@ -1,5 +1,4 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/router/app_router.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/utils/validator.dart';
@@ -73,8 +72,6 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
             builder: (_) => const Center(child: CircularProgressIndicator()),
           );
         } else if (state is RegisterSuccess) {
-          print('Registration successful, navigating to OTP page');
-
           Navigator.of(context, rootNavigator: true).pop();
           context.push(
             AppRouterNames.otpView,
@@ -134,12 +131,10 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     hintText: 'ادخل كلمة المرور مرة أخرى',
                     iconPath: 'assets/icons/lock.svg',
                     controller: confirmPasswordController,
-                    validator: (value) {
-                      if (value != passwordController.text) {
-                        return 'كلمة المرور غير متطابقة';
-                      }
-                      return null;
-                    },
+                    validator: (value) => Validator.confirmPasswordValidator(
+                      value,
+                      passwordController.text.trim(),
+                    ),
                   ),
                   widget.role == 'worker'
                       ? JobDropdown(
