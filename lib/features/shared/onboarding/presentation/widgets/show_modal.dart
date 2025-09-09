@@ -1,4 +1,5 @@
-import 'package:decorize_project/core/routes/app_routes_name.dart';
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/widgets/client_worker_selection.dart';
@@ -12,7 +13,7 @@ import 'package:go_router/go_router.dart';
 class ShowModal extends StatefulWidget {
   final Position? position;
 
-  const ShowModal({super.key, required this.position});
+  const ShowModal({Key? key, required this.position}) : super(key: key);
 
   @override
   State<ShowModal> createState() => _ShowModalState();
@@ -51,7 +52,7 @@ class _ShowModalState extends State<ShowModal> {
             onPressed: () {
               final userType = selectedIndex == 0 ? 'client' : 'worker';
               context.go(
-                AppRoutesName.registerRouteName,
+                AppRouterNames.registerView,
                 extra: {'type': userType, 'position': widget.position},
               );
             },

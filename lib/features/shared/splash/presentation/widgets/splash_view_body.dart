@@ -1,6 +1,8 @@
 import 'dart:io';
+
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/routes/app_routes_name.dart';
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/screen_size.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -54,7 +56,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void _startSplashSequence() async {
     await _getLocation();
     await Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRoutesName.onBoardingView, extra: currentPosition);
+      context.go(AppRouterNames.onBoardingView, extra: currentPosition);
     });
   }
 
@@ -89,7 +91,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           ),
           Positioned(
             bottom: ScreenSize.getWidgethighet(
-              percantage: 0.38,
+              percantage: .38,
               context: context,
             ),
             left: 0,

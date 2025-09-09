@@ -32,9 +32,9 @@ class OnBoardingItem extends StatelessWidget {
               Positioned(
                 top: 70.h,
                 left: 5.w,
+                child: Image.asset(imagePath),
                 height: 310.h,
                 width: 350.w,
-                child: Image.asset(imagePath),
               ),
             ],
           ),

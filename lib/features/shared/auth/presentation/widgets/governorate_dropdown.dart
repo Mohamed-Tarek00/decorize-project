@@ -12,10 +12,10 @@ class GovernorateDropdown extends StatelessWidget {
   final ValueChanged<Governorate?> onChanged;
 
   const GovernorateDropdown({
-    super.key,
+    Key? key,
     required this.selectedGovernorate,
     required this.onChanged,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

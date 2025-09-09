@@ -1,4 +1,3 @@
-import 'package:decorize_project/core/utils/screen_size.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/widgets/AnimatedContainers.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/widgets/next_on_boarding.dart';
@@ -7,6 +6,7 @@ import 'package:decorize_project/features/shared/onboarding/presentation/widgets
 import 'package:decorize_project/features/shared/onboarding/presentation/widgets/show_modal.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -44,24 +44,25 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     super.dispose();
   }
 
-  @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return SizedBox(
-      height: ScreenSize.getWidgethighet(percantage: 1, context: context),
+      height: screenHeight,
       child: Stack(
         children: [
           PageView(
             controller: _pageController,
+            children: onBoardingItems,
             physics: NeverScrollableScrollPhysics(),
             onPageChanged: (value) {
               setState(() {
                 currentPageIndex = value;
               });
             },
-            children: onBoardingItems,
           ),
           Positioned(
-            top: ScreenSize.getWidgethighet(percantage: .01, context: context),
+            top: screenHeight * .01,
             left: 0,
             right: 0,
             child: Row(
@@ -96,10 +97,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             ),
           ),
           Positioned(
-            bottom: ScreenSize.getWidgethighet(
-              percantage: .17,
-              context: context,
-            ),
+            bottom: screenHeight * .17,
             left: 0,
             right: 0,
             child: AnimatedContainers(
@@ -108,10 +106,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             ),
           ),
           Positioned(
-            bottom: ScreenSize.getWidgethighet(
-              percantage: .05,
-              context: context,
-            ),
+            bottom: screenHeight * .05,
             left: 0,
             right: 0,
             child: CustomButton(

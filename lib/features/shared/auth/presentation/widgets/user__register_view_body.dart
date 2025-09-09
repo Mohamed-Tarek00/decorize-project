@@ -1,5 +1,6 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/routes/app_routes_name.dart';
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
@@ -75,7 +76,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
 
           Navigator.of(context, rootNavigator: true).pop();
           context.push(
-            AppRoutesName.otpView,
+            AppRouterNames.otpView,
             extra: emailController.text.trim(),
           );
         } else if (state is RegisterFailure) {

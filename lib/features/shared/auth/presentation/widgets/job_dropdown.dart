@@ -1,5 +1,8 @@
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/city.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
+import 'package:decorize_project/features/shared/auth/presentation/cubits/city_cubit/cubit/city_cubit.dart';
+import 'package:decorize_project/features/shared/auth/presentation/cubits/city_cubit/cubit/city_state.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/job_cubit/cubit/job_cubit.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/job_cubit/cubit/job_cubit_state.dart';
 import 'package:flutter/material.dart';
