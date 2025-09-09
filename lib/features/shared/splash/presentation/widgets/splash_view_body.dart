@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/screen_size.dart';

@@ -46,10 +46,8 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-
   final TextEditingController confirmPasswordController =
       TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
