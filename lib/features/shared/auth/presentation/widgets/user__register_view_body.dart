@@ -76,7 +76,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
 
           Navigator.of(context, rootNavigator: true).pop();
           context.push(
-            AppRouterNames.OtpView,
+            AppRouterNames.otpView,
             extra: emailController.text.trim(),
           );
         } else if (state is RegisterFailure) {

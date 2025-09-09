@@ -52,7 +52,7 @@ class _ShowModalState extends State<ShowModal> {
             onPressed: () {
               final userType = selectedIndex == 0 ? 'client' : 'worker';
               context.go(
-                AppRouterNames.RegisterView,
+                AppRouterNames.registerView,
                 extra: {'type': userType, 'position': widget.position},
               );
             },

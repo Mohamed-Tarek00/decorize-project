@@ -11,7 +11,7 @@ abstract class AppRouter {
   static final GoRouter router = GoRouter(
     routes: <RouteBase>[
       GoRoute(
-        path: AppRouterNames.SplashView,
+        path: AppRouterNames.splashView,
         builder: (BuildContext context, GoRouterState state) {
           return const SplashView();
         },
@@ -24,7 +24,7 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRouterNames.RegisterView,
+        path: AppRouterNames.registerView,
         builder: (BuildContext context, GoRouterState state) {
           final extra = state.extra as Map<String, dynamic>;
           final role = extra['type'] as String;
@@ -34,7 +34,7 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRouterNames.OtpView,
+        path: AppRouterNames.otpView,
         builder: (BuildContext context, GoRouterState state) {
           final email = state.extra as String;
 
