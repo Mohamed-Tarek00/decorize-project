@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 class Validator {
   static String? nameValidator(value) {
     if (value == null || value.trim().isEmpty) {
