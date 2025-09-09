@@ -1,4 +1,5 @@
-import 'package:decorize_project/core/utils/app_router.dart';
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/widgets/client_worker_selection.dart';
@@ -51,7 +52,7 @@ class _ShowModalState extends State<ShowModal> {
             onPressed: () {
               final userType = selectedIndex == 0 ? 'client' : 'worker';
               context.go(
-                AppRouter.kUserRegister,
+                AppRouterNames.RegisterView,
                 extra: {'type': userType, 'position': widget.position},
               );
             },

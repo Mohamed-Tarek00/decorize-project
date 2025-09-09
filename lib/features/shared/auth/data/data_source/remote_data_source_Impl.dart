@@ -14,8 +14,10 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
   @override
   Future<List<GovernorateModel>> getGovernorates() async {
     final data = await apiService.get(endPoint: 'auth/get-governorates');
-    final listofGovernorates = data['data'] as List;
-    return listofGovernorates
+
+    final listofgoverment = data['data'] as List;
+
+    return listofgoverment
         .map((item) => GovernorateModel.fromJson(item))
         .toList();
   }

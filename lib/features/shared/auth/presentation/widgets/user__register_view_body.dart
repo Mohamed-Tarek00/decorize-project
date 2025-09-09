@@ -1,5 +1,6 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/utils/app_router.dart';
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
@@ -74,7 +75,10 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
           print('Registration successful, navigating to OTP page');
 
           Navigator.of(context, rootNavigator: true).pop();
-          context.push(AppRouter.kotpAuth, extra: emailController.text.trim());
+          context.push(
+            AppRouterNames.OtpView,
+            extra: emailController.text.trim(),
+          );
         } else if (state is RegisterFailure) {
           print(state.message);
           Navigator.of(context, rootNavigator: true).pop();

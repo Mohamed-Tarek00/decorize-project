@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/utils/app_router.dart';
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/core/utils/screen_size.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +56,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void _startSplashSequence() async {
     await _getLocation();
     await Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRouter.kOnboardingview, extra: currentPosition);
+      context.go(AppRouterNames.onBoardingView, extra: currentPosition);
     });
   }
 
@@ -66,17 +68,32 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Center(
       child: Stack(
         children: [
-          Center(child: Image.asset(kLogo, height: screenHeight * 0.1)),
           Center(
-            child: Image.asset(kSplashBackground, height: screenHeight * .6),
+            child: Image.asset(
+              kLogo,
+              height: ScreenSize.getWidgethighet(
+                percantage: .1,
+                context: context,
+              ),
+            ),
+          ),
+          Center(
+            child: Image.asset(
+              kSplashBackground,
+              height: ScreenSize.getWidgethighet(
+                percantage: .6,
+                context: context,
+              ),
+            ),
           ),
           Positioned(
-            bottom: screenHeight * 0.38,
+            bottom: ScreenSize.getWidgethighet(
+              percantage: .38,
+              context: context,
+            ),
             left: 0,
             right: 0,
             child: Align(

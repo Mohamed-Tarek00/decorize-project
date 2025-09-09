@@ -1,4 +1,4 @@
-import 'package:decorize_project/core/utils/app_router_names.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/on_boarding_view.dart';
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/user_otp_auth.dart';
