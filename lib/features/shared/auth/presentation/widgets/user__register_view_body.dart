@@ -1,5 +1,4 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/router/app_router.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/utils/validator.dart';
@@ -47,10 +46,8 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-
   final TextEditingController confirmPasswordController =
       TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
