@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/core/widgets/custom_loading_shimmer.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/job_cubit/cubit/job_cubit.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/job_cubit/cubit/job_cubit_state.dart';
@@ -27,7 +28,6 @@ class JobDropdown extends StatelessWidget {
           SizedBox(height: 8.h),
           Container(
             height: 54.h,
-            padding: EdgeInsets.symmetric(horizontal: 12.w),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10.r),
@@ -36,45 +36,49 @@ class JobDropdown extends StatelessWidget {
             child: BlocBuilder<JobCubit, JobState>(
               builder: (context, state) {
                 if (state is JobLoading) {
-                  return Padding(
-                    padding: EdgeInsets.all(12.h),
-                    child: Center(child: CircularProgressIndicator()),
+                  return CustomLoadingShimer(
+                    height: 54.h,
+                    width: double.infinity,
+                    radius: 10,
                   );
                 } else if (state is JobLoaded) {
                   final jobs = state.jobs;
 
-                  return Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/bag.svg',
-                        height: 27.h,
-                        width: 27.w,
-                      ),
-                      SizedBox(width: 12.w),
-                      Expanded(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<Job>(
-                            hint: Text(
-                              'اختر الوظيفة',
-                              style: Styles.textStyle14,
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/bag.svg',
+                          height: 27.h,
+                          width: 27.w,
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<Job>(
+                              hint: Text(
+                                'اختر الوظيفة',
+                                style: Styles.textStyle14,
+                              ),
+                              value: selectedJob,
+                              isExpanded: true,
+                              icon: Icon(Icons.keyboard_arrow_down),
+                              items: jobs.map((job) {
+                                return DropdownMenuItem<Job>(
+                                  value: job,
+                                  child: Text(
+                                    job.arName,
+                                    style: Styles.textStyle14,
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: onChanged,
                             ),
-                            value: selectedJob,
-                            isExpanded: true,
-                            icon: Icon(Icons.keyboard_arrow_down),
-                            items: jobs.map((job) {
-                              return DropdownMenuItem<Job>(
-                                value: job,
-                                child: Text(
-                                  job.arName,
-                                  style: Styles.textStyle14,
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: onChanged,
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 } else if (state is JobError) {
                   return Padding(

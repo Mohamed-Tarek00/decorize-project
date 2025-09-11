@@ -14,9 +14,8 @@ final getIt = GetIt.instance;
 void setupServiceLocator() {
   final dio = Dio(
     BaseOptions(
-      baseUrl: 'https://docorizer.ghonim.makkah.solutions/v1/',
+      baseUrl: ApiService.baseUrl,
       validateStatus: (_) => true,
-      followRedirects: true,
       headers: {
         'Accept': 'application/json',
         'Accept-Language': 'ar',
