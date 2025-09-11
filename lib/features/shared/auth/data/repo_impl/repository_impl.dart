@@ -24,6 +24,7 @@ class RepositoryImpl implements Repositoryinterface {
     }
   }
 
+  @override
   Future<Either<Failure, List<City>>> getCitiesByGovernorateId(
     int governorateId,
   ) async {
@@ -38,6 +39,7 @@ class RepositoryImpl implements Repositoryinterface {
     }
   }
 
+  @override
   Future<Either<Failure, List<Job>>> getJobs() async {
     try {
       final items = await remoteDataSource.getJobs();
@@ -48,6 +50,7 @@ class RepositoryImpl implements Repositoryinterface {
     }
   }
 
+  @override
   Future<Either<Failure, void>> sendRequest(RegisterRequest entity) async {
     try {
       final model = RegisterRequestModel(entity: entity);

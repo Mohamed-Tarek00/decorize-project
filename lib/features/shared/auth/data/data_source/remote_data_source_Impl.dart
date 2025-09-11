@@ -22,6 +22,7 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
         .toList();
   }
 
+  @override
   Future<List<CityModel>> getCitiesByGovernorateId(int governorateId) async {
     final data = await apiService.get(
       endPoint: 'auth/get-cities/$governorateId',
@@ -30,12 +31,14 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
     return listofCities.map((item) => CityModel.fromJson(item)).toList();
   }
 
+  @override
   Future<List<JobModel>> getJobs() async {
     final data = await apiService.get(endPoint: 'auth/get-types');
     final listOfJobs = data['data'] as List;
     return listOfJobs.map((item) => JobModel.fromJson(item)).toList();
   }
 
+  @override
   Future<Map<String, dynamic>> sendRegisterRequest(
     RegisterRequestModel model,
   ) async {
