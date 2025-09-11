@@ -123,7 +123,6 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                     controller: passwordController,
                     validator: Validator.passwordValidator,
                   ),
-
                   CustomTextFormField(
                     name: 'تأكيد كلمة المرور',
                     hintText: 'ادخل كلمة المرور مرة أخرى',
@@ -210,7 +209,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
 
                   CustomButton(
                     onPressed: () {
-                      context.go(AppRouterNames.workerHomeView);
+                      context.go(AppRouterNames.workerBottomNavigation);
                       /*   if (_formKey.currentState!.validate()) {
                         if (!isAgreed) {
                           ScaffoldMessenger.of(context).showSnackBar(

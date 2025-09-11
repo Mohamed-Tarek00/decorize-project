@@ -5,6 +5,7 @@ import 'package:decorize_project/features/shared/auth/presentation/user_otp_auth
 import 'package:decorize_project/features/shared/auth/presentation/user_register_view.dart';
 import 'package:decorize_project/features/user/home/presentation/views/user_home_view.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
+import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
@@ -53,6 +54,12 @@ abstract class AppRouter {
         path: AppRouterNames.userHomeView,
         builder: (BuildContext context, GoRouterState state) {
           return UserHomeView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.workerBottomNavigation,
+        builder: (BuildContext context, GoRouterState state) {
+          return CustomWorkerBottomNavBar();
         },
       ),
     ],

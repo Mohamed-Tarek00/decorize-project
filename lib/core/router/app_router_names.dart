@@ -5,4 +5,5 @@ class AppRouterNames {
   static const otpView = '/otpView';
   static const workerHomeView = '/workerHomeView';
   static const userHomeView = '/userHomeView';
+  static const workerBottomNavigation = '/workerBottomNavigation';
 }

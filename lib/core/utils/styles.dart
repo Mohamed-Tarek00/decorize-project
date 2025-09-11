@@ -36,4 +36,14 @@ abstract class Styles {
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
   );
+  static final TextStyle textStyle12 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle textStyle10 = TextStyle(
+    fontFamily: 'IBMPlexSansArabic',
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w400,
+  );
 }
