@@ -210,7 +210,8 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
 
                   CustomButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                      context.go(AppRouterNames.workerHomeView);
+                      /*   if (_formKey.currentState!.validate()) {
                         if (!isAgreed) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -250,13 +251,15 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                                 : null,
                           ),
                         );
-                      }
+                      }*/
                     },
                     text: 'انشاء حساب',
                   ),
 
                   CustomNavigationButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.go(AppRouterNames.userHomeView);
+                    },
                     solidText: 'لديك حساب؟',
                     navigationText: 'تسجيل الدخول',
                   ),
