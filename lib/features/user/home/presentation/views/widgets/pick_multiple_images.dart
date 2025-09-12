@@ -27,6 +27,8 @@ class PickMultipleImages extends StatelessWidget {
             alignment: Alignment.center,
             child: Column(
               children: [
+                SizedBox(height: 8.h),
+
                 Text(
                   'التقط صورة لمساحتك',
                   style: Styles.textStyle16.copyWith(
@@ -42,7 +44,7 @@ class PickMultipleImages extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 8.h),
                 Container(
                   padding: EdgeInsets.all(12.h),
 
