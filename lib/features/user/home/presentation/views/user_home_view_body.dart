@@ -1,4 +1,7 @@
+import 'dart:ui' as BorderType;
+
 import 'package:decorize_project/features/user/home/presentation/views/widgets/custom_user_app_bar.dart';
+import 'package:decorize_project/features/user/home/presentation/views/widgets/pick_multiple_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,6 +10,6 @@ class UserHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [CustomUserAppBar()]);
+    return Column(children: [CustomUserAppBar(), PickMultipleImages()]);
   }
 }
