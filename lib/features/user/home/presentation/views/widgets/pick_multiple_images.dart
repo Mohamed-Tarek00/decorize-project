@@ -27,7 +27,7 @@ class PickMultipleImages extends StatelessWidget {
             alignment: Alignment.center,
             child: Column(
               children: [
-                SizedBox(height: 8.h),
+                SizedBox(height: 12.h),
 
                 Text(
                   'التقط صورة لمساحتك',
@@ -36,7 +36,7 @@ class PickMultipleImages extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 12.h),
                 Text(
                   'ابدأ بتصوير المساحة التي ترغب بتصميمها، وسنقترح لك أفضل التصاميم!',
                   style: Styles.textStyle12.copyWith(
@@ -44,9 +44,12 @@ class PickMultipleImages extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 8.h),
+                SizedBox(height: 12.h),
                 Container(
-                  padding: EdgeInsets.all(12.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 6.h,
+                  ),
 
                   decoration: BoxDecoration(
                     color: kPrimaryColor,
@@ -63,6 +66,7 @@ class PickMultipleImages extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
+                      SizedBox(width: 4.w),
                       SvgPicture.asset(
                         'assets/icons/camera.svg',
                         width: 14.w,

@@ -27,10 +27,10 @@ class CustomUserAppBar extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: 42.0.h,
-          left: 8.h,
-          right: 8.h,
-          bottom: 24.h,
+          top: 36.0.h,
+          left: 12.h,
+          right: 12.h,
+          bottom: 12.h,
         ),
 
         child: Row(
@@ -49,11 +49,11 @@ class CustomUserAppBar extends StatelessWidget {
             ),
             Spacer(),
             CircleAvatar(
-              radius: 25.r,
+              radius: 23.r,
               backgroundColor: Color(0XFFE7EEEB),
               child: SvgPicture.asset(
-                height: 22.h,
-                width: 22.w,
+                height: 20.h,
+                width: 20.w,
                 'assets/icons/notification.svg',
                 color: kPrimaryColor,
               ),

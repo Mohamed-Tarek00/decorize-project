@@ -5,7 +5,7 @@ class PlaceModel {
   static final List<PlaceModel> places = [
     PlaceModel(
       placeName: "غرفة معيشة",
-      placeImage: "assets/places_images/bedroom.svg",
+      placeImage: "assets/places_images/couch.svg",
     ),
     PlaceModel(
       placeName: "ًصالون",
