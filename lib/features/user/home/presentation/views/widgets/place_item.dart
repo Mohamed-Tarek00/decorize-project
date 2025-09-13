@@ -33,8 +33,11 @@ class PlaceItem extends StatelessWidget {
           ),
           child: Column(
             children: [
+              SizedBox(height: 4.h),
               SvgPicture.asset(
                 PlaceModel.places[index].placeImage,
+                width: 40.w,
+                height: 40.h,
                 color: isSelectedIndex ? Colors.white : Colors.black,
               ),
               Text(

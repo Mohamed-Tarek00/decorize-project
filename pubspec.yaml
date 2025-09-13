@@ -67,6 +67,7 @@ flutter:
     - assets/icons/
     - assets/home_images/
     - assets/places_images/
+    - assets/design/
 
   fonts:
     - family: IBMPlexSansArabic
