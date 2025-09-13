@@ -14,7 +14,7 @@ class _ChoosePlaceState extends State<ChoosePlace> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 12.w, top: 12.h, bottom: 12.h),
+      padding: EdgeInsets.only(right: 12.w, top: 6.h, bottom: 6.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -24,7 +24,7 @@ class _ChoosePlaceState extends State<ChoosePlace> {
             style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w700),
           ),
           SizedBox(height: 15.h),
-          SizedBox(height: 84.h, child: ChoosePlaceListView()),
+          SizedBox(height: 76.h, child: ChoosePlaceListView()),
         ],
       ),
     );
