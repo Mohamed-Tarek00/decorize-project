@@ -1,9 +1,8 @@
-import 'dart:ui' as BorderType;
-
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/choose_place.dart';
+import 'package:decorize_project/features/user/home/presentation/views/widgets/choose_place_list_view.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/custom_user_app_bar.dart';
-import 'package:decorize_project/features/user/home/presentation/views/widgets/design_model.dart';
+import 'package:decorize_project/features/user/home/presentation/views/widgets/designplace_model.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/pick_multiple_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -36,7 +35,7 @@ class UserHomeViewBody extends StatelessWidget {
                 mainAxisSpacing: 4,
                 childAspectRatio: 1.2,
               ),
-              itemCount: DesignModel.designs.length,
+              itemCount: DesignPlaceModel.designs.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
@@ -46,14 +45,14 @@ class UserHomeViewBody extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
                           image: AssetImage(
-                            DesignModel.designs[index].designImage,
+                            DesignPlaceModel.designs[index].designImage,
                           ),
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                     Text(
-                      DesignModel.designs[index].designName,
+                      DesignPlaceModel.designs[index].designName,
                       style: Styles.textStyle12,
                     ),
                   ],
