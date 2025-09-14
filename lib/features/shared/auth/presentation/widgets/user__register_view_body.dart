@@ -257,7 +257,7 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
 
                   CustomNavigationButton(
                     onPressed: () {
-                      context.go(AppRouterNames.userHomeView);
+                      context.go(AppRouterNames.userNavigationBar);
                     },
                     solidText: 'لديك حساب؟',
                     navigationText: 'تسجيل الدخول',

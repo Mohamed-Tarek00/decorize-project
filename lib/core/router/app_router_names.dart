@@ -4,6 +4,6 @@ class AppRouterNames {
   static const registerView = '/registerview';
   static const otpView = '/otpView';
   static const workerHomeView = '/workerHomeView';
-  static const userHomeView = '/userHomeView';
+  static const userNavigationBar = '/userNavigationBar';
   static const workerBottomNavigation = '/workerBottomNavigation';
 }
