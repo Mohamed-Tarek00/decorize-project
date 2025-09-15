@@ -66,7 +66,7 @@ class RepositoryImpl implements Repositoryinterface {
       return left(ServiceFailure(e.toString()));
     }
   }
-
+ @override
   Future<Either<Failure, Map<String, dynamic>>> sendOtpKey(
     Verification entity,
   ) async {
