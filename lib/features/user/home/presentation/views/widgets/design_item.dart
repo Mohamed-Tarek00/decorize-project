@@ -13,7 +13,7 @@ class DesignItem extends StatelessWidget {
       children: [
         Container(
           width: 100.w,
-          height: 70.h,
+          height: 80.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: DecorationImage(

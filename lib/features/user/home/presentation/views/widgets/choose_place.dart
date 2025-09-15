@@ -24,7 +24,7 @@ class _ChoosePlaceState extends State<ChoosePlace> {
             style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w700),
           ),
           SizedBox(height: 15.h),
-          SizedBox(height: 76.h, child: ChoosePlaceListView()),
+          SizedBox(height: 80.h, child: ChoosePlaceListView()),
         ],
       ),
     );

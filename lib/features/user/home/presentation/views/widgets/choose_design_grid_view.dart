@@ -12,9 +12,9 @@ class ChooseDesignGridView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        crossAxisSpacing: 2,
+        crossAxisSpacing: 4,
         mainAxisSpacing: 2,
-        childAspectRatio: 1,
+        childAspectRatio: 1.1,
       ),
       itemCount: DesignPlaceModel.designs.length,
       itemBuilder: (context, index) {

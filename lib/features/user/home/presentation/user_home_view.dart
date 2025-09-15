@@ -1,4 +1,4 @@
-import 'package:decorize_project/features/user/home/presentation/widgets/user_home_view_body.dart';
+import 'package:decorize_project/features/user/home/presentation/views/user_home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class UserHomeView extends StatelessWidget {

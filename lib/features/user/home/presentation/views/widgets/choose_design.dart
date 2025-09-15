@@ -9,6 +9,7 @@ class ChooseDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.only(right: 12.w, top: 6.h),
@@ -21,6 +22,7 @@ class ChooseDesign extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 4.0.w),
           child: ChooseDesignGridView(),
         ),
+        SizedBox(height: 12.h),
       ],
     );
   }
