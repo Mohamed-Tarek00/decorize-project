@@ -5,6 +5,7 @@ import 'package:decorize_project/features/shared/auth/data/models/governorate_mo
 import 'package:decorize_project/features/shared/auth/data/models/job_model.dart'
     show JobModel;
 import 'package:decorize_project/features/shared/auth/data/models/register_request_model.dart';
+import 'package:decorize_project/features/shared/auth/data/models/verification_model.dart';
 
 class LocationRemoteDataSourceImpl implements RemoteDataSource {
   final ApiService apiService;
@@ -44,5 +45,15 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
   ) async {
     final data = model.toJson();
     return await apiService.post(endPoint: 'auth/register', data: data);
+  }
+
+  @override
+  Future<Map<String, dynamic>> sendOtpKey(VerificationModel model) async {
+    final data = model.toJson();
+    final response = await apiService.post(
+      endPoint: '/auth/verify-otp',
+      data: data,
+    );
+    return response;
   }
 }
