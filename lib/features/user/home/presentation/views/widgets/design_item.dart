@@ -11,14 +11,15 @@ class DesignItem extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          width: 100.w,
-          height: 80.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: AssetImage(DesignPlaceModel.designs[index].designImage),
-              fit: BoxFit.cover,
+        AspectRatio(
+          aspectRatio: 1.5,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              image: DecorationImage(
+                image: AssetImage(DesignPlaceModel.designs[index].designImage),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
