@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/utils/screen_size.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,14 +10,13 @@ class CustomButton extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+ 
 
     return TextButton(
       onPressed: onPressed,
       child: Container(
-        height: screenHeight * .07,
-        width: screenWidth * .9,
+        height: ScreenSize.getWidgethighet(percantage: 07, context: context) ,
+        width: ScreenSize.getWidgethighet(percantage: .9 ,context: context),
         decoration: BoxDecoration(
           color: Color(0xff0C5137),
           borderRadius: BorderRadius.circular(10),
