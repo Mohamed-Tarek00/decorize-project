@@ -16,7 +16,7 @@ void setupServiceLocator() {
   final dio = Dio(
     BaseOptions(
       baseUrl: ApiService.baseUrl,
-      validateStatus: (_) => true,
+      validateStatus: (status) => status != null && status < 400,
       headers: {
         'Accept': 'application/json',
         'Accept-Language': 'ar',
@@ -62,7 +62,7 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<RegisterUseCase>(
     () => RegisterUseCase(getIt<Repositoryinterface>()),
   );
-    getIt.registerLazySingleton<OtpVerificationUseCase>(
+  getIt.registerLazySingleton<OtpVerificationUseCase>(
     () => OtpVerificationUseCase(getIt<Repositoryinterface>()),
   );
 }
