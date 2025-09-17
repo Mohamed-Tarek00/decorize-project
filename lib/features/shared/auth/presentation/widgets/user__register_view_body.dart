@@ -189,6 +189,9 @@ class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
                   isAgreed: isAgreed,
                   phoneController: phoneController,
                   role: widget.role,
+                  job: selectedJob,
+                  city: selectedCity,
+                  governorate: selectedGovernorate,
                 ),
                 CustomNavigationButton(
                   onPressed: () {

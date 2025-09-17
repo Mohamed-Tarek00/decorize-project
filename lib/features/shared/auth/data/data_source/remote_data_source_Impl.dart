@@ -51,7 +51,7 @@ class LocationRemoteDataSourceImpl implements RemoteDataSource {
   Future<Map<String, dynamic>> sendOtpKey(VerificationModel model) async {
     final data = model.toJson();
     final response = await apiService.post(
-      endPoint: '/auth/verify-otp',
+      endPoint: 'auth/verify-otp',
       data: data,
     );
     return response;

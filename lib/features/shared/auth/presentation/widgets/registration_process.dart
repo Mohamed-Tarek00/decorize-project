@@ -20,8 +20,8 @@ class registrationProcess extends StatelessWidget {
     required this.nameController,
     required this.isAgreed,
     required this.phoneController,
-    this.governorate,
-    this.city,
+    required this.governorate,
+    required this.city,
     this.job,
     required this.role,
   });
@@ -43,14 +43,12 @@ class registrationProcess extends StatelessWidget {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
-          Navigator.of(context, rootNavigator: true).pop();
           context.push(
             AppRouterNames.otpView,
             extra: emailController.text.trim(),
           );
         } else if (state is RegisterFailure) {
           print(state.message);
-          Navigator.of(context, rootNavigator: true).pop();
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(state.message)));
