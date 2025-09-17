@@ -27,10 +27,10 @@ class CustomUserAppBar extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: 36.0.h,
-          left: 12.h,
-          right: 12.h,
+          left: 12.w,
+          right: 12.w,
           bottom: 12.h,
+          top: 12.h,
         ),
 
         child: Row(

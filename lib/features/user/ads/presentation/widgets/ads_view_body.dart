@@ -1,3 +1,4 @@
+import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/widgets.dart';
 
 class AdsViewBody extends StatelessWidget {
@@ -5,6 +6,11 @@ class AdsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Column(
+      children: [
+        SizedBox(height: MediaQuery.of(context).padding.top),
+        CustomAppBar(onTap: () {}, headingText: 'اعلاناتي'),
+      ],
+    );
   }
 }

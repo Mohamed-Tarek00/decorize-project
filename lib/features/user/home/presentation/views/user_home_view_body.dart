@@ -11,6 +11,7 @@ class UserHomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: MediaQuery.of(context).padding.top),
         const CustomUserAppBar(),
         SizedBox(height: 14.h),
         Expanded(child: UserHomeViewContent()),
