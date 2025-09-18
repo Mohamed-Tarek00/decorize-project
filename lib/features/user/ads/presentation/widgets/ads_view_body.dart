@@ -1,3 +1,4 @@
+import 'package:decorize_project/features/user/ads/presentation/widgets/ad_item.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/searching_ads_section.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,14 @@ class AdsViewBody extends StatelessWidget {
         SizedBox(height: MediaQuery.of(context).padding.top),
         CustomAppBar(onTap: () {}, headingText: 'اعلاناتي'),
         SearchingAdsSection(),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return AdItem();
+            },
+          ),
+        ),
       ],
     );
   }
