@@ -3,6 +3,7 @@ import 'package:decorize_project/features/shared/onboarding/presentation/on_boar
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/user_otp_auth.dart';
 import 'package:decorize_project/features/shared/auth/presentation/user_register_view.dart';
+import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
 import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
@@ -61,6 +62,12 @@ abstract class AppRouter {
         path: AppRouterNames.workerBottomNavigation,
         builder: (BuildContext context, GoRouterState state) {
           return CustomWorkerBottomNavBar();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.adDetails,
+        builder: (BuildContext context, GoRouterState state) {
+          return AdDetailsView();
         },
       ),
     ],

@@ -6,4 +6,5 @@ class AppRouterNames {
   static const workerHomeView = '/workerHomeView';
   static const userNavigationBar = '/userNavigationBar';
   static const workerBottomNavigation = '/workerBottomNavigation';
+  static const adDetails = '/adDetails';
 }
