@@ -4,7 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, this.onTap, required this.headingText});
+  const CustomAppBar({
+    super.key,
+    required this.onTap,
+    required this.headingText,
+  });
   final void Function()? onTap;
   final String headingText;
   @override
