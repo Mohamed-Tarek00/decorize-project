@@ -1,6 +1,7 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -8,13 +9,18 @@ import 'package:go_router/go_router.dart';
 class AdItem extends StatelessWidget {
   const AdItem({super.key});
 
-  final String customText =
-      'نبحث عن نجار محترف ومبدع لتصميم غرفة مكتب أنيقة وعملية، حيث نرغب في أن تكون المساحة مريحة وعملية في نفس الوقت. نود أن تتضمن الغرفة عناصر تصميم مبتكرة، مثل أرفف مدمجة ومساحة عمل واسعة، بالإضافة إلى استخدام ألوان دافئة تضفي شعوراً بالراحة.';
   @override
   Widget build(BuildContext context) {
+    final AdModel ad = AdModel(
+      imagePath: 'assets/design/modern.png',
+      title: 'مطلوب نجار',
+      price: 500,
+      subTitle:
+          'نبحث عن نجار محترف ومبدع لتصميم غرفة مكتب أنيقة وعملية، حيث نرغب في أن تكون المساحة مريحة وعملية في نفس الوقت. نود أن تتضمن الغرفة عناصر تصميم مبتكرة، مثل أرفف مدمجة ومساحة عمل واسعة، بالإضافة إلى استخدام ألوان دافئة تضفي شعوراً بالراحة.',
+    );
     return GestureDetector(
       onTap: () {
-        context.push(AppRouterNames.adDetails);
+        context.push(AppRouterNames.adDetails, extra: ad);
       },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -34,10 +40,7 @@ class AdItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   clipBehavior: Clip.hardEdge,
-                  child: Image.asset(
-                    'assets/design/modern.png',
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(ad.imagePath, fit: BoxFit.cover),
                 ),
               ),
               Expanded(
@@ -49,14 +52,14 @@ class AdItem extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "مطلوب نجار",
+                            ad.title,
                             style: Styles.textStyle16.copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                           Spacer(),
                           Text(
-                            '500',
+                            "{$ad.price}",
                             style: Styles.textStyle18.copyWith(
                               color: kPrimaryColor,
                             ),
@@ -72,7 +75,7 @@ class AdItem extends StatelessWidget {
                       ),
                       SizedBox(height: 5.h),
                       Text(
-                        customText,
+                        ad.subTitle,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle12.copyWith(
