@@ -23,7 +23,7 @@ class CustomInformationWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Padding(
-        padding: EdgeInsets.all(8.sp),
+        padding: EdgeInsets.all(12.sp),
         child: Column(
           children: [
             Row(
