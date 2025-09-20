@@ -28,23 +28,22 @@ class CustomInformationWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                SvgPicture.asset(
-                  'assets/icons/information.svg',
-                  width: 20.w,
-                  height: 20.h,
-                ),
+                SvgPicture.asset(iconPath, width: 20.w, height: 20.h),
                 SizedBox(width: 5.w),
                 Text(
-                  'بيانات الطلب',
+                  title,
                   style: Styles.textStyle14.copyWith(
                     color: kPrimaryColor,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
             ),
             Divider(color: Colors.grey.shade300, thickness: 1.25.h),
-            Column(children: content),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: content,
+            ),
           ],
         ),
       ),
