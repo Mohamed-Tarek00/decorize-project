@@ -14,43 +14,67 @@ class _CustomWorkerAppBarState extends State<CustomWorkerAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 20.h,
-          child: Image.asset('assets/logo/mainlogo.png'),
+    return Container(
+      padding: EdgeInsets.only(top: 40.0.h, left: 12.h, right: 12.h),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
         ),
-        SizedBox(width: 8.w),
-
-        Text('مرحبا بك !\nيوسف السيد', style: Styles.textStyle16),
-        Spacer(),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              isAvailable ? "متاح" : "غير متاح",
-              style: TextStyle(
-                fontSize: 16,
-                color: isAvailable ? Colors.green : Colors.red,
-                fontWeight: FontWeight.w600,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            spreadRadius: 1,
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            'assets/icons/usertestphoto.png',
+            height: 50.h,
+            width: 50.w,
+          ),
+          SizedBox(width: 10.h),
+          Column(
+            children: [
+              Text('مرحبا بك !', style: Styles.textStyle16),
+              Text('يوسف السيد', style: Styles.textStyle16),
+            ],
+          ),
+          Spacer(),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                isAvailable ? "متاح" : "غير متاح",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: isAvailable ? Colors.green : Colors.red,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            SizedBox(width: 8.w),
-            Switch(
-              value: isAvailable,
-              onChanged: (value) {
-                setState(() {
-                  isAvailable = value;
-                });
-              },
-              activeColor: Colors.white, // لون الدائرة
-              activeTrackColor: Colors.green, // خلفية الـ On
-              inactiveThumbColor: Colors.white, // لون الدائرة لما يبقى Off
-              inactiveTrackColor: Colors.grey, // خلفية الـ Off
-            ),
-          ],
-        ),
-      ],
+              SizedBox(width: 8.w),
+              Switch(
+                value: isAvailable,
+                onChanged: (value) {
+                  setState(() {
+                    isAvailable = value;
+                  });
+                },
+                activeThumbColor: Colors.white, // لون الدائرة
+                activeTrackColor: Colors.green, // خلفية الـ On
+                inactiveThumbColor: Colors.white, // لون الدائرة لما يبقى Off
+                inactiveTrackColor: Colors.grey, // خلفية الـ Off
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

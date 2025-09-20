@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class UserOtpAuthBody extends StatefulWidget {
-  const UserOtpAuthBody({Key? key, required this.email}) : super(key: key);
+  const UserOtpAuthBody({super.key, required this.email});
   final String email;
 
   @override

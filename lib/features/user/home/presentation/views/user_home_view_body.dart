@@ -1,6 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/choose_place.dart';
-import 'package:decorize_project/features/user/home/presentation/views/widgets/choose_place_list_view.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/custom_user_app_bar.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/design_place_model.dart';
 import 'package:decorize_project/features/user/home/presentation/views/widgets/pick_multiple_images.dart';

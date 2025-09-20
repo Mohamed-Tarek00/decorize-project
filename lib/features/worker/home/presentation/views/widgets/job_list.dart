@@ -8,7 +8,9 @@ class JobList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        padding: EdgeInsetsGeometry.zero,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
           return const JobRequestCard();

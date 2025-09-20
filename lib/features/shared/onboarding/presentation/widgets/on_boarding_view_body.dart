@@ -44,6 +44,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -53,13 +54,13 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         children: [
           PageView(
             controller: _pageController,
-            children: onBoardingItems,
             physics: NeverScrollableScrollPhysics(),
             onPageChanged: (value) {
               setState(() {
                 currentPageIndex = value;
               });
             },
+            children: onBoardingItems,
           ),
           Positioned(
             top: screenHeight * .01,

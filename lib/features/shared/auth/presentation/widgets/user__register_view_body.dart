@@ -7,7 +7,6 @@ import 'package:decorize_project/core/widgets/custom_navigation_button.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/city.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/governorate.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
-import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/city_cubit/cubit/city_cubit.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/register_request_cubit/cubit/register_request_cubit_.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/register_request_cubit/cubit/register_request_cubit_state.dart';

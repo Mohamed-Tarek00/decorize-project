@@ -12,7 +12,7 @@ import 'package:go_router/go_router.dart';
 class ShowModal extends StatefulWidget {
   final Position? position;
 
-  const ShowModal({Key? key, required this.position}) : super(key: key);
+  const ShowModal({super.key, required this.position});
 
   @override
   State<ShowModal> createState() => _ShowModalState();
