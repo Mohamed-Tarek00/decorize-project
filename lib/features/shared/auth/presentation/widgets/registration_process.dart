@@ -27,11 +27,9 @@ class registrationProcess extends StatelessWidget {
   });
   final TextEditingController emailController;
   final GlobalKey<FormState> formKey;
-
   final TextEditingController passwordController;
   final TextEditingController nameController;
   final bool isAgreed;
-
   final TextEditingController phoneController;
   final Governorate? governorate;
   final City? city;
@@ -60,8 +58,8 @@ class registrationProcess extends StatelessWidget {
         } else {
           return CustomButton(
             onPressed: () {
-              // context.go(AppRouterNames.workerBottomNavigation);
-              if (formKey.currentState!.validate()) {
+              context.go(AppRouterNames.workerBottomNavigation);
+              /*   if (formKey.currentState!.validate()) {
                 if (!isAgreed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('يجب الموافقة على الشروط والأحكام')),
@@ -94,7 +92,7 @@ class registrationProcess extends StatelessWidget {
                     typeId: role == 'worker' ? job?.id.toString() : null,
                   ),
                 );
-              }
+              }*/
             },
             text: 'انشاء حساب',
           );

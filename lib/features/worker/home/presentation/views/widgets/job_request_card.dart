@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_button.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -29,7 +29,7 @@ class JobRequestCard extends StatelessWidget {
               child: Image.asset(
                 'assets/home_images/image 16.png',
                 width: 311.w,
-                height: 163.h,
+                height: 140.h,
               ),
             ),
             SizedBox(height: 12.h),
@@ -58,7 +58,7 @@ class JobRequestCard extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 12.h),
             CustomWorkerButton(
               height: 40.h,
               width: 153.w,

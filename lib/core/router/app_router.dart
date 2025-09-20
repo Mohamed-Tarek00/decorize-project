@@ -6,6 +6,7 @@ import 'package:decorize_project/features/shared/auth/presentation/user_register
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
+import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
 import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
@@ -68,6 +69,12 @@ abstract class AppRouter {
         path: AppRouterNames.jobDetailsView,
         builder: (BuildContext context, GoRouterState state) {
           return JobDetailsView();
+        },
+      ),
+      GoRoute(
+        path: '/myOrders',
+        builder: (context, state) {
+          return MyOrdersView();
         },
       ),
     ],

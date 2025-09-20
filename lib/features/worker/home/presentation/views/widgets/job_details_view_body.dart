@@ -1,7 +1,9 @@
-import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_button.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/address_card.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_details_appbar.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_details_card.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_request_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,39 +14,35 @@ class JobDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        JobDetailsAppBar(),
-        SizedBox(height: 20.h),
-
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-          ),
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/design/job_details_image.png',
-                width: 335.w,
-                height: 173.h,
-              ),
-              SizedBox(height: 12.h),
-
-              Row(
-                children: [
-                  CustomWorkerButton(
-                    height: 32.h,
-                    width: 67.w,
-                    text: '200 \$',
-                    color: Color(0xffE7EEEB),
-                    textStyle: Styles.textStyle16.copyWith(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.w600,
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const JobDetailsAppBar(),
+                SizedBox(height: 12.h),
+                const JobDetailsCard(),
+                SizedBox(height: 12.h),
+                const AddressCard(),
+                SizedBox(height: 50.h),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
+                  color: Colors.white,
+                  child: CustomWorkerButton(
+                    onTap: () => JobRequestBottomSheet.show(context),
+                    height: 40.h,
+                    width: double.infinity,
+                    text: 'التقديم للطلب',
+                    textStyle: Styles.textStyle14.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ],

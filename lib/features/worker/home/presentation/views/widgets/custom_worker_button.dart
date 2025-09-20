@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class CustomWorkerButton extends StatelessWidget {
   const CustomWorkerButton({
     super.key,
-    required this.height,
-    required this.width,
+    this.height = 20,
+    this.width = 20,
     this.color = kPrimaryColor,
 
     this.onTap,

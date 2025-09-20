@@ -27,9 +27,9 @@ class WorkerHomeViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                SizedBox(height: 20.h),
+                SizedBox(height: 12.h),
                 const CustomBannerWidget(),
-                SizedBox(height: 20.h),
+                SizedBox(height: 12.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -43,7 +43,7 @@ class WorkerHomeViewBody extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(height: 4.h),
+                        SizedBox(height: 2.h),
                         Container(
                           width: 56.w,
                           height: 1.h,
@@ -53,7 +53,7 @@ class WorkerHomeViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 4.h),
               ],
             ),
           ),

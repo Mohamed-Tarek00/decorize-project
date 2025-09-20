@@ -9,8 +9,8 @@ class CustomBannerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 335.w,
-      height: 133.h,
+      width: double.infinity,
+      height: 120.h,
       decoration: BoxDecoration(
         color: kPrimaryColor,
         borderRadius: BorderRadius.circular(12),

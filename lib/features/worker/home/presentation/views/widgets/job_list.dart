@@ -6,16 +6,14 @@ class JobList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          return const JobRequestCard();
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+      itemCount: 5,
+      itemBuilder: (BuildContext context, int index) {
+        return const JobRequestCard();
+      },
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
+import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,12 +17,24 @@ class CustomWorkerBottomNavBar extends StatefulWidget {
 class _CustomWorkerBottomNavBarState extends State<CustomWorkerBottomNavBar> {
   int currentIndex = 0;
 
-  final List<Widget> screens = const [
-    WorkerHomeView(),
-    Text('Orders'),
-    Text('Messages page'),
-    Text('MorePages'),
-  ];
+  late final List<Widget> screens;
+
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      const WorkerHomeView(),
+      MyOrdersView(
+        onBackToHome: () {
+          setState(() {
+            currentIndex = 0;
+          });
+        },
+      ),
+      const Text('Messages page'),
+      const Text('MorePages'),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +43,17 @@ class _CustomWorkerBottomNavBarState extends State<CustomWorkerBottomNavBar> {
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: Styles.textStyle14,
         unselectedLabelStyle: Styles.textStyle14,
-
         currentIndex: currentIndex,
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.house),
-            activeIcon: Icon(FontAwesomeIcons.house, color: kPrimaryColor),
+            icon: const Icon(FontAwesomeIcons.house),
+            activeIcon: const Icon(
+              FontAwesomeIcons.house,
+              color: kPrimaryColor,
+            ),
             label: 'الرئيسية',
           ),
           BottomNavigationBarItem(
