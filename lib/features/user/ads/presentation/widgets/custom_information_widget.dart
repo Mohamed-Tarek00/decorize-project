@@ -28,7 +28,12 @@ class CustomInformationWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                SvgPicture.asset(iconPath, width: 20.w, height: 20.h),
+                SvgPicture.asset(
+                  iconPath,
+                  width: 20.w,
+                  height: 20.h,
+                  color: kPrimaryColor,
+                ),
                 SizedBox(width: 5.w),
                 Text(
                   title,

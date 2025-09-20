@@ -3,8 +3,8 @@ import 'package:decorize_project/features/user/ads/presentation/widgets/custom_i
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class InformationOrder extends StatelessWidget {
-  const InformationOrder({super.key});
+class InformationOrderSection extends StatelessWidget {
+  const InformationOrderSection({super.key});
 
   @override
   Widget build(BuildContext context) {

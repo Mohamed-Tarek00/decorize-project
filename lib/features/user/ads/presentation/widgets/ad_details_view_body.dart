@@ -1,10 +1,10 @@
-import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
+import 'package:decorize_project/features/user/ads/presentation/widgets/applied_workers_section.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
-import 'package:decorize_project/features/user/ads/presentation/widgets/custom_information_widget.dart';
-import 'package:decorize_project/features/user/ads/presentation/widgets/information_order.dart';
+import 'package:decorize_project/features/user/ads/presentation/widgets/information_order_Section.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/navigation_ad_details_buttons.dart';
+import 'package:decorize_project/features/user/ads/presentation/widgets/price_Section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -41,27 +41,14 @@ class AdDetailsViewBody extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 15.h),
                 Text('${ad.subTitle}', style: Styles.textStyle14),
                 SizedBox(height: 15.h),
-                InformationOrder(),
+                InformationOrderSection(),
                 SizedBox(height: 15.h),
-                CustomInformationWidget(
-                  content: [
-                    Row(
-                      children: [
-                        Text(
-                          '300 ريال',
-                          style: Styles.textStyle16.copyWith(
-                            color: kPrimaryColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                  iconPath: 'assets/icons/dollar-square.svg',
-                  title: 'سعر الخدمة',
-                ),
+                PriceSection(),
+                SizedBox(height: 15.h),
+                AppliedWorkersSection(),
               ],
             ),
           ),
