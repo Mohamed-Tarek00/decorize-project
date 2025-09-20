@@ -59,7 +59,7 @@ class AdItem extends StatelessWidget {
                           ),
                           Spacer(),
                           Text(
-                            "{$ad.price}",
+                            "${ad.price}",
                             style: Styles.textStyle18.copyWith(
                               color: kPrimaryColor,
                             ),

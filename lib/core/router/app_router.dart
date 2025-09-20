@@ -3,6 +3,8 @@ import 'package:decorize_project/features/shared/onboarding/presentation/on_boar
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/user_otp_auth.dart';
 import 'package:decorize_project/features/shared/auth/presentation/user_register_view.dart';
+import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
+import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
@@ -68,6 +70,13 @@ abstract class AppRouter {
         path: AppRouterNames.jobDetailsView,
         builder: (BuildContext context, GoRouterState state) {
           return JobDetailsView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.adDetails,
+        builder: (BuildContext context, GoRouterState state) {
+          AdModel ad = state.extra as AdModel;
+          return AdDetailsView(ad: ad);
         },
       ),
     ],
