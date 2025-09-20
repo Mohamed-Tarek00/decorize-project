@@ -6,6 +6,7 @@ import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_I
 import 'package:decorize_project/features/shared/auth/domain/usecases/get_cities_use_case.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/get_governorates_use_case.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/get_jobs_use_case.dart';
+import 'package:decorize_project/features/shared/auth/domain/usecases/otp_verification_use_case.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/register_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -15,7 +16,7 @@ void setupServiceLocator() {
   final dio = Dio(
     BaseOptions(
       baseUrl: ApiService.baseUrl,
-      validateStatus: (_) => true,
+      validateStatus: (status) => status != null && status < 400,
       headers: {
         'Accept': 'application/json',
         'Accept-Language': 'ar',
@@ -60,5 +61,8 @@ void setupServiceLocator() {
 
   getIt.registerLazySingleton<RegisterUseCase>(
     () => RegisterUseCase(getIt<Repositoryinterface>()),
+  );
+  getIt.registerLazySingleton<OtpVerificationUseCase>(
+    () => OtpVerificationUseCase(getIt<Repositoryinterface>()),
   );
 }

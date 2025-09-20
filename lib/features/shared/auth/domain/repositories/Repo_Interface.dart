@@ -4,6 +4,7 @@ import 'package:decorize_project/features/shared/auth/domain/entities/city.dart'
 import 'package:decorize_project/features/shared/auth/domain/entities/governorate.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/verification.dart';
 
 abstract class Repositoryinterface {
   Future<Either<Failure, List<Governorate>>> getGovernorates();
@@ -12,4 +13,5 @@ abstract class Repositoryinterface {
   );
   Future<Either<Failure, List<Job>>> getJobs();
   Future<Either<Failure, void>> sendRequest(RegisterRequest entity);
+  Future<Either<Failure, Map<String, dynamic>>> sendOtpKey(Verification entity);
 }

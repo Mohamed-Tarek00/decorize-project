@@ -24,11 +24,10 @@ class PlaceItem extends StatelessWidget {
         padding: EdgeInsets.only(right: 4.h),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
-          height: 75.h,
           width: 75.w,
           decoration: BoxDecoration(
             color: isSelectedIndex ? kPrimaryColor : Colors.white,
-            border: Border.all(color: Colors.grey.shade300, width: 2),
+            border: Border.all(color: Colors.grey.shade300, width: 2.w),
             borderRadius: BorderRadius.all(Radius.circular(8.r)),
           ),
           child: Column(

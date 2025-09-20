@@ -2,11 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/remote_data_source.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/shared/auth/data/models/register_request_model.dart';
+import 'package:decorize_project/features/shared/auth/data/models/verification_model.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/city.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/governorate.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/verification.dart';
 import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_Interface.dart';
+import 'package:dio/dio.dart';
 
 class RepositoryImpl implements Repositoryinterface {
   final RemoteDataSource remoteDataSource;
@@ -56,14 +59,23 @@ class RepositoryImpl implements Repositoryinterface {
       final model = RegisterRequestModel(entity: entity);
       final response = await remoteDataSource.sendRegisterRequest(model);
 
-      if (response.containsKey('errors')) {
-        final errors = response['errors'] as Map<String, dynamic>;
-        final errorMessage = errors.values.first[0];
-        print('Error message extracted: $errorMessage');
-        return left(ServiceFailure(errorMessage));
-      }
-
       return right(null);
+    } on DioException catch (dioError) {
+      return left(ServiceFailure.fromDio(dioError));
+    } catch (e) {
+      return left(ServiceFailure(e.toString()));
+    }
+  }
+ @override
+  Future<Either<Failure, Map<String, dynamic>>> sendOtpKey(
+    Verification entity,
+  ) async {
+    try {
+      final model = VerificationModel.fromEntity(entity);
+      final response = await remoteDataSource.sendOtpKey(model);
+      return right(response);
+    } on DioException catch (dioError) {
+      return left(ServiceFailure.fromDio(dioError));
     } catch (e) {
       return left(ServiceFailure(e.toString()));
     }
