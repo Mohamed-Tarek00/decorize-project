@@ -6,8 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-class JobRequestSuccessBottomSheet {
-  static void show(BuildContext context) {
+class CustomBottomSheet {
+  static void show(
+    BuildContext context, {
+    required String imagePath,
+    required String mainText,
+    required String bodyText,
+  }) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -20,17 +25,17 @@ class JobRequestSuccessBottomSheet {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset('assets/logo/success logo.svg'),
+              SvgPicture.asset(imagePath),
               SizedBox(height: 24.h),
               Text(
-                "تم تقديم الطلب الخاص بك بنجاح",
+                mainText,
                 textAlign: TextAlign.center,
                 style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 16.h),
 
               Text(
-                "تم تقديم طلب الخدمة بنجاح. نحن في انتظار الرد من العميل. شكرًا لك على اهتمامك ومبادرتك لتقديم الخدمة!",
+                bodyText,
                 textAlign: TextAlign.center,
                 style: Styles.textStyle14.copyWith(color: Color(0xff4F4C4D)),
               ),
@@ -43,7 +48,10 @@ class JobRequestSuccessBottomSheet {
                 ),
                 height: 35.h,
                 width: double.infinity,
-                onTap: () => context.go(AppRouterNames.workerBottomNavigation),
+                onTap: () {
+                  context.pop();
+                  context.go(AppRouterNames.workerBottomNavigation);
+                },
               ),
             ],
           ),

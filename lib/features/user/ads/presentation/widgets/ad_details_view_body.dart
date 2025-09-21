@@ -1,4 +1,3 @@
-import 'package:decorize_project/features/user/ads/presentation/widgets/ad_Information_section.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/navigation_ad_details_buttons.dart';

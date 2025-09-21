@@ -6,7 +6,6 @@ import 'package:decorize_project/features/shared/onboarding/presentation/widgets
 import 'package:decorize_project/features/shared/onboarding/presentation/widgets/show_modal.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 

@@ -11,7 +11,7 @@ class LocationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomInformationWidget(
       content: [
-        Container(
+        SizedBox(
           width: double.infinity,
           child: Image.asset('assets/icons/Map.png', fit: BoxFit.cover),
         ),

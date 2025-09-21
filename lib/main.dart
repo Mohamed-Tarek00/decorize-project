@@ -34,7 +34,6 @@ class DecorizeApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-
       builder: (context, child) {
         ScreenUtil.init(context);
         return child!;

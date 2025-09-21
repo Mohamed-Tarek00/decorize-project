@@ -1,13 +1,12 @@
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/navigation/navigation_cubit/navigation_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class MyOrdersAppBar extends StatelessWidget {
-  const MyOrdersAppBar({super.key, this.onBackToHome});
+class CustomWorkerAppbar extends StatelessWidget {
+  const CustomWorkerAppbar({super.key, this.onBackToHome, required this.title});
   final VoidCallback? onBackToHome;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +44,7 @@ class MyOrdersAppBar extends StatelessWidget {
             icon: Icon(Icons.arrow_back_ios, size: 20),
           ),
           Expanded(
-            child: Center(child: Text('طلباتي', style: Styles.textStyle16)),
+            child: Center(child: Text(title, style: Styles.textStyle16)),
           ),
           Opacity(
             opacity: 0,

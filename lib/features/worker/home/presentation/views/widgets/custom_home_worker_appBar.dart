@@ -2,14 +2,14 @@ import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomWorkerAppBar extends StatefulWidget {
-  const CustomWorkerAppBar({super.key});
+class CustomHomeWorkerAppBar extends StatefulWidget {
+  const CustomHomeWorkerAppBar({super.key});
 
   @override
-  State<CustomWorkerAppBar> createState() => _CustomWorkerAppBarState();
+  State<CustomHomeWorkerAppBar> createState() => _CustomHomeWorkerAppBarState();
 }
 
-class _CustomWorkerAppBarState extends State<CustomWorkerAppBar> {
+class _CustomHomeWorkerAppBarState extends State<CustomHomeWorkerAppBar> {
   bool isAvailable = true;
 
   @override

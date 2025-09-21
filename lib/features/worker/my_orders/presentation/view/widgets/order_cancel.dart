@@ -5,9 +5,10 @@ import 'package:decorize_project/features/worker/home/presentation/views/widgets
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_request_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-class JobRequestBottomSheet {
+class OrderCancelBottomSheet {
   static void show(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -40,27 +41,25 @@ class JobRequestBottomSheet {
                   ),
                 ],
               ),
+              Center(child: SvgPicture.asset('assets/logo/cancel.svg')),
+              SizedBox(height: 24.h),
               Align(
                 alignment: AlignmentGeometry.center,
                 child: Text(
-                  "تقديم طلب الخدمه",
+                  "هل تريد إلغاء الطلب",
                   style: Styles.textStyle20.copyWith(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
               SizedBox(height: 16.h),
-              const JobRequestTextField(label: "سعر الخدمة", hint: "جنيه مصري"),
-              SizedBox(height: 16.h),
-              const JobRequestTextField(label: "المدة المستغرقة"),
-              SizedBox(height: 16.h),
               JobRequestTextField(
-                label: "أضف تعليقك (اختياري)",
+                label: "سبب الإلغاء (اختياري)",
                 maxLines: 3,
                 customLabel: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("أضف تعليقك", style: Styles.textStyle14),
+                    Text("سبب الإلغاء", style: Styles.textStyle14),
                     Text("(اختياري)", style: Styles.textStyle14),
                   ],
                 ),
@@ -77,14 +76,15 @@ class JobRequestBottomSheet {
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                       ),
+                      color: Color(0xffFF3B30),
                       onTap: () {
                         Navigator.pop(context);
                         CustomBottomSheet.show(
                           context,
-                          imagePath: 'assets/logo/success logo.svg',
-                          mainText: 'تم تقديم الطلب الخاص بك بنجاح',
+                          imagePath: 'assets/logo/cancel.svg',
+                          mainText: 'تم إلغاء الطلب الخاص بك بنجاح',
                           bodyText:
-                              'تم تقديم طلب الخدمة بنجاح. نحن في انتظار الرد من العميل. شكرًا لك على اهتمامك ومبادرتك لتقديم الخدمة!',
+                              'لقد تم إلغاء طلبك بنجاح. يمكنك الآن التقديم على طلبات جديدة في أي وقت. نشكرك على استخدامك للتطبيق ونتطلع إلى مساعدتك في المستقبل .',
                         );
                       },
                     ),

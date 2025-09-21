@@ -11,7 +11,7 @@ class CustomSearchingTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
+      child: SizedBox(
         height: 40.h,
         width: 260.w,
         child: TextField(

@@ -28,7 +28,7 @@ class AdInformationSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 15.h),
-          Text('${ad.subTitle}', style: Styles.textStyle14),
+          Text(ad.subTitle, style: Styles.textStyle14),
           SizedBox(height: 15.h),
           InformationOrderSection(),
           SizedBox(height: 15.h),
