@@ -1,9 +1,11 @@
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/custom_profile_text_field.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/custom_worker_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class EditWorkerPasswordViewBody extends StatelessWidget {
   const EditWorkerPasswordViewBody({super.key});
@@ -48,7 +50,8 @@ class EditWorkerPasswordViewBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           color: Colors.white,
           child: CustomWorkerButton(
-            onTap: () {},
+            onTap: () =>
+                context.pushReplacement(AppRouterNames.workerPasswordOtpView),
             height: 40.h,
             width: double.infinity,
             text: 'حفظ',
