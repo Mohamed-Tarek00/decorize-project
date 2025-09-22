@@ -76,7 +76,7 @@ class OrderCancelBottomSheet {
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                       ),
-                      color: Color(0xffFF3B30),
+                      color: kErrorColor,
                       onTap: () {
                         Navigator.pop(context);
                         CustomBottomSheet.show(

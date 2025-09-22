@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/worker_home_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,7 @@ class WorkerHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color(0xffF2F2F2),
+      backgroundColor: kScaffoldColor,
       body: WorkerHomeViewBody(),
     );
   }

@@ -8,6 +8,7 @@ class AppRouterNames {
   static const workerBottomNavigation = '/workerBottomNavigation';
   static const jobDetailsView = '/jobDetailsView';
   static const ordersView = '/ordersView';
-
   static const adDetails = '/adDetails';
+  static const workerMoreView = '/workerMoreView';
+  static const workerProfileView = '/workerProfileView';
 }

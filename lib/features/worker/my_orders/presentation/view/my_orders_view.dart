@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/my_orders_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class MyOrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF2F2F2),
+      backgroundColor: kScaffoldColor,
       body: MyOrdersViewBody(onBackToHome: onBackToHome),
     );
   }

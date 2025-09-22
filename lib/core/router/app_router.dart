@@ -6,6 +6,8 @@ import 'package:decorize_project/features/shared/auth/presentation/user_register
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
+import 'package:decorize_project/features/worker/more/presentation/view/worker_more_view.dart';
+import 'package:decorize_project/features/worker/more/presentation/view/worker_profile_view.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
 import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
 import 'package:flutter/widgets.dart';
@@ -46,16 +48,17 @@ abstract class AppRouter {
           return UserOtpAuth(email: email);
         },
       ),
-      GoRoute(
-        path: AppRouterNames.workerHomeView,
-        builder: (BuildContext context, GoRouterState state) {
-          return WorkerHomeView();
-        },
-      ),
+
       GoRoute(
         path: AppRouterNames.userNavigationBar,
         builder: (BuildContext context, GoRouterState state) {
           return const UserNavigationBar();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.workerHomeView,
+        builder: (BuildContext context, GoRouterState state) {
+          return WorkerHomeView();
         },
       ),
 
@@ -75,6 +78,18 @@ abstract class AppRouter {
         path: AppRouterNames.ordersView,
         builder: (BuildContext context, GoRouterState state) {
           return MyOrdersView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.workerMoreView,
+        builder: (BuildContext context, GoRouterState state) {
+          return WorkerMoreView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.workerProfileView,
+        builder: (BuildContext context, GoRouterState state) {
+          return WorkerProfileView();
         },
       ),
     ],

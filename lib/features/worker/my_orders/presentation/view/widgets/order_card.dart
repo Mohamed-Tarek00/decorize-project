@@ -103,15 +103,13 @@ class OrderCard extends StatelessWidget {
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 9),
                   decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xffFF3B30)),
+                    border: Border.all(color: kErrorColor),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     textAlign: TextAlign.center,
                     'إلغاء الطلب',
-                    style: Styles.textStyle12.copyWith(
-                      color: const Color(0xffFF3B30),
-                    ),
+                    style: Styles.textStyle12.copyWith(color: kErrorColor),
                   ),
                 ),
               ),

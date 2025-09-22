@@ -38,7 +38,7 @@ class CustomWorkerAppbar extends StatelessWidget {
               if (onBackToHome != null) {
                 onBackToHome!();
               } else {
-                context.go('/');
+                context.pop();
               }
             },
             icon: Icon(Icons.arrow_back_ios, size: 20),
