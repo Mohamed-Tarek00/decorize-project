@@ -6,6 +6,8 @@ import 'package:decorize_project/features/shared/auth/presentation/user_register
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
+import 'package:decorize_project/features/worker/more/presentation/view/edit_worker_password_view.dart';
+import 'package:decorize_project/features/worker/more/presentation/view/edit_worker_profile_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/worker_more_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/worker_profile_view.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
@@ -90,6 +92,18 @@ abstract class AppRouter {
         path: AppRouterNames.workerProfileView,
         builder: (BuildContext context, GoRouterState state) {
           return WorkerProfileView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.editworkerProfileView,
+        builder: (BuildContext context, GoRouterState state) {
+          return EditWorkerProfileView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.editworkerPasswordView,
+        builder: (BuildContext context, GoRouterState state) {
+          return EditWorkerPasswordView();
         },
       ),
     ],
