@@ -1,3 +1,4 @@
+import 'package:decorize_project/features/user/ads/presentation/widgets/ad_Information_section.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/navigation_ad_details_buttons.dart';
@@ -6,10 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class AdDetailsViewBody extends StatelessWidget {
+class AdDetailsViewBody extends StatefulWidget {
   const AdDetailsViewBody({super.key, required this.ad});
   final AdModel ad;
 
+  @override
+  State<AdDetailsViewBody> createState() => _AdDetailsViewBodyState();
+}
+
+class _AdDetailsViewBodyState extends State<AdDetailsViewBody> {
+  bool isRightButtonSelected = true;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,10 +31,23 @@ class AdDetailsViewBody extends StatelessWidget {
           ),
           Container(width: double.infinity, height: 20.h, color: Colors.white),
           SizedBox(height: 20.h),
-          NavigationAdDetailsButtons(),
+          NavigationAdDetailsButtons(
+            LeftButtonSelected: () {
+              setState(() {
+                isRightButtonSelected = false;
+              });
+            },
+            RightButtonSelected: () {
+              setState(() {
+                isRightButtonSelected = true;
+              });
+            },
+            rightButtonSelected: isRightButtonSelected,
+          ),
 
-          // AdInformationSection(ad: ad),
-          SubmittedOffersSection(),
+          isRightButtonSelected
+              ? AdInformationSection(ad: widget.ad)
+              : SubmittedOffersSection(),
         ],
       ),
     );
