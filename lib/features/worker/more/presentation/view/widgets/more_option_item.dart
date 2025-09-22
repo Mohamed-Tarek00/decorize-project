@@ -12,6 +12,7 @@ class MoreOptionItem extends StatelessWidget {
     this.trallingWidget,
     this.labelStyle,
     this.iconBackgroundColor,
+    this.iconColor,
   });
   final Color? iconBackgroundColor;
   final TextStyle? labelStyle;
@@ -19,6 +20,7 @@ class MoreOptionItem extends StatelessWidget {
   final String label;
   final VoidCallback? onTap;
   final Widget? trallingWidget;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MoreOptionItem extends StatelessWidget {
             CircleAvatar(
               radius: 20,
               backgroundColor: iconBackgroundColor ?? const Color(0xffE9E9E9),
-              child: SvgPicture.asset(iconPath),
+              child: SvgPicture.asset(iconPath, color: iconColor),
             ),
             SizedBox(width: 8.w),
             Text(label, style: labelStyle ?? Styles.textStyle16),

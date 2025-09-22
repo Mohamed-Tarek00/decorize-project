@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class MoreOptionsGroup extends StatelessWidget {
-  const MoreOptionsGroup({super.key, required this.children});
+  const MoreOptionsGroup({super.key, required this.children, this.padding});
 
   final List<Widget> children;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
