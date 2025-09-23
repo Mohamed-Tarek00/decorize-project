@@ -9,9 +9,11 @@ import 'package:decorize_project/features/worker/home/presentation/views/job_det
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/edit_worker_password_view.dart';
+import 'package:decorize_project/features/worker/more/presentation/view/edit_worker_phone_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/edit_worker_profile_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/worker_more_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/worker_password_otp_view.dart';
+import 'package:decorize_project/features/worker/more/presentation/view/worker_phone_otp.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/worker_profile_view.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
 import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
@@ -110,9 +112,21 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
+        path: AppRouterNames.editworkerPhoneView,
+        builder: (BuildContext context, GoRouterState state) {
+          return EditWorkerPhoneView();
+        },
+      ),
+      GoRoute(
         path: AppRouterNames.workerPasswordOtpView,
         builder: (BuildContext context, GoRouterState state) {
           return WorkerPasswordOtpView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.workerPhoneOtpView,
+        builder: (BuildContext context, GoRouterState state) {
+          return WorkerPhoneOtpView();
         },
       ),
       GoRoute(

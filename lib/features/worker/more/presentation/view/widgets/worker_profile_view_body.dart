@@ -45,6 +45,7 @@ class WorkerProfileViewBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           children: [
             MoreOptionItem(
+              onTap: () => context.push(AppRouterNames.editworkerPhoneView),
               iconPath: 'assets/icons/call-calling.svg',
               label: 'تغيير رقم الهاتف',
               iconColor: kPrimaryColor,

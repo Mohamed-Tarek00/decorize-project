@@ -33,12 +33,12 @@ class AddressCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 4.h),
-          Divider(),
+          const Divider(),
           SizedBox(height: 4.h),
           ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(12),
             child: Image.asset(
-              'assets/home_images/image 16.png',
+              'assets/icons/Map.png',
               width: double.infinity,
               height: 125.h,
             ),
