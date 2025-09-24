@@ -1,7 +1,9 @@
 import 'package:decorize_project/core/constants.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAddButton extends StatelessWidget {
   const CustomAddButton({super.key});
@@ -9,7 +11,9 @@ class CustomAddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.push(AppRouterNames.addAdView);
+      },
       child: Container(
         width: 80.w,
         height: 80.h,

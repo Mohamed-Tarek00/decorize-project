@@ -20,7 +20,7 @@ class AdItem extends StatelessWidget {
     );
     return GestureDetector(
       onTap: () {
-        context.push(AppRouterNames.adDetails, extra: ad);
+        context.push(AppRouterNames.adDetailsView, extra: ad);
       },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
