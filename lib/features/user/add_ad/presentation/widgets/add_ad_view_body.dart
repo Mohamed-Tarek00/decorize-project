@@ -1,3 +1,4 @@
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/class_room_dropdown.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -19,6 +20,7 @@ class AddAdViewBody extends StatelessWidget {
           headingText: 'إنشاء اعلان',
         ),
         Container(width: double.infinity, height: 20.h, color: Colors.white),
+        ClassRoomDropdown(),
       ],
     );
   }
