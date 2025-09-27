@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad_info_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_photos_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_price_section.dart';
@@ -43,6 +44,7 @@ class _AddAdViewBodyState extends State<AddAdViewBody> {
 
           AddPhotosSection(),
           GetLocationSection(),
+          CustomButton(onPressed: () {}, text: 'إنشاء'),
         ],
       ),
     );

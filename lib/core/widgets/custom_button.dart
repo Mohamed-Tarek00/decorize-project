@@ -8,15 +8,15 @@ class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.onPressed, required this.text});
   final void Function()? onPressed;
   final String text;
+
   @override
   Widget build(BuildContext context) {
- 
-
     return TextButton(
       onPressed: onPressed,
       child: Container(
-        height: ScreenSize.getWidgethighet(percantage: .07, context: context) ,
-        width: ScreenSize.getWidgetWidth(percantage: .9 ,context: context),
+        height: ScreenSize.getWidgethighet(percantage: .07, context: context),
+        width: 335.w,
+
         decoration: BoxDecoration(
           color: Color(0xff0C5137),
           borderRadius: BorderRadius.circular(10),
