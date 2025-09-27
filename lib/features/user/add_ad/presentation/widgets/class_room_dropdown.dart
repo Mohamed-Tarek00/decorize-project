@@ -29,7 +29,7 @@ class _ClassRoomDropdownState extends State<ClassRoomDropdown> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('التصنيف', style: Styles.textStyle18),
-          SizedBox(height: 5.h),
+          SizedBox(height: 8.h),
           Container(
             padding: EdgeInsets.all(8.sp),
             width: 335.w,

@@ -3,7 +3,6 @@ import 'package:decorize_project/features/shared/auth/presentation/widgets/custo
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/class_room_dropdown.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddAdViewBody extends StatefulWidget {
@@ -35,7 +34,27 @@ class _AddAdViewBodyState extends State<AddAdViewBody> {
         CustomTextFormField(
           name: 'اسم الإعلان',
           hintText: '',
-          textStyle: Styles.textStyle18,
+          nameTextStyle: Styles.textStyle18,
+          controller: desccontroller,
+        ),
+        SizedBox(height: 5.h),
+
+        CustomTextFormField(
+          name: 'السعر',
+          hintText: '',
+          suffixIcon: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'ريال',
+                style: Styles.textStyle14.copyWith(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+          nameTextStyle: Styles.textStyle18,
           controller: desccontroller,
         ),
       ],
