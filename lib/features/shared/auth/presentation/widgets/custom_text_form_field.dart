@@ -9,31 +9,45 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.name,
     required this.hintText,
-    required this.iconPath, this.validator, required this.controller,
+
+    this.iconPath,
+    this.validator,
+    required this.controller,
+    this.textStyle,
   });
   final String name;
   final String hintText;
-  final String iconPath;
-  final  String? Function(String?)? validator ;
- final TextEditingController? controller ;
+  final String? iconPath;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.all(10.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(name, style: Styles.textStyle14),
+          Text(
+            name,
+            style: textStyle == null ? Styles.textStyle14 : textStyle!,
+          ),
           SizedBox(height: 8.h),
           TextFormField(
-            validator: validator ,
+            validator: validator,
             controller: controller,
             decoration: InputDecoration(
-              prefixIcon: Padding(
-                padding: EdgeInsets.all(8.h),
-                child: SvgPicture.asset(iconPath, width: 16.w, height: 16.h),
-              ),
+              prefixIcon: iconPath != null
+                  ? Padding(
+                      padding: EdgeInsets.all(8.h),
+                      child: SvgPicture.asset(
+                        iconPath!,
+                        width: 16.w,
+                        height: 16.h,
+                      ),
+                    )
+                  : null,
               filled: true,
               fillColor: Colors.white,
               hintText: hintText,
