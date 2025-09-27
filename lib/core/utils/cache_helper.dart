@@ -1,7 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
-  static Future<void> saveUserData({
+  final SharedPreferences _prefs;
+  CacheHelper(this._prefs);
+
+  Future<void> saveUserData({
     required String token,
     required String type,
     required String name,
@@ -9,37 +12,37 @@ class CacheHelper {
     required String phone,
     required String image,
   }) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', token);
-    await prefs.setString('type', type);
-    await prefs.setString('name', name);
-    await prefs.setString('email', email);
-    await prefs.setString('phone', phone);
-    await prefs.setString('image', image);
+    final _prefs = await SharedPreferences.getInstance();
+    await _prefs.setString('token', token);
+    await _prefs.setString('type', type);
+    await _prefs.setString('name', name);
+    await _prefs.setString('email', email);
+    await _prefs.setString('phone', phone);
+    await _prefs.setString('image', image);
   }
 
-  static Future<String?> getToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token');
+  Future<String?> getToken() async {
+    final _prefs = await SharedPreferences.getInstance();
+    return _prefs.getString('token');
   }
 
-  static Future<String?> getUserType() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('type');
+  Future<String?> getUserType() async {
+    final _prefs = await SharedPreferences.getInstance();
+    return _prefs.getString('type');
   }
 
-  static Future<Map<String, String?>> getUserProfile() async {
-    final prefs = await SharedPreferences.getInstance();
+  Future<Map<String, String?>> getUserProfile() async {
+    final _prefs = await SharedPreferences.getInstance();
     return {
-      'name': prefs.getString('name'),
-      'email': prefs.getString('email'),
-      'phone': prefs.getString('phone'),
-      'image': prefs.getString('image'),
+      'name': _prefs.getString('name'),
+      'email': _prefs.getString('email'),
+      'phone': _prefs.getString('phone'),
+      'image': _prefs.getString('image'),
     };
   }
 
-  static Future<void> clearUserData() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
+  Future<void> clearUserData() async {
+    final _prefs = await SharedPreferences.getInstance();
+    await _prefs.clear();
   }
 }

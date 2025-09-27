@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/utils/api_service.dart';
+import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/remote_data_source.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/remote_data_source_Impl.dart';
 import 'package:decorize_project/features/shared/auth/data/repo_impl/repository_impl.dart';
@@ -10,9 +11,10 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/otp_verifi
 import 'package:decorize_project/features/shared/auth/domain/usecases/register_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
-void setupServiceLocator() {
+void setupServiceLocator() async {
   final dio = Dio(
     BaseOptions(
       baseUrl: ApiService.baseUrl,
@@ -64,5 +66,10 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<OtpVerificationUseCase>(
     () => OtpVerificationUseCase(getIt<Repositoryinterface>()),
+  );
+  final prefs = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferences>(() => prefs);
+  getIt.registerLazySingleton<CacheHelper>(
+    () => CacheHelper(getIt<SharedPreferences>()),
   );
 }
