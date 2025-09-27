@@ -1,5 +1,7 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_photos_section.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_price_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/class_room_dropdown.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ class AddAdViewBody extends StatefulWidget {
 
 class _AddAdViewBodyState extends State<AddAdViewBody> {
   final TextEditingController desccontroller = TextEditingController();
+  final TextEditingController pricecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,25 +41,10 @@ class _AddAdViewBodyState extends State<AddAdViewBody> {
           controller: desccontroller,
         ),
         SizedBox(height: 5.h),
+        AddPriceSection(pricecontroller: pricecontroller),
+        SizedBox(height: 5.h),
 
-        CustomTextFormField(
-          name: 'السعر',
-          hintText: '',
-          suffixIcon: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'ريال',
-                style: Styles.textStyle14.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-          nameTextStyle: Styles.textStyle18,
-          controller: desccontroller,
-        ),
+        AddPhotosSection(),
       ],
     );
   }

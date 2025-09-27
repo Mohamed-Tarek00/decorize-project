@@ -35,7 +35,7 @@ class _ClassRoomDropdownState extends State<ClassRoomDropdown> {
             width: 335.w,
             height: 48.h,
             decoration: BoxDecoration(
-              border: Border.all(width: 2, color: Colors.grey.shade200),
+              border: Border.all(width: 1.5, color: Colors.grey.shade300),
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.r),
             ),
