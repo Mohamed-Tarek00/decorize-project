@@ -15,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.nameTextStyle,
     this.suffixIcon,
+    this.isDescription = false,
   });
   final String name;
   final TextStyle? nameTextStyle;
@@ -23,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? iconPath;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final bool isDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,8 @@ class CustomTextFormField extends StatelessWidget {
             width: 335.w,
 
             child: TextFormField(
+              minLines: isDescription ? 5 : 1,
+              maxLines: isDescription ? null : 1,
               validator: validator,
               controller: controller,
               decoration: InputDecoration(

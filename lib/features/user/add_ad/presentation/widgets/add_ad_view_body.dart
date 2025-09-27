@@ -1,5 +1,4 @@
-import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/shared/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad_info_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_photos_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_price_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/class_room_dropdown.dart';
@@ -15,37 +14,34 @@ class AddAdViewBody extends StatefulWidget {
 }
 
 class _AddAdViewBodyState extends State<AddAdViewBody> {
-  final TextEditingController desccontroller = TextEditingController();
+  final TextEditingController titlecontroller = TextEditingController();
   final TextEditingController pricecontroller = TextEditingController();
+  final TextEditingController desccontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).padding.top),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).padding.top),
 
-        CustomAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          headingText: 'إنشاء اعلان',
-        ),
-        Container(width: double.infinity, height: 20.h, color: Colors.white),
-        SizedBox(height: 10.h),
-        ClassRoomDropdown(),
-        SizedBox(height: 10.h),
-        CustomTextFormField(
-          name: 'اسم الإعلان',
-          hintText: '',
-          nameTextStyle: Styles.textStyle18,
-          controller: desccontroller,
-        ),
-        SizedBox(height: 5.h),
-        AddPriceSection(pricecontroller: pricecontroller),
-        SizedBox(height: 5.h),
+          CustomAppBar(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            headingText: 'إنشاء اعلان',
+          ),
+          Container(width: double.infinity, height: 20.h, color: Colors.white),
+          ClassRoomDropdown(),
+          AddAdInfoSection(
+            titlecontroller: titlecontroller,
+            desccontroller: desccontroller,
+          ),
+          AddPriceSection(pricecontroller: pricecontroller),
 
-        AddPhotosSection(),
-      ],
+          AddPhotosSection(),
+        ],
+      ),
     );
   }
 }

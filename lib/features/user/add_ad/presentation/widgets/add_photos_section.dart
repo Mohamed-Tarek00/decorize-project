@@ -13,7 +13,7 @@ class AddPhotosSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('التصنيف', style: Styles.textStyle18),
+          Text('اضافة صور', style: Styles.textStyle18),
           SizedBox(height: 8.h),
           Container(
             padding: EdgeInsets.all(8.sp),
