@@ -9,7 +9,7 @@ class JobList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+      padding: EdgeInsetsGeometry.zero,
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
         return const JobRequestCard();

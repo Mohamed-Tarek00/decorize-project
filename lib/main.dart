@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
-  setupServiceLocator();
   WidgetsFlutterBinding.ensureInitialized();
+
+  setupServiceLocator();
   await EasyLocalization.ensureInitialized();
 
   runApp(

@@ -13,59 +13,61 @@ class WorkerMoreViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomWorkerAppbar(title: 'المزيد', onBackToHome: onBackToHome),
-        SizedBox(height: 20.h),
-        const WorkerProfileCard(),
-        MoreOptionsGroup(
-          children: [
-            MoreOptionItem(
-              iconPath: 'assets/icons/information.svg',
-              label: 'الشروط والاحكام',
-            ),
-            MoreOptionItem(
-              iconPath: 'assets/icons/message-2.svg',
-              label: 'الدردشه',
-            ),
-            MoreOptionItem(
-              iconPath: 'assets/icons/security-safe.svg',
-              label: 'سياسة الخصوصيه',
-            ),
-          ],
-        ),
-        MoreOptionsGroup(
-          children: [
-            MoreOptionItem(
-              iconPath: 'assets/icons/headphone.svg',
-              label: 'تواصل معنا',
-            ),
-            MoreOptionItem(
-              iconPath: 'assets/icons/share.svg',
-              label: 'مشاركة التطبيق',
-            ),
-            MoreOptionItem(
-              iconPath: 'assets/icons/language-square.svg',
-              label: 'تغيير اللغه',
-              trallingWidget: Text('EN', style: Styles.textStyle12),
-            ),
-          ],
-        ),
-        MoreOptionsGroup(
-          children: [
-            MoreOptionItem(
-              iconPath: 'assets/icons/logout.svg',
-              label: 'تسجيل الخروج',
-            ),
-            MoreOptionItem(
-              iconPath: 'assets/icons/delet_account.svg',
-              label: 'حذف الحساب',
-              labelStyle: Styles.textStyle16.copyWith(color: kErrorColor),
-              iconBackgroundColor: kErrorColor.withOpacity(.2),
-            ),
-          ],
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          CustomWorkerAppbar(title: 'المزيد', onBackToHome: onBackToHome),
+          SizedBox(height: 20.h),
+          const WorkerProfileCard(),
+          MoreOptionsGroup(
+            children: [
+              MoreOptionItem(
+                iconPath: 'assets/icons/information.svg',
+                label: 'الشروط والاحكام',
+              ),
+              MoreOptionItem(
+                iconPath: 'assets/icons/message-2.svg',
+                label: 'الدردشه',
+              ),
+              MoreOptionItem(
+                iconPath: 'assets/icons/security-safe.svg',
+                label: 'سياسة الخصوصيه',
+              ),
+            ],
+          ),
+          MoreOptionsGroup(
+            children: [
+              MoreOptionItem(
+                iconPath: 'assets/icons/headphone.svg',
+                label: 'تواصل معنا',
+              ),
+              MoreOptionItem(
+                iconPath: 'assets/icons/share.svg',
+                label: 'مشاركة التطبيق',
+              ),
+              MoreOptionItem(
+                iconPath: 'assets/icons/language-square.svg',
+                label: 'تغيير اللغه',
+                trallingWidget: Text('EN', style: Styles.textStyle12),
+              ),
+            ],
+          ),
+          MoreOptionsGroup(
+            children: [
+              MoreOptionItem(
+                iconPath: 'assets/icons/logout.svg',
+                label: 'تسجيل الخروج',
+              ),
+              MoreOptionItem(
+                iconPath: 'assets/icons/delet_account.svg',
+                label: 'حذف الحساب',
+                labelStyle: Styles.textStyle16.copyWith(color: kErrorColor),
+                iconBackgroundColor: kErrorColor.withOpacity(.2),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
