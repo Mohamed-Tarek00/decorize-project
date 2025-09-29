@@ -29,7 +29,6 @@ class _AdDetailsViewBodyState extends State<AdDetailsViewBody> {
               context.pop();
             },
           ),
-          Container(width: double.infinity, height: 20.h, color: Colors.white),
           SizedBox(height: 20.h),
           NavigationAdDetailsButtons(
             LeftButtonSelected: () {

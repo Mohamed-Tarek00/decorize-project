@@ -34,7 +34,6 @@ class _AddAdViewBodyState extends State<AddAdViewBody> {
             },
             headingText: 'إنشاء اعلان',
           ),
-          Container(width: double.infinity, height: 20.h, color: Colors.white),
           ClassRoomDropdown(),
           AddAdInfoSection(
             titlecontroller: titlecontroller,

@@ -41,10 +41,9 @@ class _HomeAppBarState extends State<HomeAppBar> {
 
         child: Row(
           children: [
-            Image.asset(
-              'assets/icons/usertestphoto.png',
-              height: 50.h,
-              width: 50.w,
+            CircleAvatar(
+              radius: 25.r,
+              backgroundImage: AssetImage('assets/icons/usertestphoto.png'),
             ),
             SizedBox(width: 10.w),
             Column(

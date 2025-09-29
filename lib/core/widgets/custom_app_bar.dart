@@ -13,27 +13,32 @@ class CustomAppBar extends StatelessWidget {
   final String headingText;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Padding(
-        padding: EdgeInsets.only(top: 24.h, right: 8.w, left: 8.w),
-        child: Row(
-          children: [
-            GestureDetector(
-              onTap: onTap,
-              child: SvgPicture.asset(
-                'assets/icons/arrow-right.svg',
-                height: 20.h,
-                width: 30.w,
-              ),
+    return Column(
+      children: [
+        Container(
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.only(top: 24.h, right: 8.w, left: 8.w),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: onTap,
+                  child: SvgPicture.asset(
+                    'assets/icons/arrow-right.svg',
+                    height: 20.h,
+                    width: 30.w,
+                  ),
+                ),
+                Spacer(),
+                Text(headingText, style: Styles.textStyle20),
+                Spacer(),
+                SizedBox(width: 30.w, height: 20.h),
+              ],
             ),
-            Spacer(),
-            Text(headingText, style: Styles.textStyle20),
-            Spacer(),
-            SizedBox(width: 30.w, height: 20.h),
-          ],
+          ),
         ),
-      ),
+        Container(width: double.infinity, height: 20.h, color: Colors.white),
+      ],
     );
   }
 }
