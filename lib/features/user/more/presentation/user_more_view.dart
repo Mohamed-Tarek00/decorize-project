@@ -6,9 +6,6 @@ class UserMoreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffF2F2F2),
-      body: UserMoreViewBody(),
-    );
+    return Scaffold(body: UserMoreViewBody());
   }
 }
