@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/more/presentation/view/widgets/more_option_group.dart';
-import 'package:decorize_project/features/worker/more/presentation/view/widgets/more_option_item.dart';
+import 'package:decorize_project/core/widgets/more_option_group.dart';
+import 'package:decorize_project/core/widgets/more_option_item.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/worker_profile_card.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/custom_worker_appbar.dart';
 import 'package:flutter/material.dart';

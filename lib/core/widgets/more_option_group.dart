@@ -1,9 +1,10 @@
-import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EditUserProfileSection extends StatelessWidget {
-  const EditUserProfileSection({super.key});
+class MoreOptionsGroup extends StatelessWidget {
+  const MoreOptionsGroup({super.key, required this.children});
+
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +17,14 @@ class EditUserProfileSection extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
         ),
         child: Padding(
-          padding: EdgeInsets.all(12.sp),
-          child: Row(
+          padding: EdgeInsets.all(14.sp),
+          child: Column(
             children: [
-              CircleAvatar(
-                radius: 20.r,
-                backgroundImage: AssetImage('assets/design/worker_profile.png'),
-              ),
-              SizedBox(width: 10.w),
-              Text('بلال محمود', style: Styles.textStyle16),
+              for (int i = 0; i < children.length; i++) ...[
+                children[i],
+                if (i != children.length - 1)
+                  Divider(color: Colors.grey.shade200),
+              ],
             ],
           ),
         ),

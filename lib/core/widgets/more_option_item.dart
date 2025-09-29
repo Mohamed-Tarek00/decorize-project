@@ -33,7 +33,7 @@ class MoreOptionItem extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              radius: 20,
+              radius: 12.r,
               backgroundColor: iconBackgroundColor ?? const Color(0xffE9E9E9),
               child: SvgPicture.asset(iconPath, color: iconColor),
             ),

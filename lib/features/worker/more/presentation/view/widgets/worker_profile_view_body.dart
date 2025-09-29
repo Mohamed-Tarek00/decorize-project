@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
-import 'package:decorize_project/features/worker/more/presentation/view/widgets/more_option_group.dart';
-import 'package:decorize_project/features/worker/more/presentation/view/widgets/more_option_item.dart';
+import 'package:decorize_project/core/widgets/more_option_group.dart';
+import 'package:decorize_project/core/widgets/more_option_item.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/worker_profile_header.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/custom_worker_appbar.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,6 @@ class WorkerProfileViewBody extends StatelessWidget {
         WorkerProfileHeader(),
         SizedBox(height: 28.h),
         MoreOptionsGroup(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           children: [
             MoreOptionItem(
               onTap: () => context.push(AppRouterNames.editworkerProfileView),
@@ -31,7 +30,6 @@ class WorkerProfileViewBody extends StatelessWidget {
           ],
         ),
         MoreOptionsGroup(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           children: [
             MoreOptionItem(
               onTap: () => context.push(AppRouterNames.editworkerPasswordView),
@@ -42,7 +40,6 @@ class WorkerProfileViewBody extends StatelessWidget {
           ],
         ),
         MoreOptionsGroup(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           children: [
             MoreOptionItem(
               onTap: () => context.push(AppRouterNames.editworkerPhoneView),
