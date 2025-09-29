@@ -32,6 +32,9 @@ class UserMoreSecondSection extends StatelessWidget {
         MoreOptionItem(
           iconPath: 'assets/icons/security-safe.svg',
           label: 'سياسة الخصوصيه',
+          onTap: () {
+            context.push(AppRouterNames.privacyPolicyView);
+          },
         ),
       ],
     );

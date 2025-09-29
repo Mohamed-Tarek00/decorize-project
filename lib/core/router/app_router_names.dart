@@ -23,4 +23,5 @@ class AppRouterNames {
   static const addAdView = '/AdAddView';
   static const savedDesignsView = '/savedDesignsView';
   static const termsAndConditionsView = '/termsAndConditionsView';
+  static const privacyPolicyView = '/privacyPolicyView';
 }

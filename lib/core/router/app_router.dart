@@ -10,6 +10,7 @@ import 'package:decorize_project/features/shared/auth/presentation/user_register
 import 'package:decorize_project/features/user/add_ad/presentation/add_ad_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
+import 'package:decorize_project/features/user/more/presentation/privacy_policy_view.dart';
 import 'package:decorize_project/features/user/more/presentation/saved_design_view.dart';
 import 'package:decorize_project/features/user/more/presentation/terms_and_conditions_view.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
@@ -189,6 +190,18 @@ abstract class AppRouter {
         path: AppRouterNames.termsAndConditionsView,
         builder: (BuildContext context, GoRouterState state) {
           return TermsAndConditionsView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.termsAndConditionsView,
+        builder: (BuildContext context, GoRouterState state) {
+          return TermsAndConditionsView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.privacyPolicyView,
+        builder: (BuildContext context, GoRouterState state) {
+          return PrivacyPolicyView();
         },
       ),
     ],
