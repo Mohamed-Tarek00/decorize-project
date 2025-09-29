@@ -21,6 +21,9 @@ class UserMoreSecondSection extends StatelessWidget {
         MoreOptionItem(
           iconPath: 'assets/icons/information.svg',
           label: 'الشروط والاحكام',
+          onTap: () {
+            context.push(AppRouterNames.termsAndConditionsView);
+          },
         ),
         MoreOptionItem(
           iconPath: 'assets/icons/message-2.svg',

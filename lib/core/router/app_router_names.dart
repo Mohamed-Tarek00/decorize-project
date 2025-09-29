@@ -22,4 +22,5 @@ class AppRouterNames {
   static const workerPhoneOtpView = '/WorkerPhoneOtpView';
   static const addAdView = '/AdAddView';
   static const savedDesignsView = '/savedDesignsView';
+  static const termsAndConditionsView = '/termsAndConditionsView';
 }

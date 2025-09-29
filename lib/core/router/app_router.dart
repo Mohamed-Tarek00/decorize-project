@@ -11,6 +11,7 @@ import 'package:decorize_project/features/user/add_ad/presentation/add_ad_view.d
 import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:decorize_project/features/user/more/presentation/saved_design_view.dart';
+import 'package:decorize_project/features/user/more/presentation/terms_and_conditions_view.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
@@ -182,6 +183,12 @@ abstract class AppRouter {
         path: AppRouterNames.savedDesignsView,
         builder: (BuildContext context, GoRouterState state) {
           return SavedDesignView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.termsAndConditionsView,
+        builder: (BuildContext context, GoRouterState state) {
+          return TermsAndConditionsView();
         },
       ),
     ],
