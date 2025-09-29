@@ -74,11 +74,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           isAvailable = value;
                         });
                       },
-                      activeThumbColor: Colors.white, // لون الدائرة
-                      activeTrackColor: Colors.green, // خلفية الـ On
-                      inactiveThumbColor:
-                          Colors.white, // لون الدائرة لما يبقى Off
-                      inactiveTrackColor: Colors.grey, // خلفية الـ Off
+                      activeThumbColor: Colors.white,
+                      activeTrackColor: Colors.green,
+                      inactiveThumbColor: Colors.white,
+                      inactiveTrackColor: Colors.grey,
                     ),
                   ],
                 ),

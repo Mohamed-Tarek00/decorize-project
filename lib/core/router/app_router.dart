@@ -1,4 +1,8 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/features/shared/log/presentation/views/foreget_password_view.dart';
+import 'package:decorize_project/features/shared/log/presentation/views/login_view.dart';
+import 'package:decorize_project/features/shared/log/presentation/views/reset_password_view.dart';
+import 'package:decorize_project/features/shared/log/presentation/views/send_otp_view.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/on_boarding_view.dart';
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/user_otp_auth.dart';
@@ -48,12 +52,42 @@ abstract class AppRouter {
           return UserRegisterView(role: role, position: position);
         },
       ),
+
       GoRoute(
         path: AppRouterNames.otpView,
         builder: (BuildContext context, GoRouterState state) {
           final email = state.extra as String;
 
           return UserOtpAuth(email: email);
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.loginView,
+        builder: (BuildContext context, GoRouterState state) {
+          final extra = state.extra as Map<String, dynamic>?;
+          final String? role = extra?['type'] as String?;
+          final Position? position = extra?['position'] as Position?;
+          return LoginView(position: position, role: role);
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.forgetPasswordView,
+        builder: (BuildContext context, GoRouterState state) {
+          return ForegetPasswordView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.sendOtpView,
+        builder: (BuildContext context, GoRouterState state) {
+          final phone = state.extra as String;
+
+          return SendOtpView(phone: phone);
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.resetPasswordView,
+        builder: (BuildContext context, GoRouterState state) {
+          return ResetPasswordView();
         },
       ),
 

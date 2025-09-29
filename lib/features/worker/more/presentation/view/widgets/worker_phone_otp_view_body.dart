@@ -1,8 +1,8 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/core/widgets/otp_code_text_field.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/custome_bottomsheet.dart';
-import 'package:decorize_project/features/worker/more/presentation/view/widgets/otp_code_text_field.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/otp_instruction_text.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/custom_worker_appbar.dart';
 import 'package:flutter/gestures.dart';

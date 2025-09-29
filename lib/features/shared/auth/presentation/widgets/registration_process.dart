@@ -57,7 +57,7 @@ class registrationProcess extends StatelessWidget {
         } else {
           return CustomButton(
             onPressed: () {
-              context.go(AppRouterNames.workerBottomNavigation);
+              context.go(AppRouterNames.userNavigationBar);
               /*   if (formKey.currentState!.validate()) {
                 if (!isAgreed) {
                   ScaffoldMessenger.of(context).showSnackBar(

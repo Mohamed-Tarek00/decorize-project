@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.nameTextStyle,
     this.suffixIcon,
     this.isDescription = false,
+    this.textInputType = TextInputType.text,
   });
   final String name;
   final TextStyle? nameTextStyle;
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool isDescription;
+  final TextInputType textInputType;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
               maxLines: isDescription ? null : 1,
               validator: validator,
               controller: controller,
+              keyboardType: textInputType,
               decoration: InputDecoration(
                 prefixIcon: iconPath != null
                     ? Padding(
