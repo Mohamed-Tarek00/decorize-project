@@ -4,7 +4,7 @@ import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_p
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_price_section.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/class_room_dropdown.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/get_location_section.dart';
-import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
+import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

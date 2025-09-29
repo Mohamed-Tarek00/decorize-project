@@ -1,5 +1,5 @@
 import 'package:decorize_project/features/user/ads/presentation/widgets/ads_list_view.dart';
-import 'package:decorize_project/features/user/ads/presentation/widgets/custom_app_bar.dart';
+import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/searching_ads_section.dart';
 import 'package:flutter/material.dart';
 

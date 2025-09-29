@@ -1,86 +1,36 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
-class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({super.key, this.leadingWidget});
-  final Widget? leadingWidget;
-
-  @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
-  bool isAvailable = true;
-
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
+    super.key,
+    required this.onTap,
+    required this.headingText,
+  });
+  final void Function()? onTap;
+  final String headingText;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            spreadRadius: 1,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.only(
-          left: 12.w,
-          right: 12.w,
-          bottom: 12.h,
-          top: 12.h,
-        ),
-
+        padding: EdgeInsets.only(top: 24.h, right: 8.w, left: 8.w),
         child: Row(
           children: [
-            Image.asset(
-              'assets/icons/usertestphoto.png',
-              height: 50.h,
-              width: 50.w,
-            ),
-            SizedBox(width: 10.w),
-            Column(
-              children: [
-                Text('مرحبا بك !', style: Styles.textStyle16),
-                Text('يوسف السيد', style: Styles.textStyle16),
-              ],
+            GestureDetector(
+              onTap: onTap,
+              child: SvgPicture.asset(
+                'assets/icons/arrow-right.svg',
+                height: 20.h,
+                width: 30.w,
+              ),
             ),
             Spacer(),
-            widget.leadingWidget ??
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      isAvailable ? "متاح" : "غير متاح",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: isAvailable ? Colors.green : Colors.red,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(width: 8.w),
-                    Switch(
-                      value: isAvailable,
-                      onChanged: (value) {
-                        setState(() {
-                          isAvailable = value;
-                        });
-                      },
-                      activeThumbColor: Colors.white,
-                      activeTrackColor: Colors.green,
-                      inactiveThumbColor: Colors.white,
-                      inactiveTrackColor: Colors.grey,
-                    ),
-                  ],
-                ),
+            Text(headingText, style: Styles.textStyle20),
+            Spacer(),
+            SizedBox(width: 30.w, height: 20.h),
           ],
         ),
       ),

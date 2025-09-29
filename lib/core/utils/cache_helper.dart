@@ -12,7 +12,6 @@ class CacheHelper {
     required String phone,
     required String image,
   }) async {
-    final _prefs = await SharedPreferences.getInstance();
     await _prefs.setString('token', token);
     await _prefs.setString('type', type);
     await _prefs.setString('name', name);
@@ -22,17 +21,14 @@ class CacheHelper {
   }
 
   Future<String?> getToken() async {
-    final _prefs = await SharedPreferences.getInstance();
     return _prefs.getString('token');
   }
 
   Future<String?> getUserType() async {
-    final _prefs = await SharedPreferences.getInstance();
     return _prefs.getString('type');
   }
 
   Future<Map<String, String?>> getUserProfile() async {
-    final _prefs = await SharedPreferences.getInstance();
     return {
       'name': _prefs.getString('name'),
       'email': _prefs.getString('email'),
@@ -42,7 +38,6 @@ class CacheHelper {
   }
 
   Future<void> clearUserData() async {
-    final _prefs = await SharedPreferences.getInstance();
     await _prefs.clear();
   }
 }
