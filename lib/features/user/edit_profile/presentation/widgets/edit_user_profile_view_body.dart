@@ -18,21 +18,23 @@ class _EditUserProfileViewBodyState extends State<EditUserProfileViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).padding.top),
-        CustomAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          headingText: 'الملف الشخصي',
-        ),
-        SizedBox(height: 10.h),
-        ChangePictureSection(),
-        SizedBox(height: 10.h),
-        Text('احمد محمد', style: Styles.textStyle18),
-        EditingDataSection(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).padding.top),
+          CustomAppBar(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            headingText: 'الملف الشخصي',
+          ),
+          SizedBox(height: 10.h),
+          ChangePictureSection(),
+          SizedBox(height: 10.h),
+          Text('احمد محمد', style: Styles.textStyle18),
+          EditingDataSection(),
+        ],
+      ),
     );
   }
 }
