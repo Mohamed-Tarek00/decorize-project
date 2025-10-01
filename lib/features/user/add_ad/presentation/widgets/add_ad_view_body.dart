@@ -6,7 +6,6 @@ import 'package:decorize_project/features/user/add_ad/presentation/widgets/class
 import 'package:decorize_project/features/user/add_ad/presentation/widgets/get_location_section.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddAdViewBody extends StatefulWidget {
   const AddAdViewBody({super.key});

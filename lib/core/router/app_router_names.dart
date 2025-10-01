@@ -24,4 +24,6 @@ class AppRouterNames {
   static const savedDesignsView = '/savedDesignsView';
   static const termsAndConditionsView = '/termsAndConditionsView';
   static const privacyPolicyView = '/privacyPolicyView';
+    static const editUserProfileView = '/editUserProfileView';
+
 }
