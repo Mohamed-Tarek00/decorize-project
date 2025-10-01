@@ -17,6 +17,8 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.isDescription = false,
     this.textInputType = TextInputType.text,
+    this.enabled = true,
+    this.height,
   });
   final String name;
   final TextStyle? nameTextStyle;
@@ -27,7 +29,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool isDescription;
   final TextInputType textInputType;
-
+  final bool enabled;
+  final double? height;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,24 +42,34 @@ class CustomTextFormField extends StatelessWidget {
             name,
             style: nameTextStyle == null ? Styles.textStyle14 : nameTextStyle!,
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 4.h),
           Container(
+            height: height,
             width: 335.w,
-
             child: TextFormField(
+              enabled: enabled,
               minLines: isDescription ? 5 : 1,
               maxLines: isDescription ? null : 1,
               validator: validator,
               controller: controller,
               keyboardType: textInputType,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: height != null ? height! / 3.5 : 12,
+                  horizontal: 12,
+                ),
                 prefixIcon: iconPath != null
                     ? Padding(
                         padding: EdgeInsets.all(8.sp),
-                        child: SvgPicture.asset(
-                          iconPath!,
-                          width: 16.w,
-                          height: 16.h,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              iconPath!,
+                              width: 24.w,
+                              height: 24.h,
+                            ),
+                          ],
                         ),
                       )
                     : null,
@@ -79,7 +92,14 @@ class CustomTextFormField extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: kPrimaryColor, width: 2),
+                  borderSide: BorderSide(color: kPrimaryColor, width: 1.5),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade300,
+                    width: 1.5,
+                  ),
                 ),
               ),
             ),

@@ -1,11 +1,20 @@
+import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/edit_profile/presentation/widgets/change_picture_section.dart';
+import 'package:decorize_project/features/user/edit_profile/presentation/widgets/editing_data_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class EditUserProfileViewBody extends StatelessWidget {
+class EditUserProfileViewBody extends StatefulWidget {
   const EditUserProfileViewBody({super.key});
+
+  @override
+  State<EditUserProfileViewBody> createState() =>
+      _EditUserProfileViewBodyState();
+}
+
+class _EditUserProfileViewBodyState extends State<EditUserProfileViewBody> {
+  TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +27,11 @@ class EditUserProfileViewBody extends StatelessWidget {
           },
           headingText: 'الملف الشخصي',
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 10.h),
         ChangePictureSection(),
-        
+        SizedBox(height: 10.h),
+        Text('احمد محمد', style: Styles.textStyle18),
+        EditingDataSection(),
       ],
     );
   }
