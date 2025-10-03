@@ -12,9 +12,10 @@ import 'package:decorize_project/features/user/add_ad/presentation/add_ad_view.d
 import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:decorize_project/features/user/edit_profile/presentation/edit_user_profile_view.dart';
-import 'package:decorize_project/features/user/more/presentation/privacy_policy_view.dart';
-import 'package:decorize_project/features/user/more/presentation/saved_design_view.dart';
-import 'package:decorize_project/features/user/more/presentation/terms_and_conditions_view.dart';
+import 'package:decorize_project/features/user/more/presentation/views/contact_us_view.dart';
+import 'package:decorize_project/features/user/more/presentation/views/privacy_policy_view.dart';
+import 'package:decorize_project/features/user/more/presentation/views/saved_design_view.dart';
+import 'package:decorize_project/features/user/more/presentation/views/terms_and_conditions_view.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
@@ -213,6 +214,12 @@ abstract class AppRouter {
         path: AppRouterNames.editUserProfileView,
         builder: (BuildContext context, GoRouterState state) {
           return EditUserProfileView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.contactUsView,
+        builder: (BuildContext context, GoRouterState state) {
+          return ContactUsView();
         },
       ),
     ],

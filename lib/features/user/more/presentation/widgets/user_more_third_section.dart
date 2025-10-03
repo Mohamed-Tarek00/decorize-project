@@ -1,7 +1,9 @@
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/more_option_group.dart';
 import 'package:decorize_project/core/widgets/more_option_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class UserMoreThirdSection extends StatelessWidget {
   const UserMoreThirdSection({super.key});
@@ -13,6 +15,9 @@ class UserMoreThirdSection extends StatelessWidget {
         MoreOptionItem(
           iconPath: 'assets/icons/headphone.svg',
           label: 'تواصل معنا',
+          onTap: () {
+            context.go(AppRouterNames.contactUsView);
+          },
         ),
         MoreOptionItem(
           iconPath: 'assets/icons/share.svg',
