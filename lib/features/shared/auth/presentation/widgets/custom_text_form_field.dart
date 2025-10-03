@@ -48,7 +48,7 @@ class CustomTextFormField extends StatelessWidget {
             width: 335.w,
             child: TextFormField(
               enabled: enabled,
-              minLines: isDescription ? 5 : 1,
+              minLines: isDescription ? 3 : 1,
               maxLines: isDescription ? null : 1,
               validator: validator,
               controller: controller,
@@ -61,25 +61,24 @@ class CustomTextFormField extends StatelessWidget {
                 prefixIcon: iconPath != null
                     ? Padding(
                         padding: EdgeInsets.all(8.sp),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              iconPath!,
-                              width: 24.w,
-                              height: 24.h,
-                            ),
-                          ],
+                        child: SvgPicture.asset(
+                          iconPath!,
+                          width: 20.w,
+                          height: 20.h,
                         ),
                       )
                     : null,
+                prefixIconConstraints: BoxConstraints(
+                  minWidth: 20.w,
+                  minHeight: 20.h,
+                ),
                 suffixIcon: suffixIcon != null
                     ? Padding(padding: EdgeInsets.all(8.sp), child: suffixIcon)
                     : null,
                 filled: true,
                 fillColor: Colors.white,
                 hintText: hintText,
-                hintStyle: Styles.textStyle14,
+                hintStyle: Styles.textStyle14.copyWith(color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
