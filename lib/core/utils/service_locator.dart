@@ -13,6 +13,7 @@ import 'package:decorize_project/features/shared/log/data/data_soerce/login_remo
 import 'package:decorize_project/features/shared/log/data/data_soerce/login_remote_data_source_impl.dart';
 import 'package:decorize_project/features/shared/log/data/repo_impl/login_repo_impl.dart';
 import 'package:decorize_project/features/shared/log/domain/repos/login_repo.dart';
+import 'package:decorize_project/features/shared/log/domain/use_cases/forget_password_usecase.dart';
 import 'package:decorize_project/features/shared/log/domain/use_cases/login_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -88,5 +89,8 @@ void setupServiceLocator() async {
 
   getIt.registerLazySingleton<LoginUsecase>(
     () => LoginUsecase(repository: getIt.get<LoginRepository>()),
+  );
+  getIt.registerLazySingleton<ForgetPasswordUsecase>(
+    () => ForgetPasswordUsecase(repository: getIt.get<LoginRepository>()),
   );
 }

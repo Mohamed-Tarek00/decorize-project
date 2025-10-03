@@ -1,9 +1,8 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/utils/validator.dart';
-import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:decorize_project/features/shared/log/presentation/views/widgets/forget_password_button_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -16,12 +15,12 @@ class ForgetPasswordViewBody extends StatefulWidget {
 }
 
 class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
-  final TextEditingController _phone = TextEditingController();
+  final TextEditingController email = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    _phone.dispose();
+    email.dispose();
     super.dispose();
   }
 
@@ -42,28 +41,18 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
             ),
             Spacer(),
             Image.asset(kMainLogo, height: 80.h, width: 70.w),
-            Text('تسجيل الدخول', style: Styles.textStyle28),
+            Text('هل نسيت كلمة المرور ؟', style: Styles.textStyle28),
             SizedBox(height: 20.h),
             CustomTextFormField(
-              name: 'رقم الجوال',
-              hintText: 'ادخل رقم الجوال',
-              controller: _phone,
-              iconPath: 'assets/icons/call.svg',
-              validator: Validator.phoneValidator,
-              textInputType: TextInputType.phone,
+              name: 'البريد الإلكتروني',
+              hintText: 'ادخل البريد الإلكتروني',
+              controller: email,
+              iconPath: 'assets/icons/sms.svg',
+              validator: Validator.emailValidator,
+              textInputType: TextInputType.emailAddress,
             ),
             SizedBox(height: 12.h),
-            CustomButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  context.pushReplacement(
-                    AppRouterNames.sendOtpView,
-                    extra: _phone.text.trim(),
-                  );
-                }
-              },
-              text: 'إرسال',
-            ),
+            ForgetPasswordButtonSection(email: email, formKey: _formKey),
             Spacer(flex: 2),
           ],
         ),

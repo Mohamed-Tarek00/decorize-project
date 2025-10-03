@@ -84,9 +84,11 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouterNames.sendOtpView,
         builder: (BuildContext context, GoRouterState state) {
-          final phone = state.extra as String;
+          final extra = state.extra as Map<String, dynamic>?;
+          final String verficationCode = extra?['verficationCode'] as String;
+          final UserEntity user = extra?['user'] as UserEntity;
 
-          return SendOtpView(phone: phone);
+          return SendOtpView(user: user, verficationCode: verficationCode);
         },
       ),
       GoRoute(
