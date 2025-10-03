@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class ContactUsViewBody extends StatelessWidget {
@@ -5,6 +6,16 @@ class ContactUsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        SizedBox(height: MediaQuery.of(context).padding.top),
+        CustomAppBar(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          headingText: 'تواصل معنا',
+        ),
+      ],
+    );
   }
 }

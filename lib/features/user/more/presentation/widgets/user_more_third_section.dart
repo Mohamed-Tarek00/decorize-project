@@ -16,7 +16,7 @@ class UserMoreThirdSection extends StatelessWidget {
           iconPath: 'assets/icons/headphone.svg',
           label: 'تواصل معنا',
           onTap: () {
-            context.go(AppRouterNames.contactUsView);
+            context.push(AppRouterNames.contactUsView);
           },
         ),
         MoreOptionItem(
