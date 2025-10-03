@@ -11,11 +11,11 @@ class SocialMediaButton extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: 12.r, bottom: 12.r, left: 12.r),
         child: Container(
-          width: 40.h,
-          height: 40.h,
+          width: 45.h,
+          height: 45.h,
           decoration: BoxDecoration(
             color: Color(0xffE7EEEB),
-            borderRadius: BorderRadius.circular(8.r),
+            borderRadius: BorderRadius.circular(4.r),
           ),
           child: Center(child: FaIcon(icon, color: Colors.black)),
         ),
