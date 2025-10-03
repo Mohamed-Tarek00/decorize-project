@@ -9,6 +9,11 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/get_govern
 import 'package:decorize_project/features/shared/auth/domain/usecases/get_jobs_use_case.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/otp_verification_use_case.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/register_use_case.dart';
+import 'package:decorize_project/features/shared/log/data/data_soerce/login_remote_data_source.dart';
+import 'package:decorize_project/features/shared/log/data/data_soerce/login_remote_data_source_impl.dart';
+import 'package:decorize_project/features/shared/log/data/repo_impl/login_repo_impl.dart';
+import 'package:decorize_project/features/shared/log/domain/repos/login_repo.dart';
+import 'package:decorize_project/features/shared/log/domain/use_cases/login_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -71,5 +76,17 @@ void setupServiceLocator() async {
   getIt.registerLazySingleton<SharedPreferences>(() => prefs);
   getIt.registerLazySingleton<CacheHelper>(
     () => CacheHelper(getIt<SharedPreferences>()),
+  );
+
+  getIt.registerLazySingleton<LoginRemoteDataSource>(
+    () => LoginRemoteDataSourceImpl(apiService: getIt.get<ApiService>()),
+  );
+
+  getIt.registerLazySingleton<LoginRepository>(
+    () => LoginRepoImpl(remoteDataSource: getIt.get<LoginRemoteDataSource>()),
+  );
+
+  getIt.registerLazySingleton<LoginUsecase>(
+    () => LoginUsecase(repository: getIt.get<LoginRepository>()),
   );
 }

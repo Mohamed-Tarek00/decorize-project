@@ -1,6 +1,10 @@
 import 'package:decorize_project/core/constants.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
+import 'package:decorize_project/features/shared/log/domain/use_cases/login_usecase.dart';
+import 'package:decorize_project/features/shared/log/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:decorize_project/features/shared/log/presentation/views/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,11 +14,14 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: kScaffoldColor,
-        body: LoginViewBody(role: role, position: position),
+    return BlocProvider(
+      create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          backgroundColor: kScaffoldColor,
+          body: LoginViewBody(role: role, position: position),
+        ),
       ),
     );
   }

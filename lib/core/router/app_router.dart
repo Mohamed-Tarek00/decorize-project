@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/features/shared/log/domain/entities/user_entity.dart';
 import 'package:decorize_project/features/shared/log/presentation/views/foreget_password_view.dart';
 import 'package:decorize_project/features/shared/log/presentation/views/login_view.dart';
 import 'package:decorize_project/features/shared/log/presentation/views/reset_password_view.dart';
@@ -111,7 +112,8 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouterNames.workerBottomNavigation,
         builder: (BuildContext context, GoRouterState state) {
-          return CustomWorkerBottomNavBar();
+          final user = state.extra as UserEntity;
+          return CustomWorkerBottomNavBar(user: user);
         },
       ),
       GoRoute(
@@ -204,7 +206,8 @@ abstract class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           return PrivacyPolicyView();
         },
-      ),  GoRoute(
+      ),
+      GoRoute(
         path: AppRouterNames.editUserProfileView,
         builder: (BuildContext context, GoRouterState state) {
           return EditUserProfileView();

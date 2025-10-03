@@ -1,5 +1,6 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/shared/log/domain/entities/user_entity.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/worker_more_view.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
@@ -8,7 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomWorkerBottomNavBar extends StatefulWidget {
-  const CustomWorkerBottomNavBar({super.key});
+  const CustomWorkerBottomNavBar({super.key, required this.user});
+  final UserEntity user;
 
   @override
   State<CustomWorkerBottomNavBar> createState() =>
