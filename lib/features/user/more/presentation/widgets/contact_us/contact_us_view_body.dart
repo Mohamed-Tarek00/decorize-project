@@ -1,6 +1,6 @@
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/contact_form_section.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/social_media_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/contact_us/contact_form_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/contact_us/social_media_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

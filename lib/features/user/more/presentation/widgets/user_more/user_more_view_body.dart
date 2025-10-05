@@ -1,8 +1,8 @@
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/edit_user_profile_section.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/sign_out_and_clear_acount_section.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/user_more_second__section.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/user_more_third_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/user_more/edit_user_profile_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/user_more/sign_out_and_clear_acount_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/user_more/user_more_second__section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/user_more/user_more_third_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,5 +1,5 @@
 import 'package:decorize_project/core/widgets/custom_button.dart';
-import 'package:decorize_project/features/user/more/presentation/widgets/contact_us_view_body.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/contact_us/contact_us_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

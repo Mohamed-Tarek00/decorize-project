@@ -1,5 +1,5 @@
 import 'package:decorize_project/core/widgets/custom_button.dart';
-import 'package:decorize_project/features/user/edit_profile/presentation/widgets/edit_user_profile_view_body.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/edit_profile/edit_user_profile_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

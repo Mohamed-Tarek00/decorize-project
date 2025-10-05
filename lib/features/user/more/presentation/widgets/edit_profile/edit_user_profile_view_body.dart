@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
-import 'package:decorize_project/features/user/edit_profile/presentation/widgets/change_picture_section.dart';
-import 'package:decorize_project/features/user/edit_profile/presentation/widgets/editing_data_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/edit_profile/change_picture_section.dart';
+import 'package:decorize_project/features/user/more/presentation/widgets/edit_profile/editing_data_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
