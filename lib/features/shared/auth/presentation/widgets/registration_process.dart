@@ -4,6 +4,7 @@ import 'package:decorize_project/core/widgets/custom_loading_indicator.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/city.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/governorate.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/register_request_cubit/cubit/register_request_cubit_.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/register_request_cubit/cubit/register_request_cubit_state.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +58,8 @@ class registrationProcess extends StatelessWidget {
         } else {
           return CustomButton(
             onPressed: () {
-              context.go(AppRouterNames.userNavigationBar);
-              /*   if (formKey.currentState!.validate()) {
+              // context.go(AppRouterNames.userNavigationBar);
+           if (formKey.currentState!.validate()) {
                 if (!isAgreed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('يجب الموافقة على الشروط والأحكام')),
@@ -91,7 +92,7 @@ class registrationProcess extends StatelessWidget {
                     typeId: role == 'worker' ? job?.id.toString() : null,
                   ),
                 );
-              }*/
+              }
             },
             text: 'انشاء حساب',
           );

@@ -48,8 +48,8 @@ class _ContactFormSectionState extends State<ContactFormSection> {
               iconPath: 'assets/icons/sms.svg',
             ),
             CustomTextFormField(
-              name: 'الايميل',
-              hintText: 'ادخل الايميل',
+              name: 'الوصف',
+              hintText: 'ادخل الوصف',
               controller: descController,
               isDescription: true,
             ),

@@ -1,7 +1,9 @@
-import 'dart:io';
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/core/utils/cache_helper.dart';
+import 'package:decorize_project/core/utils/geo_locator.dart';
 import 'package:decorize_project/core/utils/screen_size.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -16,45 +18,17 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-  Position? currentPosition;
-  Future<void> _getLocation() async {
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return;
-    }
-
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return;
-      }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      return;
-    }
-    Position? position;
-    if (Platform.isAndroid) {
-      position = await Geolocator.getCurrentPosition(
-        locationSettings: AndroidSettings(accuracy: LocationAccuracy.high),
-      );
-      setState(() {
-        currentPosition = position;
-      });
-    } else if (Platform.isIOS) {
-      position = await Geolocator.getCurrentPosition(
-        locationSettings: AppleSettings(accuracy: LocationAccuracy.best),
-      );
-      setState(() {
-        currentPosition = position;
-      });
-    }
-  }
-
   void _startSplashSequence() async {
-    await _getLocation();
-    await Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRouterNames.onBoardingView, extra: currentPosition);
+    Position? currentPosition = await SetLocation.getLocation();
+    await Future.delayed(const Duration(seconds: 3), () async {
+      final _cache = getIt<CacheHelper>();
+      final String? token = await _cache.getToken();
+      final String? type = await _cache.getUserType();
+      if (token == null) {
+        context.go(AppRouterNames.onBoardingView, extra: currentPosition);
+      } else {
+        context.go(AppRouterNames.userNavigationBar, extra: currentPosition);
+      }
     });
   }
 

@@ -28,7 +28,7 @@ class SocialMedaiSection extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SocialMediaButton(icon: FontAwesomeIcons.xTwitter),
                   SocialMediaButton(icon: FontAwesomeIcons.facebookF),
