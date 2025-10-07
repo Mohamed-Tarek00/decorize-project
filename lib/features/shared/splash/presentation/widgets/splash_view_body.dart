@@ -27,7 +27,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (token == null) {
         context.go(AppRouterNames.onBoardingView, extra: currentPosition);
       } else {
-        context.go(AppRouterNames.userNavigationBar, extra: currentPosition);
+        if (type == 'client') {
+          context.go(AppRouterNames.userNavigationBar, extra: currentPosition);
+        } else if (type == 'worker') {
+          context.go(AppRouterNames.workerHomeView, extra: currentPosition);
+        }
+        ;
       }
     });
   }
