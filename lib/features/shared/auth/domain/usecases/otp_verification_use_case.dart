@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/verification.dart';
-import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_Interface.dart';
+import 'package:decorize_project/features/shared/auth/domain/repositories/otp_repo.dart';
 
 class OtpVerificationUseCase {
-  final Repositoryinterface repositoryinterface;
-  OtpVerificationUseCase(this.repositoryinterface);
+  final OtpRepo otpRepo;
+  OtpVerificationUseCase(this.otpRepo);
   Future<Either<Failure, Map<String, dynamic>>> call(
     Verification entity,
   ) async {
-    return await repositoryinterface.sendOtpKey(entity);
+    return await otpRepo.sendOtp(entity);
   }
 }

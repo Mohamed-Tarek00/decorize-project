@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/job.dart';
-import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_Interface.dart';
+import 'package:decorize_project/features/shared/auth/domain/repositories/static_repo.dart';
 
 class GetJobsUseCase {
-  GetJobsUseCase(this.repositoryinterface);
-  final Repositoryinterface repositoryinterface;
+  GetJobsUseCase(this.staticRepo);
+  final StaticRepo staticRepo;
   Future<Either<Failure, List<Job>>> call() async {
-    return await repositoryinterface.getJobs();
+    return await staticRepo.getJobs();
   }
 }

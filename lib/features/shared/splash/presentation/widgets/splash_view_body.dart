@@ -21,9 +21,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void _startSplashSequence() async {
     Position? currentPosition = await SetLocation.getLocation();
     await Future.delayed(const Duration(seconds: 3), () async {
-      final _cache = getIt<CacheHelper>();
-      final String? token = await _cache.getToken();
-      final String? type = await _cache.getUserType();
+      final cache = getIt<CacheHelper>();
+      final String? token = await cache.getToken();
+      final String? type = await cache.getUserType();
       if (token == null) {
         context.go(AppRouterNames.onBoardingView, extra: currentPosition);
       } else {
@@ -32,7 +32,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         } else if (type == 'worker') {
           context.go(AppRouterNames.workerHomeView, extra: currentPosition);
         }
-        ;
       }
     });
   }

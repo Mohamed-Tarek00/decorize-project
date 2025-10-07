@@ -1,5 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/shared/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:decorize_project/features/shared/auth/presentation/widgets/register_widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class AddPriceSection extends StatelessWidget {

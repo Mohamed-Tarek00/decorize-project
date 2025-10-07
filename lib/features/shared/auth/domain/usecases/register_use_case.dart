@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
-import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_Interface.dart';
+import 'package:decorize_project/features/shared/auth/domain/repositories/auth_repo.dart';
 
 class RegisterUseCase {
-  final Repositoryinterface repositoryinterface;
-  RegisterUseCase(this.repositoryinterface);
+  final AuthRepo authRepo;
+  RegisterUseCase(this.authRepo);
   Future<Either<Failure, void>> call(RegisterRequest entity) async {
-    return await repositoryinterface.sendRequest(entity);
+    return await authRepo.register(entity);
   }
 }

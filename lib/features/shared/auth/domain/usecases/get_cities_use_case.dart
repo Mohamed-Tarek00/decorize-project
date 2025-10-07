@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/city.dart';
-import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_Interface.dart';
+import 'package:decorize_project/features/shared/auth/domain/repositories/static_repo.dart';
 
 class GetCitiesUseCase {
-  final Repositoryinterface repositoryinterface;
+  final StaticRepo staticRepo;
 
-  GetCitiesUseCase(this.repositoryinterface);
+  GetCitiesUseCase(this.staticRepo);
 
   Future<Either<Failure, List<City>>> call(int governorateId) {
-    return repositoryinterface.getCitiesByGovernorateId(governorateId);
+    return staticRepo.getCitiesByGovernorateId(governorateId);
   }
 }

@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/governorate.dart';
-import 'package:decorize_project/features/shared/auth/domain/repositories/Repo_Interface.dart';
+import 'package:decorize_project/features/shared/auth/domain/repositories/static_repo.dart';
 
 class GetGovernoratesUseCase {
-  final Repositoryinterface repositoryinterface;
+  final StaticRepo staticRepo;
 
-  GetGovernoratesUseCase(this.repositoryinterface);
+  GetGovernoratesUseCase(this.staticRepo);
 
   Future<Either<Failure, List<Governorate>>> call() async {
-    return await repositoryinterface.getGovernorates();
+    return await staticRepo.getGovernorates();
   }
 }
