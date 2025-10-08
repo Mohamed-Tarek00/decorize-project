@@ -32,8 +32,11 @@ import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
+final GlobalKey<NavigatorState> routerKey = GlobalKey<NavigatorState>();
+
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
+        navigatorKey: routerKey,
     routes: <RouteBase>[
       GoRoute(
         path: AppRouterNames.splashView,

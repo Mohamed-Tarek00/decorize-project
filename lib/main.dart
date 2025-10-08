@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  setupServiceLocator();
+ await setupServiceLocator();
   await EasyLocalization.ensureInitialized();
 
   runApp(
@@ -29,8 +29,10 @@ class DecorizeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp.router(
       routerConfig: AppRouter.router,
+
       debugShowCheckedModeBanner: false,
       locale: context.locale,
       supportedLocales: context.supportedLocales,

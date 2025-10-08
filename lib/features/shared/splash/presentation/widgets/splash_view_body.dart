@@ -1,5 +1,6 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/core/utils/api_service.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/geo_locator.dart';
 import 'package:decorize_project/core/utils/screen_size.dart';
@@ -27,11 +28,27 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       if (token == null) {
         context.go(AppRouterNames.onBoardingView, extra: currentPosition);
       } else {
-        if (type == 'client') {
-          context.go(AppRouterNames.userNavigationBar, extra: currentPosition);
-        } else if (type == 'worker') {
-          context.go(AppRouterNames.workerHomeView, extra: currentPosition);
-        }
+         final api = getIt<ApiService>();
+    bool isValid = false;
+
+    try {
+      await api.get(endPoint: 'auth/profile');
+      isValid = true;
+    } catch (e) {
+      isValid = false;
+    }
+
+    if (!isValid) {
+      await cache.clearUserData();
+      context.go(AppRouterNames.loginView);
+      return;
+    }
+
+    if (type == 'client') {
+      context.go(AppRouterNames.userNavigationBar, extra: currentPosition);
+    } else if (type == 'worker') {
+      context.go(AppRouterNames.workerHomeView, extra: currentPosition);
+    }
       }
     });
   }

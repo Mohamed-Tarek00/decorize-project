@@ -1,3 +1,5 @@
+import 'package:decorize_project/core/router/app_router.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/api_service.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/auth_data_source.dart';
@@ -21,10 +23,19 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/forget_pas
 import 'package:decorize_project/features/shared/auth/domain/usecases/login_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
-void setupServiceLocator() async {
+Future<void> setupServiceLocator() async {
+
+
+  // cache locator
+  final prefs = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferences>(() => prefs);
+  getIt.registerLazySingleton<CacheHelper>(
+    () => CacheHelper(getIt<SharedPreferences>()),
+  );
   final dio = Dio(
     BaseOptions(
       baseUrl: ApiService.baseUrl,
@@ -46,7 +57,28 @@ void setupServiceLocator() async {
       error: true,
     ),
   );
+  dio.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = await getIt<CacheHelper>().getToken();
+        if (token != null && token.isNotEmpty) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        handler.next(options);
+     },
+  onError: (err, handler) async {
+        if (err.response?.statusCode == 401 ||err.response?.statusCode == 403) {
+          await getIt<CacheHelper>().clearUserData();
 
+          final context = routerKey.currentContext;
+          if (context != null && context.mounted) {
+            context.go(AppRouterNames.loginView);
+          }
+        }
+        handler.next(err);
+      },
+    ),
+  );
   getIt.registerLazySingleton<Dio>(() => dio);
 
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
@@ -95,12 +127,5 @@ void setupServiceLocator() async {
   );
   getIt.registerLazySingleton<ForgetPasswordUsecase>(
     () => ForgetPasswordUsecase(staticRepo: getIt.get<AuthRepo>()),
-  );
-
-  // cache locator
-  final prefs = await SharedPreferences.getInstance();
-  getIt.registerLazySingleton<SharedPreferences>(() => prefs);
-  getIt.registerLazySingleton<CacheHelper>(
-    () => CacheHelper(getIt<SharedPreferences>()),
   );
 }
