@@ -20,7 +20,7 @@ class SplashCubit extends Cubit<SplashState> {
 
     result.fold(
       (failure) async {
-        await cache.clearUserData();
+        //شيلنا مسح الداتا لان كده لو النت فصل او حصل اي خطأ  هتخرج اليوزر وده مش منطقي
         emit(SplashError(failure.errorMessage));
       },
       (isValid) async {

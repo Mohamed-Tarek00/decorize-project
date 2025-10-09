@@ -7,11 +7,10 @@ class SplashRemoteDataSourceImpl implements SplashRemoteDataSource {
   SplashRemoteDataSourceImpl({required this.apiService});
   @override
   Future<bool> checkTokenValidity() async {
-    try {
+
       await apiService.get(endPoint: 'auth/profile');
       return true;
-    } on Exception {
-      return false;
-    }
+      //هنا شيلنا فحص الخطا لو غلط يرجع false لان كده كده الانترسيبتور لو الخطأ 401او 403 هيتدخل اما لو خطا تاني ف هو متهندل ف الريبو
+
   }
 }
