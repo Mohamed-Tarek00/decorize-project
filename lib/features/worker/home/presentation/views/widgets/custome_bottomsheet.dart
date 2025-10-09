@@ -50,7 +50,7 @@ class CustomBottomSheet {
                 width: double.infinity,
                 onTap: () {
                   context.pop();
-                  context.go(AppRouterNames.workerBottomNavigation);
+                  context.go(AppRouterNames.workerNavigationBar);
                 },
               ),
             ],

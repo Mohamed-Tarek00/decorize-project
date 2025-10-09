@@ -9,7 +9,7 @@ class AppRouterNames {
   static const resetPasswordView = '/resetPasswordView';
   static const workerHomeView = '/workerHomeView';
   static const userNavigationBar = '/userNavigationBar';
-  static const workerBottomNavigation = '/workerBottomNavigation';
+  static const workerNavigationBar = '/workerNavigationBar';
   static const jobDetailsView = '/jobDetailsView';
   static const ordersView = '/ordersView';
   static const adDetailsView = '/adDetails';

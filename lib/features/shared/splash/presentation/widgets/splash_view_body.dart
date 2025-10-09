@@ -1,15 +1,14 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
-import 'package:decorize_project/core/utils/api_service.dart';
-import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/geo_locator.dart';
 import 'package:decorize_project/core/utils/screen_size.dart';
-import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/shared/splash/presentation/cubits/splash_cubit/splash_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:geolocator/geolocator.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -19,85 +18,81 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody> {
-  void _startSplashSequence() async {
-    Position? currentPosition = await SetLocation.getLocation();
-    await Future.delayed(const Duration(seconds: 3), () async {
-      final cache = getIt<CacheHelper>();
-      final String? token = await cache.getToken();
-      final String? type = await cache.getUserType();
-      if (token == null) {
-        context.go(AppRouterNames.onBoardingView, extra: currentPosition);
-      } else {
-         final api = getIt<ApiService>();
-    bool isValid = false;
-
-    try {
-      await api.get(endPoint: 'auth/profile');
-      isValid = true;
-    } catch (e) {
-      isValid = false;
-    }
-
-    if (!isValid) {
-      await cache.clearUserData();
-      context.go(AppRouterNames.loginView);
-      return;
-    }
-
-    if (type == 'client') {
-      context.go(AppRouterNames.userNavigationBar, extra: currentPosition);
-    } else if (type == 'worker') {
-      context.go(AppRouterNames.workerHomeView, extra: currentPosition);
-    }
-      }
-    });
-  }
+  Position? currentPosition;
 
   @override
   void initState() {
     super.initState();
-    _startSplashSequence();
+    _initSplash();
+  }
+
+  Future<void> _initSplash() async {
+    // 1. نحصل على الموقع
+    currentPosition = await SetLocation.getLocation();
+    // 2. نشغل Cubit لفحص صلاحية التوكن
+    Future.delayed(const Duration(seconds: 2), () {
+      context.read<SplashCubit>().checkAuth();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        children: [
-          Center(
-            child: Image.asset(
-              kLogo,
-              height: ScreenSize.getWidgethighet(
-                percantage: .1,
+    return BlocListener<SplashCubit, SplashState>(
+      listener: (context, state) {
+        if (state is SplashAuthenticated) {
+          if (state.userType == 'client') {
+            context.go(
+              AppRouterNames.userNavigationBar,
+              extra: currentPosition,
+            );
+          } else if (state.userType == 'worker') {
+            context.go(
+              AppRouterNames.workerNavigationBar,
+              extra: currentPosition,
+            );
+          }
+        } else if (state is SplashUnauthenticated) {
+          context.go(AppRouterNames.onBoardingView, extra: currentPosition);
+        }
+      },
+      child: Center(
+        child: Stack(
+          children: [
+            Center(
+              child: Image.asset(
+                kLogo,
+                height: ScreenSize.getWidgethighet(
+                  percantage: .1,
+                  context: context,
+                ),
+              ),
+            ),
+            Center(
+              child: Image.asset(
+                kSplashBackground,
+                height: ScreenSize.getWidgethighet(
+                  percantage: .6,
+                  context: context,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: ScreenSize.getWidgethighet(
+                percantage: .38,
                 context: context,
               ),
-            ),
-          ),
-          Center(
-            child: Image.asset(
-              kSplashBackground,
-              height: ScreenSize.getWidgethighet(
-                percantage: .6,
-                context: context,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Decorize'.tr(),
+                  style: Styles.textStyle32.copyWith(color: Colors.white),
+                ),
               ),
             ),
-          ),
-          Positioned(
-            bottom: ScreenSize.getWidgethighet(
-              percantage: .38,
-              context: context,
-            ),
-            left: 0,
-            right: 0,
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Decorize'.tr(),
-                style: Styles.textStyle32.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -36,7 +36,7 @@ final GlobalKey<NavigatorState> routerKey = GlobalKey<NavigatorState>();
 
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
-        navigatorKey: routerKey,
+    navigatorKey: routerKey,
     routes: <RouteBase>[
       GoRoute(
         path: AppRouterNames.splashView,
@@ -116,7 +116,7 @@ abstract class AppRouter {
       ),
 
       GoRoute(
-        path: AppRouterNames.workerBottomNavigation,
+        path: AppRouterNames.workerNavigationBar,
         builder: (BuildContext context, GoRouterState state) {
           final user = state.extra as UserEntity;
           return CustomWorkerBottomNavBar(user: user);

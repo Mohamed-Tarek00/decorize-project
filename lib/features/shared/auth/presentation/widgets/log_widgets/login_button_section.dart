@@ -25,7 +25,7 @@ class LoginButtonSection extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccess) {
           final user = state.response.user;
-          context.go(AppRouterNames.workerBottomNavigation, extra: user);
+          context.go(AppRouterNames.workerNavigationBar, extra: user);
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(
             context,

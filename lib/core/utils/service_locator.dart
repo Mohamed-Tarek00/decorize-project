@@ -21,6 +21,11 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/register_u
 import 'package:decorize_project/features/shared/auth/domain/repositories/static_repo.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/forget_password_usecase.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/login_usecase.dart';
+import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source.dart';
+import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source_impl.dart';
+import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
+import 'package:decorize_project/features/shared/splash/domain/repo/splash_repo.dart';
+import 'package:decorize_project/features/shared/splash/domain/use_cases/check_token_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -28,8 +33,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 Future<void> setupServiceLocator() async {
-
-
   // cache locator
   final prefs = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<SharedPreferences>(() => prefs);
@@ -65,9 +68,10 @@ Future<void> setupServiceLocator() async {
           options.headers['Authorization'] = 'Bearer $token';
         }
         handler.next(options);
-     },
-  onError: (err, handler) async {
-        if (err.response?.statusCode == 401 ||err.response?.statusCode == 403) {
+      },
+      onError: (err, handler) async {
+        if (err.response?.statusCode == 401 ||
+            err.response?.statusCode == 403) {
           await getIt<CacheHelper>().clearUserData();
 
           final context = routerKey.currentContext;
@@ -82,6 +86,17 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<Dio>(() => dio);
 
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
+
+  getIt.registerLazySingleton<SplashRemoteDataSource>(
+    () => SplashRemoteDataSourceImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerLazySingleton<SplashRepo>(
+    () => SplashRepoImpl(getIt<CacheHelper>(), getIt<SplashRemoteDataSource>()),
+  );
+  getIt.registerLazySingleton<CheckTokenUsecase>(
+    () => CheckTokenUsecase(getIt<SplashRepo>()),
+  );
 
   getIt.registerLazySingleton<AuthDataSource>(
     () => AuthDataSourceImpl(apiService: getIt<ApiService>()),
