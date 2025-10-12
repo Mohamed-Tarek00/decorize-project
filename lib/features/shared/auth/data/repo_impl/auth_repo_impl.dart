@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:decorize_project/core/utils/handle_request.dart';
@@ -55,10 +54,10 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failure, void>> register(RegisterRequest entity) async {
- 
-      final model = RegisterRequestModel(entity: entity);
-      return handleRequest<void>(request: ()=>authDataSource.sendRegisterRequest(model), converter: (_){ });
-      
+    final model = RegisterRequestModel(entity: entity);
+    return handleRequest<void>(
+      request: () async => await authDataSource.sendRegisterRequest(model),
+      converter: (_) {},
+    );
   }
 }
-
