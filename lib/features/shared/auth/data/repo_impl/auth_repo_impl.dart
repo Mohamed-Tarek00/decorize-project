@@ -1,5 +1,7 @@
+
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
+import 'package:decorize_project/core/utils/handle_request.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/auth_data_source.dart';
 import 'package:decorize_project/features/shared/auth/data/models/forget_password_model.dart';
 import 'package:decorize_project/features/shared/auth/data/models/login_request_model.dart';
@@ -53,15 +55,10 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failure, void>> register(RegisterRequest entity) async {
-    try {
+ 
       final model = RegisterRequestModel(entity: entity);
-      final response = await authDataSource.sendRegisterRequest(model);
-
-      return right(null);
-    } on DioException catch (dioError) {
-      return left(ServiceFailure.fromDio(dioError));
-    } catch (e) {
-      return left(ServiceFailure(e.toString()));
-    }
+      return handleRequest<void>(request: ()=>authDataSource.sendRegisterRequest(model), converter: (_){ });
+      
   }
 }
+
