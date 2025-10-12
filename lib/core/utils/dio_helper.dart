@@ -3,12 +3,13 @@ import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/api_service.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
+import 'package:decorize_project/features/shared/log_out_stream.dart';
 import 'package:dio/dio.dart';
 import 'package:go_router/go_router.dart';
 
 class DioHelper {
   DioHelper() ;
-  static Dio createDio(){
+   Dio createDio(){
   
   final dio = Dio(
     BaseOptions(
@@ -31,7 +32,13 @@ class DioHelper {
       error: true,
     ),
   );
-  dio.interceptors.add(
+tokenInterceptor(dio);
+
+return dio ;
+
+  }
+ void tokenInterceptor(Dio dio,){
+    dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
         final token = await getIt<CacheHelper>().getToken();
@@ -43,6 +50,8 @@ class DioHelper {
       onError: (err, handler) async {
         if (err.response?.statusCode == 401 ||
             err.response?.statusCode == 403) {
+              // Logout_Stream 
+          getIt<LogoutStream>().addEvent('logout');
           await getIt<CacheHelper>().clearUserData();
 
           final context = routerKey.currentContext;
@@ -54,9 +63,5 @@ class DioHelper {
       },
     ),
   );
-
-return dio ;
-
-  }
-
+ }
 }

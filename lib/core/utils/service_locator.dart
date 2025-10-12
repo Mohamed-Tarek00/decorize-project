@@ -1,5 +1,3 @@
-import 'package:decorize_project/core/router/app_router.dart';
-import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/api_service.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/dio_helper.dart';
@@ -22,6 +20,7 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/register_u
 import 'package:decorize_project/features/shared/auth/domain/repositories/static_repo.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/forget_password_usecase.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/login_usecase.dart';
+import 'package:decorize_project/features/shared/log_out_stream.dart';
 import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source.dart';
 import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source_impl.dart';
 import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
@@ -33,13 +32,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 Future<void> setupServiceLocator() async {
+  //logout stream
+  getIt.registerLazySingleton(() => LogoutStream());
   // cache locator
   final prefs = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<SharedPreferences>(() => prefs);
   getIt.registerLazySingleton<CacheHelper>(
     () => CacheHelper(getIt<SharedPreferences>()),
   );
-  final dio = DioHelper.createDio() ;
+  final dio = DioHelper().createDio();
   getIt.registerLazySingleton<Dio>(() => dio);
 
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
