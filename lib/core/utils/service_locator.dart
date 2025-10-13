@@ -6,7 +6,6 @@ import 'package:decorize_project/features/shared/auth/data/data_source/auth_data
 import 'package:decorize_project/features/shared/auth/data/data_source/send_otp_data_source.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/send_otp_data_source_impl.dart';
 import 'package:decorize_project/features/shared/auth/data/data_source/static_data_source.dart';
-import 'package:decorize_project/features/shared/auth/data/data_source/static_data_source_impl.dart';
 import 'package:decorize_project/features/shared/auth/data/repo_impl/auth_repo_impl.dart';
 import 'package:decorize_project/features/shared/auth/data/repo_impl/otp_repo_impl.dart';
 import 'package:decorize_project/features/shared/auth/data/repo_impl/static_repo_impl.dart';
