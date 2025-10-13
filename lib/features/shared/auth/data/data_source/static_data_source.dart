@@ -1,6 +1,4 @@
 import 'package:decorize_project/core/utils/api_service.dart';
-import 'package:decorize_project/features/shared/auth/data/models/city_model.dart';
-import 'package:decorize_project/features/shared/auth/data/models/job_model.dart';
 
 abstract class StaticDataSource {
   Future<Map<String, dynamic>> getGovernorates();
