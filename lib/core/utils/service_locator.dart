@@ -20,7 +20,6 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/forget_pas
 import 'package:decorize_project/features/shared/auth/domain/usecases/login_usecase.dart';
 import 'package:decorize_project/features/shared/log_out_stream.dart';
 import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source.dart';
-import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source_impl.dart';
 import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
 import 'package:decorize_project/features/shared/splash/domain/repo/splash_repo.dart';
 import 'package:decorize_project/features/shared/splash/domain/use_cases/check_token_usecase.dart';

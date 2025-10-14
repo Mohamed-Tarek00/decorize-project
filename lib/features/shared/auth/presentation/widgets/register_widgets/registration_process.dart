@@ -58,8 +58,7 @@ class registrationProcess extends StatelessWidget {
         } else {
           return CustomButton(
             onPressed: () {
-              // context.go(AppRouterNames.userNavigationBar);
-           if (formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate()) {
                 if (!isAgreed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('يجب الموافقة على الشروط والأحكام')),

@@ -14,30 +14,29 @@ class DecorizeApp extends StatefulWidget {
 
   @override
   State<DecorizeApp> createState() => _DecorizeAppState();
-  
 }
 
 class _DecorizeAppState extends State<DecorizeApp> {
-    StreamSubscription<String>? logoutSubscription;
+  StreamSubscription<String>? logoutSubscription;
   final logoutStream = getIt<LogoutStream>();
   @override
   void initState() {
     logoutSubscription = logoutStream.stream.listen((event) {
       if (event == 'logout') {
-            context.go(AppRouterNames.loginView);
-
+        context.go(AppRouterNames.loginView);
       }
     });
     super.initState();
   }
+
   @override
   void dispose() {
     logoutSubscription?.cancel();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp.router(
       routerConfig: AppRouter.router,
 
