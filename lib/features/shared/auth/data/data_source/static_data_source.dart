@@ -1,9 +1,12 @@
 import 'package:decorize_project/core/utils/api_service.dart';
+import 'package:decorize_project/features/shared/auth/data/models/city_model.dart';
+import 'package:decorize_project/features/shared/auth/data/models/governorate_model.dart';
+import 'package:decorize_project/features/shared/auth/data/models/job_model.dart';
 
 abstract class StaticDataSource {
-  Future<Map<String, dynamic>> getGovernorates();
-  Future<Map<String, dynamic>> getCitiesByGovernorateId(int governorateId);
-  Future<Map<String, dynamic>> getJobs();
+  Future<List<GovernorateModel>> getGovernorates();
+  Future<List<CityModel>> getCitiesByGovernorateId(int governorateId);
+  Future<List<JobModel>> getJobs();
 }
 
 class StaticDataSourceImpl implements StaticDataSource {
@@ -12,24 +15,37 @@ class StaticDataSourceImpl implements StaticDataSource {
   StaticDataSourceImpl({required this.apiService});
 
   @override
-  Future<Map<String, dynamic>> getGovernorates() async {
+  Future<List<GovernorateModel>> getGovernorates() async {
     final data = await apiService.get(endPoint: 'auth/get-governorates');
-    return data;
+    final listOfGoverments = data['data'] as List;
+        List<GovernorateModel> goveronrates = listOfGoverments
+            .map((item) => GovernorateModel.fromJson(item))
+            .toList();
+    return goveronrates;
   }
 
   @override
-  Future<Map<String, dynamic>> getCitiesByGovernorateId(
+  Future<List<CityModel>> getCitiesByGovernorateId(
+    
     int governorateId,
   ) async {
     final data = await apiService.get(
       endPoint: 'auth/get-cities/$governorateId',
     );
-    return data;
+    final listOfCities = data['data'] as List;
+        List<CityModel> cities = listOfCities
+            .map((item) => CityModel.fromJson(item))
+            .toList();
+    return cities;
   }
 
   @override
-  Future<Map<String, dynamic>> getJobs() async {
+  Future<List<JobModel>> getJobs() async {
     final data = await apiService.get(endPoint: 'auth/get-types');
-    return data;
+    final listOfJobs = data['data'] as List;
+        List<JobModel> jobs = listOfJobs.map(
+          (item) => JobModel.fromJson(item),
+        ).toList();
+    return jobs ;
   }
 }
