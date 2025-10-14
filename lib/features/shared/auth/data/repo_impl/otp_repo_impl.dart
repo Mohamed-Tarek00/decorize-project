@@ -18,7 +18,6 @@ class OtpRepoImpl implements OtpRepo {
     final model = VerificationModel.fromEntity(entity);
     return handleRequest(
       request: () async => await sendOtpDataSource.sendOtpKey(model),
-      converter: (json) => json,
     );
   }
 }

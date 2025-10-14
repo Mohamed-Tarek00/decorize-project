@@ -2,20 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
 import 'package:dio/dio.dart';
 
-@override
-
-Future<Either<Failure,T>> handleRequest<T>(
-   {required Future<Map<String,dynamic>> Function() request, required T Function(Map<String, dynamic> json) converter,}
-) async{
-
+Future<Either<Failure, T>> handleRequest<T>({
+  required Future<T> Function() request,
+}) async {
   try {
-    final response = await request() ;
-  final data = converter(response);
-  return right(data);
+    final response = await request();
+    return right(response);
   } on DioException catch (dioError) {
-      return left(ServiceFailure.fromDio(dioError));
-    } catch (e) {
-      return left(ServiceFailure(e.toString()));
+    return left(ServiceFailure.fromDio(dioError));
+  } catch (e) {
+    return left(ServiceFailure(e.toString()));
   }
-
-  }
+}

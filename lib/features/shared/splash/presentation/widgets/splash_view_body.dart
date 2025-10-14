@@ -27,9 +27,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   Future<void> _initSplash() async {
-    // 1. نحصل على الموقع
     currentPosition = await SetLocation.getLocation();
-    // 2. نشغل Cubit لفحص صلاحية التوكن
     Future.delayed(const Duration(seconds: 2), () {
       context.read<SplashCubit>().checkAuth();
     });

@@ -34,30 +34,18 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, AuthResponseEntity>> login(
-    LoginRequestEntity entity,
-  ) async {
-    try {
-      final model = LoginRequestModel(
-        email: entity.email,
-        password: entity.password,
-        deviceToken: entity.deviceToken,
-      );
-      final response = await authDataSource.loginRequest(model: model);
-      return right(response);
-    } on DioException catch (dioError) {
-      return left(ServiceFailure.fromDio(dioError));
-    } catch (e) {
-      return left(ServiceFailure(e.toString()));
-    }
-  }
-
-  @override
   Future<Either<Failure, void>> register(RegisterRequest entity) async {
     final model = RegisterRequestModel(entity: entity);
     return handleRequest<void>(
       request: () async => await authDataSource.sendRegisterRequest(model),
-      converter: (_) {},
+    );
+  }
+
+  @override
+  Future<Either<Failure, AuthResponseEntity>> login(LoginRequestEntity entity) {
+    final model = LoginRequestModel(entity: entity);
+    return handleRequest(
+      request: () async => await authDataSource.loginRequest(model: model),
     );
   }
 }
