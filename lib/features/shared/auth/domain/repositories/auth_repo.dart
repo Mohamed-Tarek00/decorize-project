@@ -7,7 +7,7 @@ import 'package:decorize_project/features/shared/auth/domain/entities/login_requ
 import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure, void>> register(RegisterRequest entity);
+  Future<Either<Failure, AuthResponseEntity>> register(RegisterRequest entity);
   Future<Either<Failure, AuthResponseEntity>> login(LoginRequestEntity entity);
   Future<Either<Failure, ForgetPasswordResponseEntity>> forgetPassword(
     ForgetPasswordEntity entity,

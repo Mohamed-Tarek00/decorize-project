@@ -34,9 +34,11 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, void>> register(RegisterRequest entity) async {
+  Future<Either<Failure, AuthResponseEntity>> register(
+    RegisterRequest entity,
+  ) async {
     final model = RegisterRequestModel(entity: entity);
-    return handleRequest<void>(
+    return handleRequest<AuthResponseEntity>(
       request: () async => await authDataSource.sendRegisterRequest(model),
     );
   }
