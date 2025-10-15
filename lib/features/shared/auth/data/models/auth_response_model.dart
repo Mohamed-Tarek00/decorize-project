@@ -16,4 +16,11 @@ class AuthResponseModel extends AuthResponseEntity {
       user: UserModel.fromJson(data['user']),
     );
   }
+  AuthResponseEntity toEntity() {
+    return AuthResponseEntity(
+      accessToken: accessToken,
+      verificationCode: verificationCode,
+      user: user,
+    );
+  }
 }

@@ -1,3 +1,5 @@
+import 'package:decorize_project/features/shared/auth/domain/entities/auth_response_entity.dart';
+
 abstract class OtpKeyState {}
 
 class OtpKeyInitial extends OtpKeyState {}
@@ -5,7 +7,7 @@ class OtpKeyInitial extends OtpKeyState {}
 class OtpKeyLoading extends OtpKeyInitial {}
 
 class OtpKeyLoaded extends OtpKeyInitial {
-  final Map<String, dynamic> response;
+  final AuthResponseEntity response;
   OtpKeyLoaded(this.response);
 }
 

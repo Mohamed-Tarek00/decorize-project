@@ -21,17 +21,17 @@ class sendOtpKey extends StatelessWidget {
     return BlocConsumer<OtpKeyCubit, OtpKeyState>(
       listener: (context, state) async {
         if (state is OtpKeyLoaded) {
-          final data = state.response['data'];
-          final user = data['user'];
+          final data = state.response;
+          final user = data.user;
           final cache = getIt<CacheHelper>();
 
           await cache.saveUserData(
-            token: data['access_token'],
-            type: user['type'],
-            name: user['name'],
-            email: user['email'],
-            phone: user['phone'],
-            image: user['image'],
+            token: data.accessToken!,
+            type: user.type,
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            image: user.image,
           );
         } else if (state is OtpKeyFailure) {
           ScaffoldMessenger.of(context).showSnackBar(

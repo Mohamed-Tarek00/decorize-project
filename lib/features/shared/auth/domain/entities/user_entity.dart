@@ -3,7 +3,7 @@ class UserEntity {
   final String name;
   final String email;
   final String type;
-  final String profession;
+  final String? profession;
   final String phone;
   final int status;
   final bool isVerified;
@@ -18,7 +18,7 @@ class UserEntity {
     required this.name,
     required this.email,
     required this.type,
-    required this.profession,
+    this.profession,
     required this.phone,
     required this.status,
     required this.isVerified,

@@ -39,10 +39,13 @@ class AuthRepoImpl implements AuthRepo {
   ) async {
     final model = RegisterRequestModel(entity: entity);
     return handleRequest<AuthResponseEntity>(
-      request: () async => await authDataSource.sendRegisterRequest(model),
+      request: () async {
+        final responseModel = await authDataSource.sendRegisterRequest(model);
+        return responseModel.toEntity();
+      },
     );
   }
-
+//المفروض هنا الراجع من الهاندل ريكويست موديل  مش انتيتي ف انت هنا لازم تعمل فانكشن جوا كل موديل تحول لانتيتي   انا عملت الفانكشن جوا  ال الاوث موديل
   @override
   Future<Either<Failure, AuthResponseEntity>> login(LoginRequestEntity entity) {
     final model = LoginRequestModel(entity: entity);

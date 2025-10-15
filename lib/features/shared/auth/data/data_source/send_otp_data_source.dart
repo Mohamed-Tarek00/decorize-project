@@ -1,8 +1,9 @@
 import 'package:decorize_project/core/utils/api_service.dart';
+import 'package:decorize_project/features/shared/auth/data/models/auth_response_model.dart';
 import 'package:decorize_project/features/shared/auth/data/models/verification_model.dart';
 
 abstract class SendOtpDataSource {
-  Future<Map<String, dynamic>> sendOtpKey(VerificationModel model);
+  Future<AuthResponseModel> sendOtpKey(VerificationModel model);
 }
 
 class SendOtpDataSourceImpl implements SendOtpDataSource {
@@ -11,12 +12,12 @@ class SendOtpDataSourceImpl implements SendOtpDataSource {
   SendOtpDataSourceImpl({required this.apiService});
 
   @override
-  Future<Map<String, dynamic>> sendOtpKey(VerificationModel model) async {
+  Future<AuthResponseModel> sendOtpKey(VerificationModel model) async {
     final data = model.toJson();
     final response = await apiService.post(
       endPoint: 'auth/verify-otp',
       data: data,
     );
-    return response;
+    return AuthResponseModel.fromJson(response);
   }
 }

@@ -13,7 +13,7 @@ class StaticRepoImpl implements StaticRepo {
   StaticRepoImpl({required this.staticDataSource});
   @override
   Future<Either<Failure, List<Governorate>>> getGovernorates() async {
-   return await handleRequest(request: ()async{
+   return await handleRequest<List<Governorate>>(request: ()async{
  final governorates = await staticDataSource.getGovernorates(); 
  return governorates.map((gov)=> gov.toEntity()).toList() ;   } );
   }
@@ -22,7 +22,7 @@ class StaticRepoImpl implements StaticRepo {
   Future<Either<Failure, List<City>>> getCitiesByGovernorateId(
     int governorateId,
   ) async {
-    return await handleRequest(request: ()async {
+    return await handleRequest<List<City>>(request: ()async {
  final cities = await staticDataSource.getCitiesByGovernorateId(governorateId);
  return cities.map((city)=> city.toEntity()).toList() ;
     });  
@@ -30,7 +30,7 @@ class StaticRepoImpl implements StaticRepo {
 
   @override
   Future<Either<Failure, List<Job>>> getJobs() async {
-    return await handleRequest(request: ()async {
+    return await handleRequest<List<Job>>(request: ()async {
  final jobs = await staticDataSource.getJobs();
   return jobs.map((job)=> job.toEntity()).toList() ;
       });
