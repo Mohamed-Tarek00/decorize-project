@@ -1,10 +1,12 @@
 import 'package:decorize_project/core/constants.dart';
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/otp_widgets/custom_pin_code_text_field.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/otp_widgets/send_otp_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class UserOtpAuthBody extends StatefulWidget {
   const UserOtpAuthBody({super.key, required this.email});
@@ -32,7 +34,7 @@ class _UserOtpAuthBodyState extends State<UserOtpAuthBody> {
             width: 24.w,
           ),
           onPressed: () {
-            Navigator.pop(context);
+context.go(AppRouterNames.registerView);
           },
         ),
       ),

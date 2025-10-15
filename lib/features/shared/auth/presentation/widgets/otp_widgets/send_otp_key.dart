@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
@@ -7,6 +8,7 @@ import 'package:decorize_project/features/shared/auth/presentation/cubits/otp_ke
 import 'package:decorize_project/features/shared/auth/presentation/cubits/otp_key/otp_key_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class sendOtpKey extends StatelessWidget {
   const sendOtpKey({
@@ -20,6 +22,7 @@ class sendOtpKey extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<OtpKeyCubit, OtpKeyState>(
       listener: (context, state) async {
+        
         if (state is OtpKeyLoaded) {
           final data = state.response;
           final user = data.user;
@@ -33,6 +36,17 @@ class sendOtpKey extends StatelessWidget {
             phone: user.phone,
             image: user.image,
           );
+          if (!context.mounted) return; // to avoid calling context if the widget is no longer in the tree
+
+          if (user.type == 'client') {
+            context.go(
+              AppRouterNames.userNavigationBar,
+            );
+          } else if (user.type == 'worker') {
+            context.go(
+              AppRouterNames.workerNavigationBar,
+            );
+          }
         } else if (state is OtpKeyFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage.toString())),
