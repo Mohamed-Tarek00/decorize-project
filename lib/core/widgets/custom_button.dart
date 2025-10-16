@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       child: Container(
-        height: ScreenSize.getWidgethighet(percantage: .07, context: context),
+        height: ScreenSize.getWidgethighet(percantage: .06, context: context),
         width: 335.w,
 
         decoration: BoxDecoration(

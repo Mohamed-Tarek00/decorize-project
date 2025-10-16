@@ -5,15 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomSearchingTextField extends StatelessWidget {
-  const CustomSearchingTextField({super.key});
-
+  const CustomSearchingTextField({super.key, required this.width});
+  final double width;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
         height: 40.h,
-        width: 260.w,
+        width: width.w,
         child: TextField(
           decoration: InputDecoration(
             hintText: 'ابحث هنا...',

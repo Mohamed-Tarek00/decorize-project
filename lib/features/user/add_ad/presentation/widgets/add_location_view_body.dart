@@ -1,5 +1,8 @@
+import 'package:decorize_project/core/utils/geo_locator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
+import 'package:decorize_project/core/widgets/custom_searching_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AddLocationViewBody extends StatefulWidget {
@@ -39,6 +42,39 @@ class _AddLocationViewBodyState extends State<AddLocationViewBody> {
                     ),
                   }
                 : {},
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              width: double.infinity,
+              color: Colors.white,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+
+                children: [
+                  SizedBox(height: MediaQuery.of(context).padding.top),
+                  CustomSearchingTextField(width: 340.w),
+                  CustomButton(
+                    onPressed: () async {
+                      final position = await SetLocation.getLocation();
+                      print(position);
+                      setState(() {
+                        if (position != null) {
+                          _selectedLocation = LatLng(
+                            position.latitude,
+                            position.longitude,
+                          );
+                          _mapController?.animateCamera(
+                            CameraUpdate.newLatLngZoom(_selectedLocation!, 15),
+                          );
+                        }
+                      });
+                    },
+                    text: 'تفقد موقعي',
+                  ),
+                ],
+              ),
+            ),
           ),
           _selectedLocation != null
               ? Align(

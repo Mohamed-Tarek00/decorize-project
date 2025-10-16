@@ -1,4 +1,4 @@
-import 'package:decorize_project/features/user/ads/presentation/widgets/custom_searching_text_field.dart';
+import 'package:decorize_project/core/widgets/custom_searching_text_field.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/filteration_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +18,12 @@ class SearchingAdsSection extends StatelessWidget {
         ),
       ),
 
-      child: Row(children: [CustomSearchingTextField(), FilterationButton()]),
+      child: Row(
+        children: [
+          CustomSearchingTextField(width: 260.w),
+          FilterationButton(),
+        ],
+      ),
     );
   }
 }
