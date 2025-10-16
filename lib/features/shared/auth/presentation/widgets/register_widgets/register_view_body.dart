@@ -20,8 +20,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
-class UserRegisterViewBody extends StatefulWidget {
-  const UserRegisterViewBody({
+class RegisterViewBody extends StatefulWidget {
+  const RegisterViewBody({
     super.key,
     required this.role,
     required this.position,
@@ -30,10 +30,10 @@ class UserRegisterViewBody extends StatefulWidget {
   final Position? position;
 
   @override
-  State<UserRegisterViewBody> createState() => _UserRegisterViewBodyState();
+  State<RegisterViewBody> createState() => _RegisterViewBodyState();
 }
 
-class _UserRegisterViewBodyState extends State<UserRegisterViewBody> {
+class _RegisterViewBodyState extends State<RegisterViewBody> {
   bool isAgreed = false;
   Governorate? selectedGovernorate;
   City? selectedCity;

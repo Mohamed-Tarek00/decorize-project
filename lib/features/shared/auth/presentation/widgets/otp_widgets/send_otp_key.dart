@@ -10,14 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class sendOtpKey extends StatelessWidget {
-  const sendOtpKey({
+class SendOtpKey extends StatelessWidget {
+  const SendOtpKey({
     super.key,
     required this.otpController,
     required this.email,
+    required this.purpose,
   });
   final TextEditingController otpController;
   final String email;
+  final String purpose;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OtpKeyCubit, OtpKeyState>(
@@ -26,15 +28,18 @@ class sendOtpKey extends StatelessWidget {
           final data = state.response;
           final user = data.user;
           final cache = getIt<CacheHelper>();
-
           await cache.saveUserData(authResponse: data);
+          await cache.saveToken(token: data.accessToken);
           if (!context.mounted)
             return; // to avoid calling context if the widget is no longer in the tree
-
-          if (user.type == 'client') {
-            context.go(AppRouterNames.userNavigationBar);
-          } else if (user.type == 'worker') {
-            context.go(AppRouterNames.workerNavigationBar);
+          if (purpose == 'register' || purpose == 'login_verification') {
+            if (user.type == 'client') {
+              context.go(AppRouterNames.userNavigationBar);
+            } else if (user.type == 'worker') {
+              context.go(AppRouterNames.workerNavigationBar);
+            }
+          } else if (purpose == 'reset_password') {
+            context.pushReplacement(AppRouterNames.resetPasswordView);
           }
         } else if (state is OtpKeyFailure) {
           ScaffoldMessenger.of(context).showSnackBar(

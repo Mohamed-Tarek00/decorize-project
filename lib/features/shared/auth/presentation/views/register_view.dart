@@ -8,12 +8,12 @@ import 'package:decorize_project/features/shared/auth/presentation/cubits/govern
 import 'package:decorize_project/features/shared/auth/presentation/cubits/job_cubit/job_cubit.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/register_request_cubit/cubit/register_request_cubit_.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:decorize_project/features/shared/auth/presentation/widgets/register_widgets/user__register_view_body.dart';
+import 'package:decorize_project/features/shared/auth/presentation/widgets/register_widgets/register_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class UserRegisterView extends StatelessWidget {
-  const UserRegisterView({super.key, required this.role, this.position});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key, required this.role, this.position});
   final String role;
   final Position? position;
 
@@ -40,7 +40,7 @@ class UserRegisterView extends StatelessWidget {
       ],
       child: Scaffold(
         backgroundColor: const Color(0xfff5f5f5),
-        body: UserRegisterViewBody(role: role, position: position),
+        body: RegisterViewBody(role: role, position: position),
       ),
     );
   }

@@ -5,7 +5,6 @@ class AppRouterNames {
   static const otpView = '/otpView';
   static const loginView = '/loginview';
   static const forgetPasswordView = '/forgetPasswordView';
-  static const sendOtpView = '/sendOtpView';
   static const resetPasswordView = '/resetPasswordView';
   static const workerHomeView = '/workerHomeView';
   static const userNavigationBar = '/userNavigationBar';

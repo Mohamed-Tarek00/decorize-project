@@ -43,7 +43,10 @@ class registrationProcess extends StatelessWidget {
         if (state is RegisterSuccess) {
           context.push(
             AppRouterNames.otpView,
-            extra: emailController.text.trim(),
+            extra: {
+              'email': emailController.text.trim(),
+              'purpose': 'register',
+            },
           );
         } else if (state is RegisterFailure) {
           print(state.message);

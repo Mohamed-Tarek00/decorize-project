@@ -17,6 +17,7 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/register_u
 import 'package:decorize_project/features/shared/auth/domain/repositories/static_repo.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/forget_password_usecase.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/login_usecase.dart';
+import 'package:decorize_project/features/shared/auth/domain/usecases/reset_password_usecase.dart';
 import 'package:decorize_project/features/shared/log_out_stream.dart';
 import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source.dart';
 import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
@@ -96,5 +97,8 @@ Future<void> setupServiceLocator() async {
   );
   getIt.registerLazySingleton<ForgetPasswordUsecase>(
     () => ForgetPasswordUsecase(staticRepo: getIt.get<AuthRepo>()),
+  );
+  getIt.registerLazySingleton<ResetPasswordUsecase>(
+    () => ResetPasswordUsecase(authRepo: getIt.get<AuthRepo>()),
   );
 }

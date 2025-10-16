@@ -21,19 +21,20 @@ class ForgetPasswordButtonSection extends StatelessWidget {
       listener: (context, state) {
         if (state is ForgetPasswordSuccess) {
           final user = state.response.user;
-          final verficationCode = state.response.verificationCode;
-          debugPrint("✅ Verification Code: $verficationCode");
+          debugPrint("✅ Verification Code: ${state.response.verificationCode}");
           debugPrint("✅ User Email: ${user.email}");
 
           context.push(
-            AppRouterNames.sendOtpView,
-            extra: {'user': user, 'verficationCode': verficationCode},
+            AppRouterNames.otpView,
+            extra: {'email': user.email, 'purpose': 'reset_password'},
           );
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               elevation: 5,
               backgroundColor: kPrimaryColor,
-              content: Text('✅ Verification Code: $verficationCode'),
+              content: Text(
+                '✅ Verification Code: ${state.response.verificationCode}',
+              ),
             ),
           );
         } else if (state is ForgetPasswordFailuer) {

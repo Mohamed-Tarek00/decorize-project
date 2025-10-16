@@ -1,13 +1,11 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
-import 'package:decorize_project/features/shared/auth/domain/entities/user_entity.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/foreget_password_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/login_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/reset_password_view.dart';
-import 'package:decorize_project/features/shared/auth/presentation/views/send_otp_view.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/on_boarding_view.dart';
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
-import 'package:decorize_project/features/shared/auth/presentation/views/user_otp_auth.dart';
-import 'package:decorize_project/features/shared/auth/presentation/views/user_register_view.dart';
+import 'package:decorize_project/features/shared/auth/presentation/views/otp_auth.dart';
+import 'package:decorize_project/features/shared/auth/presentation/views/register_view.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/add_ad_view.dart';
 import 'package:decorize_project/features/user/add_ad/presentation/add_location_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
@@ -59,16 +57,17 @@ abstract class AppRouter {
           final role = extra['type'] as String;
           final position = extra['position'] as Position?;
 
-          return UserRegisterView(role: role, position: position);
+          return RegisterView(role: role, position: position);
         },
       ),
 
       GoRoute(
         path: AppRouterNames.otpView,
         builder: (BuildContext context, GoRouterState state) {
-          final email = state.extra as String;
-
-          return UserOtpAuth(email: email);
+          final extra = state.extra as Map<String, dynamic>;
+          final String email = extra['email'];
+          final String purpose = extra['purpose'];
+          return OtpAuth(email: email, purpose: purpose);
         },
       ),
       GoRoute(
@@ -87,16 +86,6 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRouterNames.sendOtpView,
-        builder: (BuildContext context, GoRouterState state) {
-          final extra = state.extra as Map<String, dynamic>?;
-          final String verficationCode = extra?['verficationCode'] as String;
-          final UserEntity user = extra?['user'] as UserEntity;
-
-          return SendOtpView(user: user, verficationCode: verficationCode);
-        },
-      ),
-      GoRoute(
         path: AppRouterNames.resetPasswordView,
         builder: (BuildContext context, GoRouterState state) {
           return ResetPasswordView();
@@ -110,19 +99,18 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
+        path: AppRouterNames.workerNavigationBar,
+        builder: (BuildContext context, GoRouterState state) {
+          return CustomWorkerBottomNavBar();
+        },
+      ),
+      GoRoute(
         path: AppRouterNames.workerHomeView,
         builder: (BuildContext context, GoRouterState state) {
           return WorkerHomeView();
         },
       ),
 
-      GoRoute(
-        path: AppRouterNames.workerNavigationBar,
-        builder: (BuildContext context, GoRouterState state) {
-          final user = state.extra as UserEntity;
-          return CustomWorkerBottomNavBar(user: user);
-        },
-      ),
       GoRoute(
         path: AppRouterNames.jobDetailsView,
         builder: (BuildContext context, GoRouterState state) {

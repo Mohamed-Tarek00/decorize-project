@@ -1,5 +1,4 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/otp_widgets/custom_pin_code_text_field.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/otp_widgets/send_otp_key.dart';
@@ -8,15 +7,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-class UserOtpAuthBody extends StatefulWidget {
-  const UserOtpAuthBody({super.key, required this.email});
+class OtpAuthBody extends StatefulWidget {
+  const OtpAuthBody({super.key, required this.email, required this.purpose});
   final String email;
+  final String purpose;
 
   @override
-  State<UserOtpAuthBody> createState() => _UserOtpAuthBodyState();
+  State<OtpAuthBody> createState() => _OtpAuthBodyState();
 }
 
-class _UserOtpAuthBodyState extends State<UserOtpAuthBody> {
+class _OtpAuthBodyState extends State<OtpAuthBody> {
   final TextEditingController otpController = TextEditingController();
 
   @override
@@ -34,7 +34,7 @@ class _UserOtpAuthBodyState extends State<UserOtpAuthBody> {
             width: 24.w,
           ),
           onPressed: () {
-context.go(AppRouterNames.registerView);
+            context.pop();
           },
         ),
       ),
@@ -52,7 +52,11 @@ context.go(AppRouterNames.registerView);
                 child: CustomPinCodeTextField(otpController: otpController),
               ),
               SizedBox(height: 24.h),
-              sendOtpKey(otpController: otpController, email: widget.email),
+              SendOtpKey(
+                otpController: otpController,
+                email: widget.email,
+                purpose: widget.purpose,
+              ),
             ],
           ),
         ),

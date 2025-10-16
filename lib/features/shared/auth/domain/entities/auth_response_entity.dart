@@ -1,7 +1,7 @@
 import 'package:decorize_project/features/shared/auth/domain/entities/user_entity.dart';
 
 class AuthResponseEntity {
-  final String? accessToken;
+  final String accessToken;
   final String? verificationCode;
   final UserEntity user;
 

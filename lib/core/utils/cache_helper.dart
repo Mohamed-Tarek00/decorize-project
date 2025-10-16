@@ -5,8 +5,11 @@ class CacheHelper {
   final SharedPreferences _prefs;
   CacheHelper(this._prefs);
 
+  Future<void> saveToken({required String token}) async {
+    await _prefs.setString('token', token);
+  }
+
   Future<void> saveUserData({required AuthResponseEntity authResponse}) async {
-    await _prefs.setString('token', authResponse.accessToken!);
     await _prefs.setString('type', authResponse.user.type);
     await _prefs.setString('name', authResponse.user.name);
     await _prefs.setString('email', authResponse.user.email);

@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -16,6 +17,7 @@ class CustomPinCodeTextField extends StatelessWidget {
         controller: otpController,
         keyboardType: TextInputType.number,
         enableActiveFill: true,
+        textStyle: Styles.textStyle16,
         pinTheme: PinTheme(
           shape: PinCodeFieldShape.box,
           borderRadius: BorderRadius.circular(12),

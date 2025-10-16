@@ -5,11 +5,14 @@ import 'package:decorize_project/features/shared/auth/data/data_source/auth_data
 import 'package:decorize_project/features/shared/auth/data/models/forget_password_model.dart';
 import 'package:decorize_project/features/shared/auth/data/models/login_request_model.dart';
 import 'package:decorize_project/features/shared/auth/data/models/register_request_model.dart';
+import 'package:decorize_project/features/shared/auth/data/models/reset_password_request_model.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/auth_response_entity.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/forget_password_entity.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/forget_password_response_entity.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/login_request_entity.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/register_request.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/reset_password_request_entity.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/reset_password_response_entity.dart';
 import 'package:decorize_project/features/shared/auth/domain/repositories/auth_repo.dart';
 import 'package:dio/dio.dart';
 
@@ -45,12 +48,28 @@ class AuthRepoImpl implements AuthRepo {
       },
     );
   }
-//المفروض هنا الراجع من الهاندل ريكويست موديل  مش انتيتي ف انت هنا لازم تعمل فانكشن جوا كل موديل تحول لانتيتي   انا عملت الفانكشن جوا  ال الاوث موديل
+
+  //المفروض هنا الراجع من الهاندل ريكويست موديل  مش انتيتي ف انت هنا لازم تعمل فانكشن جوا كل موديل تحول لانتيتي   انا عملت الفانكشن جوا  ال الاوث موديل
   @override
   Future<Either<Failure, AuthResponseEntity>> login(LoginRequestEntity entity) {
     final model = LoginRequestModel(entity: entity);
     return handleRequest(
       request: () async => await authDataSource.loginRequest(model: model),
+    );
+  }
+
+  @override
+  Future<Either<Failure, ResetPasswordResponseEntity>> resetPassword(
+    ResetPasswordRequestEntity entity,
+  ) {
+    final model = ResetPasswordRequestModel(entity: entity);
+    return handleRequest(
+      request: () async {
+        final resetPasswordResponse = await authDataSource.resetPasswordRequest(
+          model: model,
+        );
+        return resetPasswordResponse.toEntity();
+      },
     );
   }
 }

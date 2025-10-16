@@ -76,6 +76,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 email: email,
                 password: password,
                 formKey: formKey,
+                position: widget.position,
               ),
               CustomNavigationButton(
                 solidText: 'ليس لديك حساب  ؟ ',
