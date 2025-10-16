@@ -1,4 +1,6 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/core/utils/cache_helper.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_loading_indicator.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/login_request_entity.dart';
@@ -24,7 +26,10 @@ class LoginButtonSection extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
+          final response = state.response;
           final user = state.response.user;
+          final cache = getIt<CacheHelper>();
+          cache.saveUserData(authResponse: response);
           context.go(AppRouterNames.workerNavigationBar, extra: user);
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(

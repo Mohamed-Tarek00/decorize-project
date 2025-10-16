@@ -1,23 +1,17 @@
+import 'package:decorize_project/features/shared/auth/domain/entities/auth_response_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
   final SharedPreferences _prefs;
   CacheHelper(this._prefs);
 
-  Future<void> saveUserData({
-    required String token,
-    required String type,
-    required String name,
-    required String email,
-    required String phone,
-    required String image,
-  }) async {
-    await _prefs.setString('token', token);
-    await _prefs.setString('type', type);
-    await _prefs.setString('name', name);
-    await _prefs.setString('email', email);
-    await _prefs.setString('phone', phone);
-    await _prefs.setString('image', image);
+  Future<void> saveUserData({required AuthResponseEntity authResponse}) async {
+    await _prefs.setString('token', authResponse.accessToken!);
+    await _prefs.setString('type', authResponse.user.type);
+    await _prefs.setString('name', authResponse.user.name);
+    await _prefs.setString('email', authResponse.user.email);
+    await _prefs.setString('phone', authResponse.user.phone);
+    await _prefs.setString('image', authResponse.user.image);
   }
 
   Future<String?> getToken() async {

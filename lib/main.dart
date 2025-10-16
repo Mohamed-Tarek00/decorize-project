@@ -1,4 +1,3 @@
-import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/decorize_app.dart';
 import 'package:easy_localization/easy_localization.dart';
