@@ -11,13 +11,18 @@ class ResetPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('✅ ResetPasswordView build');
+
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: kScaffoldColor,
         body: BlocProvider(
-          create: (context) =>
-              ResetPasswordCubit(getIt.get<ResetPasswordUsecase>()),
+          create: (context) {
+            print('🟢 Cubit created');
+            return ResetPasswordCubit(getIt.get<ResetPasswordUsecase>());
+          },
           child: const ResetPasswordViewBody(),
         ),
       ),

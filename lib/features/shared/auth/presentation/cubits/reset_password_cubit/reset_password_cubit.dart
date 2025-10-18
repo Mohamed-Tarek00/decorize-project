@@ -14,6 +14,8 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   Future<void> resetPassword({
     required ResetPasswordRequestEntity entity,
   }) async {
+    print('🟡 inside cubit');
+
     emit(ResetPasswordCubitLoading());
     final result = await resetPasswordUsecase.call(entity);
     result.fold(

@@ -1,3 +1,4 @@
+import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
@@ -29,7 +30,11 @@ class ResetPasswordButtonSectiion extends StatelessWidget {
           final cache = getIt<CacheHelper>();
           cache.saveToken(token: response.accessToken);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('تم تغيير كلمة المرور بنجاح ✅')),
+            SnackBar(
+              elevation: 5,
+              backgroundColor: kPrimaryColor,
+              content: Text('تم تغيير كلمة المرور بنجاح ✅'),
+            ),
           );
           context.go(AppRouterNames.loginView);
         } else if (state is ResetPasswordCubitFailuer) {

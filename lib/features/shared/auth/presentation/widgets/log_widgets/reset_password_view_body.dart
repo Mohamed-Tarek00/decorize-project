@@ -1,8 +1,6 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/utils/validator.dart';
-import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/log_widgets/reset_password_button_sectiion.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/register_widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +21,12 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    print('🔥 ResetPasswordViewBody initState');
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _newPassword.dispose();
     _newPasswordConfirmation.dispose();
@@ -31,6 +35,7 @@ class _ResetPasswordViewBodyState extends State<ResetPasswordViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    print('✅ ResetPasswordViewBody build');
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
