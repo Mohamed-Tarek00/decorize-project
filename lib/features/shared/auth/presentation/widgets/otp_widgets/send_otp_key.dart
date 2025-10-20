@@ -28,7 +28,7 @@ class SendOtpKey extends StatelessWidget {
           final data = state.response;
           final user = data.user;
           final cache = getIt<CacheHelper>();
-          await cache.saveUserData(authResponse: data);
+          await cache.saveUserData(user: data.user);
           await cache.saveToken(token: data.accessToken);
           if (!context.mounted)
             return; // to avoid calling context if the widget is no longer in the tree

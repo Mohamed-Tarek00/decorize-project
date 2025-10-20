@@ -5,7 +5,7 @@ class UserEntity {
   final String type;
   final String? profession;
   final String phone;
-  final int status;
+  final int? status;
   final bool isVerified;
   final String image;
   final double? lat;
@@ -20,7 +20,7 @@ class UserEntity {
     required this.type,
     this.profession,
     required this.phone,
-    required this.status,
+    this.status,
     required this.isVerified,
     required this.image,
     this.lat,

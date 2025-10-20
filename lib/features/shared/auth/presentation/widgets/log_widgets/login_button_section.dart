@@ -32,7 +32,7 @@ class LoginButtonSection extends StatelessWidget {
           final response = state.response;
           final user = state.response.user;
           final cache = getIt<CacheHelper>();
-          await cache.saveUserData(authResponse: response);
+          await cache.saveUserData(user: response.user);
           await cache.saveToken(token: response.accessToken);
           if (user.isVerified) {
             if (user.type.toLowerCase() == 'worker') {

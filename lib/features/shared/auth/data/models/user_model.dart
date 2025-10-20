@@ -38,4 +38,22 @@ class UserModel extends UserEntity {
       cityId: json['city_id'],
     );
   }
+
+  UserEntity toEntity() {
+    return UserEntity(
+      id: id,
+      name: name,
+      email: email,
+      type: type,
+      profession: profession,
+      phone: phone,
+      status: status,
+      isVerified: isVerified,
+      image: image,
+      lat: lat,
+      long: long,
+      governorateId: governorateId,
+      cityId: cityId,
+    );
+  }
 }
