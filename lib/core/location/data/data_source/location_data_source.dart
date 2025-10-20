@@ -1,6 +1,20 @@
+import 'package:decorize_project/core/location/data/models/location_response_model.dart';
+import 'package:decorize_project/core/utils/location_api_service.dart';
+
 abstract class  LocationDataSource {
-  Future<String> getLocation({double latitude, double longitude , String language});
+  Future<LocationResponseModel> getLocation({ required double latitude, required double longitude , String language});
 }
-abstract class  LocationDataSourceImpl implements LocationDataSource {
-  Future<String> getLocation({double latitude, double longitude , String language});
+ class LocationDataSourceImpl implements LocationDataSource {
+    final LocationApiService locationApiService;
+  LocationDataSourceImpl( this.locationApiService);
+  @override
+  Future<LocationResponseModel> getLocation ({required double latitude,required double longitude , String language='ar'})async{
+ final response = await locationApiService.getReverseGeocode(
+      lat: latitude,
+      lon: longitude,
+      language: language) ;
+    return LocationResponseModel.fromJson(response);
+
+  }
+  
 }
