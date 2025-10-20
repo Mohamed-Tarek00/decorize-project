@@ -1,7 +1,6 @@
 import 'package:decorize_project/core/utils/geo_locator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AddLocationViewBody extends StatefulWidget {
@@ -32,13 +31,7 @@ class _AddLocationViewBodyState extends State<AddLocationViewBody> {
               setState(() {
                 _selectedLocation = position;
               });
-              final List<Placemark> placeMarks = await placemarkFromCoordinates(
-                _selectedLocation!.latitude,
-                _selectedLocation!.longitude,
-              );
-              if (placeMarks.isNotEmpty) {
-                final place = placeMarks.first;
-              }
+             
             },
             markers: _selectedLocation != null
                 ? {
