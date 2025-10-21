@@ -6,10 +6,11 @@ import 'package:decorize_project/features/worker/my_orders/presentation/view/my_
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 class CustomWorkerBottomNavBar extends StatefulWidget {
-  const CustomWorkerBottomNavBar({super.key});
-
+  const CustomWorkerBottomNavBar({super.key, this.position});
+  final Position? position;
   @override
   State<CustomWorkerBottomNavBar> createState() =>
       _CustomWorkerBottomNavBarState();

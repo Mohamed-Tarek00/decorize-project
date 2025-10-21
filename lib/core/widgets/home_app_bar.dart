@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeAppBar extends StatefulWidget {
-  const HomeAppBar({super.key, this.leadingWidget});
+  const HomeAppBar({
+    super.key,
+    this.leadingWidget,
+    this.userName,
+    this.userImage,
+  });
   final Widget? leadingWidget;
+  final String? userName;
+  final String? userImage;
 
   @override
   State<HomeAppBar> createState() => _HomeAppBarState();
@@ -43,13 +50,13 @@ class _HomeAppBarState extends State<HomeAppBar> {
           children: [
             CircleAvatar(
               radius: 25.r,
-              backgroundImage: AssetImage('assets/icons/usertestphoto.png'),
+              backgroundImage: AssetImage(widget.userImage!),
             ),
             SizedBox(width: 10.w),
             Column(
               children: [
                 Text('مرحبا بك !', style: Styles.textStyle16),
-                Text('يوسف السيد', style: Styles.textStyle16),
+                Text(widget.userName!, style: Styles.textStyle16),
               ],
             ),
             Spacer(),

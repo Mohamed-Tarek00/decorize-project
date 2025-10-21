@@ -1,13 +1,15 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/home_app_bar.dart';
+import 'package:decorize_project/features/shared/auth/domain/entities/user_entity.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_banner_widget.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WorkerHomeViewBody extends StatelessWidget {
-  const WorkerHomeViewBody({super.key});
+  const WorkerHomeViewBody({super.key, required this.user});
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class WorkerHomeViewBody extends StatelessWidget {
           color: Colors.white,
           height: MediaQuery.of(context).padding.top,
         ),
-        const HomeAppBar(),
+        HomeAppBar(userImage: user.image, userName: user.name),
         Expanded(
           child: SingleChildScrollView(
             child: Padding(

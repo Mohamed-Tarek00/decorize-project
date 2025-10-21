@@ -36,9 +36,9 @@ class LoginButtonSection extends StatelessWidget {
           await cache.saveToken(token: response.accessToken);
           if (user.isVerified) {
             if (user.type.toLowerCase() == 'worker') {
-              context.go(AppRouterNames.workerNavigationBar, extra: user);
+              context.go(AppRouterNames.workerNavigationBar, extra: position);
             } else if (user.type.toLowerCase() == 'client') {
-              context.go(AppRouterNames.userNavigationBar, extra: user);
+              context.go(AppRouterNames.userNavigationBar, extra: position);
             }
           } else {
             context.push(
