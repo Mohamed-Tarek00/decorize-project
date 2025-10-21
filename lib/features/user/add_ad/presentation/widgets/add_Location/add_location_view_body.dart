@@ -61,8 +61,9 @@ class _AddLocationViewBodyState extends State<AddLocationViewBody> {
               });
             },
           ),
+          
           _selectedLocation != null
-              ? EnterLocationSection()
+              ? EnterLocationSection(selectedLocation: _selectedLocation,)
               : SizedBox.shrink(),
         ],
       ),
