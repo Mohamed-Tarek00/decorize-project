@@ -1,3 +1,7 @@
+import 'package:decorize_project/core/location/cubit/location_cubit_cubit.dart';
+import 'package:decorize_project/core/location/data/data_source/location_data_source.dart';
+import 'package:decorize_project/core/location/data/repo_impl/location_repo_impl.dart';
+import 'package:decorize_project/core/location/domain/usecases/location_use_case.dart';
 import 'package:decorize_project/core/utils/api_service.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/dio_helper.dart';
@@ -43,6 +47,7 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<Dio>(() => dio);
 
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
+  //location api service
 // dio options for location api service
  final dioLocation = Dio(BaseOptions(
     baseUrl: LocationApiService.baseUrl,
@@ -51,7 +56,15 @@ Future<void> setupServiceLocator() async {
         'Content-Type': 'application/json',
       },
   ));
-  getIt.registerLazySingleton<LocationApiService>(() => LocationApiService(dioLocation));
+
+ getIt.registerLazySingleton<LocationApiService>(() => LocationApiService(dioLocation));
+ getIt.registerLazySingleton<LocationDataSourceImpl>(() => LocationDataSourceImpl(getIt<LocationApiService>()));
+ getIt.registerLazySingleton<LocationRepoImpl>(() => LocationRepoImpl(getIt<LocationDataSourceImpl>()));
+ getIt.registerLazySingleton<LocationUseCase>(() => LocationUseCase(getIt<LocationRepoImpl>()));
+ getIt.registerFactory<LocationCubit>(
+    () => LocationCubit(getIt<LocationUseCase>()),
+  );
+////////////////
   getIt.registerLazySingleton<SplashRemoteDataSource>(
     () => SplashRemoteDataSourceImpl(apiService: getIt<ApiService>()),
   );
