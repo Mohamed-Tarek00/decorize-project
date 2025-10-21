@@ -30,8 +30,9 @@ class SendOtpKey extends StatelessWidget {
           final cache = getIt<CacheHelper>();
           await cache.saveUserData(user: data.user);
           await cache.saveToken(token: data.accessToken);
-          if (!context.mounted)
+          if (!context.mounted) {
             return; // to avoid calling context if the widget is no longer in the tree
+          }
           if (purpose == 'register' || purpose == 'login_verification') {
             if (user.type == 'client') {
               context.go(AppRouterNames.userNavigationBar);

@@ -19,6 +19,11 @@ import 'package:decorize_project/features/shared/auth/domain/usecases/forget_pas
 import 'package:decorize_project/features/shared/auth/domain/usecases/login_usecase.dart';
 import 'package:decorize_project/features/shared/auth/domain/usecases/reset_password_usecase.dart';
 import 'package:decorize_project/features/shared/log_out_stream.dart';
+import 'package:decorize_project/features/shared/profile/data/data_source/profile_data_source.dart';
+import 'package:decorize_project/features/shared/profile/data/repo_impl/profile_repo_impl.dart';
+import 'package:decorize_project/features/shared/profile/domain/repos/profile_repo.dart';
+import 'package:decorize_project/features/shared/profile/domain/usecases/profile_usecase.dart';
+import 'package:decorize_project/features/shared/profile/domain/usecases/worker_details_usecase.dart';
 import 'package:decorize_project/features/shared/splash/data/data_source/splash_remote_data_source.dart';
 import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
 import 'package:decorize_project/features/shared/splash/domain/repo/splash_repo.dart';
@@ -100,5 +105,21 @@ Future<void> setupServiceLocator() async {
   );
   getIt.registerLazySingleton<ResetPasswordUsecase>(
     () => ResetPasswordUsecase(authRepo: getIt.get<AuthRepo>()),
+  );
+
+  getIt.registerLazySingleton<ProfileDataSource>(
+    () => ProfileDataSourceImpl(getIt.get<ApiService>()),
+  );
+
+  getIt.registerLazySingleton<ProfileRepo>(
+    () => ProfileRepoImpl(getIt.get<ProfileDataSource>()),
+  );
+
+  getIt.registerLazySingleton<ProfileUsecase>(
+    () => ProfileUsecase(getIt.get<ProfileRepo>()),
+  );
+
+  getIt.registerLazySingleton<WorkerDetailsUsecase>(
+    () => WorkerDetailsUsecase(getIt.get<ProfileRepo>()),
   );
 }

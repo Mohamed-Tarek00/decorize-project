@@ -1,8 +1,11 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/foreget_password_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/login_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/reset_password_view.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/on_boarding_view.dart';
+import 'package:decorize_project/features/shared/profile/domain/usecases/profile_usecase.dart';
+import 'package:decorize_project/features/shared/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/otp_auth.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/register_view.dart';
@@ -28,6 +31,7 @@ import 'package:decorize_project/features/worker/more/presentation/view/worker_p
 import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
 import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
@@ -101,7 +105,12 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouterNames.workerNavigationBar,
         builder: (BuildContext context, GoRouterState state) {
-          return CustomWorkerBottomNavBar();
+          final position = state.extra as Position?;
+          return BlocProvider(
+            create: (context) =>
+                ProfileCubit(getIt.get<ProfileUsecase>())..loadProfile(),
+            child: CustomWorkerBottomNavBar(position: position),
+          );
         },
       ),
       GoRoute(
