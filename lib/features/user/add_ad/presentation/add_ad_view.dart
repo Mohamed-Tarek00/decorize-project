@@ -1,4 +1,4 @@
-import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad_view_body.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad/add_ad_view_body.dart';
 import 'package:flutter/material.dart';
 
 class AddAdView extends StatelessWidget {
