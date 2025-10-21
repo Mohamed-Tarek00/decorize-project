@@ -1,4 +1,4 @@
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_request_card.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/job_request_card.dart';
 import 'package:flutter/material.dart';
 
 class JobList extends StatelessWidget {

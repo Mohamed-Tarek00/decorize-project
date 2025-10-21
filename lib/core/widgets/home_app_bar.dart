@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/core/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -48,10 +49,13 @@ class _HomeAppBarState extends State<HomeAppBar> {
 
         child: Row(
           children: [
-            CircleAvatar(
-              radius: 25.r,
-              backgroundImage: AssetImage(widget.userImage!),
+            CustomNetworkImage(
+              imageUrl: widget.userImage!,
+              height: 40.h,
+              width: 40.w,
+              shape: ImageShape.circle,
             ),
+
             SizedBox(width: 10.w),
             Column(
               children: [

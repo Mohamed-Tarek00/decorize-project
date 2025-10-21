@@ -2,8 +2,8 @@ import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/home_app_bar.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/user_entity.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_banner_widget.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_list.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/custom_banner_widget.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/job_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

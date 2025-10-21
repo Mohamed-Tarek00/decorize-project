@@ -1,6 +1,6 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/features/shared/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/worker_home_view_body.dart';
+import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/worker_home_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
