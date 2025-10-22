@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:decorize_project/core/utils/logic_images.dart';
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad/add_another_image_card.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad/add_image_card.dart';
+import 'package:decorize_project/features/user/add_ad/presentation/widgets/add_ad/remove_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddPhotosSection extends StatefulWidget {
@@ -33,19 +35,7 @@ class _AddPhotosSectionState extends State<AddPhotosSection> {
                 setState(() {});
               },
 
-              child: Container(
-                padding: EdgeInsets.all(8.sp),
-                width: double.infinity,
-                height: 100.h,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 1.5, color: Colors.grey.shade300),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-                child: Center(
-                  child: SvgPicture.asset('assets/icons/add_photo.svg'),
-                ),
-              ),
+              child:AddImageCard()
             )
           else
             GridView.builder(
@@ -67,16 +57,7 @@ class _AddPhotosSectionState extends State<AddPhotosSection> {
                       setState(() {});
                     },
 
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1.5,
-                          color: Colors.grey.shade300,
-                        ),
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: const Icon(Icons.add, color: Colors.grey),
-                    ),
+                    child: AddAnotherImageCard()
                   );
                 }
 
@@ -92,25 +73,12 @@ class _AddPhotosSectionState extends State<AddPhotosSection> {
                         height: double.infinity,
                       ),
                     ),
-                    Positioned(
-                      top: 4.h,
-                      right: 4.w,
-                      child: GestureDetector(
-                        onTap: () => setState(() {
-                          LogicImages.removeImage(index, _images);
-                        }),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.black54,
-                          ),
-                          child: const Icon(
-                            Icons.close,
-                            color: Colors.white,
-                            size: 16,
-                          ),
-                        ),
-                      ),
+                 RemoveImageWidget(
+                      onTap: () {
+                        setState(() {
+                          _images.removeAt(index);
+                        });
+                      },
                     ),
                   ],
                 );
@@ -121,3 +89,4 @@ class _AddPhotosSectionState extends State<AddPhotosSection> {
     );
   }
 }
+
