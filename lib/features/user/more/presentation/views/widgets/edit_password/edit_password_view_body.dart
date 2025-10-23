@@ -15,6 +15,9 @@ class _EditPasswordViewBodyState extends State<EditPasswordViewBody> {
   bool oldObsecureText = false;
   bool newObsecureText = false;
   bool confirmObsecureText = false;
+  TextEditingController oldPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,9 @@ class _EditPasswordViewBodyState extends State<EditPasswordViewBody> {
                   hintText: 'ادخل كلمة المرور القديمة',
                   iconPath: 'assets/icons/lock.svg',
                   height: 50.h,
+                  controller: oldPasswordController,
                   obscureText: oldObsecureText,
+
                   suffixIcon: ShowOrHidePass(
                     onToggle: () {
                       setState(() {
@@ -57,6 +62,8 @@ class _EditPasswordViewBodyState extends State<EditPasswordViewBody> {
                   hintText: 'ادخل كلمة المرور القديمة',
                   iconPath: 'assets/icons/lock.svg',
                   height: 50.h,
+
+                  controller: newPasswordController,
                   obscureText: newObsecureText,
                   suffixIcon: ShowOrHidePass(
                     onToggle: () {
@@ -72,6 +79,7 @@ class _EditPasswordViewBodyState extends State<EditPasswordViewBody> {
                   hintText: 'ادخل كلمة المرور القديمة',
                   iconPath: 'assets/icons/lock.svg',
                   height: 50.h,
+                  controller: confirmPasswordController,
                   obscureText: confirmObsecureText,
                   suffixIcon: ShowOrHidePass(
                     onToggle: () {
