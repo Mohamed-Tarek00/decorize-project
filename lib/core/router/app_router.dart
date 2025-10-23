@@ -13,6 +13,7 @@ import 'package:decorize_project/features/user/add_ad/presentation/add_ad_view.d
 import 'package:decorize_project/features/user/add_ad/presentation/add_location_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/ad_details_view.dart';
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
+import 'package:decorize_project/features/user/more/presentation/views/edit_passowrd_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/edit_user_profile_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/contact_us_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/privacy_policy_view.dart';
@@ -227,6 +228,12 @@ abstract class AppRouter {
         path: AppRouterNames.addLocationView,
         builder: (BuildContext context, GoRouterState state) {
           return AddLocationView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.editPasswordView,
+        builder: (BuildContext context, GoRouterState state) {
+          return EditPassowrdView();
         },
       ),
     ],

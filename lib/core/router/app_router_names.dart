@@ -26,4 +26,5 @@ class AppRouterNames {
   static const editUserProfileView = '/editUserProfileView';
   static const contactUsView = '/contactUsView';
   static const addLocationView = '/addLocationView';
+  static const editPasswordView = '/editPasswordView';
 }
