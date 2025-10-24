@@ -1,6 +1,5 @@
 import 'package:decorize_project/core/router/app_router.dart';
 import 'package:decorize_project/core/router/app_router_names.dart';
-import 'package:decorize_project/core/utils/api_service.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/features/shared/log_out_stream.dart';
@@ -8,11 +7,12 @@ import 'package:dio/dio.dart';
 import 'package:go_router/go_router.dart';
 
 class DioHelper {
+  static const String baseUrl = 'https://docorizer.ghonim.makkah.solutions/v1/';
   DioHelper();
   Dio createDio() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: ApiService.baseUrl,
+        baseUrl: baseUrl,
         validateStatus: (status) => status != null && status < 400,
         headers: {
           'Accept': 'application/json',

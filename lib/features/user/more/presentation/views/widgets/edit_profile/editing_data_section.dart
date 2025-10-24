@@ -59,7 +59,7 @@ class _EditingDataSectionState extends State<EditingDataSection> {
             ),
             CustomTextFormField(
               name: 'كلمة المرور',
-              hintText: '***************',
+              hintText: '*********',
               readOnly: true,
               iconPath: 'assets/icons/lock.svg',
               height: 50.h,

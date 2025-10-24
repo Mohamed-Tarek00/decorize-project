@@ -36,21 +36,18 @@ class _EditPassowrdViewState extends State<EditPasswordView> {
           color: Colors.white,
           child: BlocConsumer<EditPasswordCubit, EditPasswordState>(
             listener: (context, state) {
-              (context, state) {
-                if (state is EditPasswordSuccess) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('تم تعديل كلمة المرور بنجاح ✅'),
-                    ),
-                  );
-                  Navigator.pop(context);
-                } else if (state is EditPasswordFailure) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(state.toString())));
-                }
-              };
+              if (state is EditPasswordSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('تم تعديل كلمة المرور بنجاح')),
+                );
+                Navigator.pop(context);
+              } else if (state is EditPasswordFailure) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.error)));
+              }
             },
+
             builder: (context, state) {
               return Center(
                 child: state is EditPasswordLoading

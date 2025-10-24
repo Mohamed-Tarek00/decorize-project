@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:decorize_project/core/utils/cache_helper.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/features/user/more/domain/entities/edit_password_entity.dart';
 import 'package:decorize_project/features/user/more/domain/usecases/edit_password_use_case.dart';
 part 'edit_password_state.dart';
@@ -22,8 +24,11 @@ class EditPasswordCubit extends Cubit<EditPasswordState> {
       (failure) {
         emit(EditPasswordFailure(failure.toString()));
       },
-      (data) {
+      (data) async {
         emit(EditPasswordSuccess(data));
+        final token = data['access_token'];
+
+        await getIt<CacheHelper>().saveToken(token: token);
       },
     );
   }
