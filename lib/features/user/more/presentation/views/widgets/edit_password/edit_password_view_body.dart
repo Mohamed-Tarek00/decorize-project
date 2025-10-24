@@ -5,8 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditPasswordViewBody extends StatefulWidget {
-  const EditPasswordViewBody({super.key});
-
+  const EditPasswordViewBody({
+    super.key,
+    required this.oldPasswordController,
+    required this.newPasswordController,
+    required this.confirmPasswordController,
+  });
+  final TextEditingController oldPasswordController;
+  final TextEditingController newPasswordController;
+  final TextEditingController confirmPasswordController;
   @override
   State<EditPasswordViewBody> createState() => _EditPasswordViewBodyState();
 }
@@ -15,86 +22,85 @@ class _EditPasswordViewBodyState extends State<EditPasswordViewBody> {
   bool oldObsecureText = false;
   bool newObsecureText = false;
   bool confirmObsecureText = false;
-  TextEditingController oldPasswordController = TextEditingController();
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).padding.top),
-        CustomAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          headingText: 'تعديل كلمة المرور',
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).padding.top),
+          CustomAppBar(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            headingText: 'تعديل كلمة المرور',
+          ),
 
-        Padding(
-          padding: EdgeInsets.all(12.sp),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Column(
-              children: [
-                CustomTextFormField(
-                  name: 'كلمة المرور القديمة',
-                  hintText: 'ادخل كلمة المرور القديمة',
-                  iconPath: 'assets/icons/lock.svg',
-                  height: 50.h,
-                  controller: oldPasswordController,
-                  obscureText: oldObsecureText,
+          Padding(
+            padding: EdgeInsets.all(12.sp),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Column(
+                children: [
+                  CustomTextFormField(
+                    name: 'كلمة المرور القديمة',
+                    hintText: 'ادخل كلمة المرور القديمة',
+                    iconPath: 'assets/icons/lock.svg',
+                    height: 50.h,
+                    controller: widget.oldPasswordController,
+                    obscureText: oldObsecureText,
 
-                  suffixIcon: ShowOrHidePass(
-                    onToggle: () {
-                      setState(() {
-                        oldObsecureText = !oldObsecureText;
-                      });
-                    },
-                    obsecureText: oldObsecureText,
+                    suffixIcon: ShowOrHidePass(
+                      onToggle: () {
+                        setState(() {
+                          oldObsecureText = !oldObsecureText;
+                        });
+                      },
+                      obsecureText: oldObsecureText,
+                    ),
                   ),
-                ),
-                CustomTextFormField(
-                  name: 'كلمة المرور القديمة',
-                  hintText: 'ادخل كلمة المرور القديمة',
-                  iconPath: 'assets/icons/lock.svg',
-                  height: 50.h,
+                  CustomTextFormField(
+                    name: 'كلمة المرور الجديدة',
+                    hintText: 'ادخل كلمة المرور الجديدة',
+                    iconPath: 'assets/icons/lock.svg',
+                    height: 50.h,
 
-                  controller: newPasswordController,
-                  obscureText: newObsecureText,
-                  suffixIcon: ShowOrHidePass(
-                    onToggle: () {
-                      setState(() {
-                        newObsecureText = !newObsecureText;
-                      });
-                    },
-                    obsecureText: newObsecureText,
+                    controller: widget.newPasswordController,
+                    obscureText: newObsecureText,
+                    suffixIcon: ShowOrHidePass(
+                      onToggle: () {
+                        setState(() {
+                          newObsecureText = !newObsecureText;
+                        });
+                      },
+                      obsecureText: newObsecureText,
+                    ),
                   ),
-                ),
-                CustomTextFormField(
-                  name: 'كلمة المرور القديمة',
-                  hintText: 'ادخل كلمة المرور القديمة',
-                  iconPath: 'assets/icons/lock.svg',
-                  height: 50.h,
-                  controller: confirmPasswordController,
-                  obscureText: confirmObsecureText,
-                  suffixIcon: ShowOrHidePass(
-                    onToggle: () {
-                      setState(() {
-                        confirmObsecureText = !confirmObsecureText;
-                      });
-                    },
-                    obsecureText: confirmObsecureText,
+                  CustomTextFormField(
+                    name: 'تأكيد كلمة المرور',
+                    hintText: 'اعد كتابة كلمة المرور الجديدة',
+                    iconPath: 'assets/icons/lock.svg',
+                    height: 50.h,
+                    controller: widget.confirmPasswordController,
+                    obscureText: confirmObsecureText,
+                    suffixIcon: ShowOrHidePass(
+                      onToggle: () {
+                        setState(() {
+                          confirmObsecureText = !confirmObsecureText;
+                        });
+                      },
+                      obsecureText: confirmObsecureText,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
