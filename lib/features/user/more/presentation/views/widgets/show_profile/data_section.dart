@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class EditingDataSection extends StatelessWidget {
-  const EditingDataSection({
+class DataSection extends StatelessWidget {
+  const DataSection({
     super.key,
     required this.nameController,
     required this.phoneController,
@@ -18,7 +18,7 @@ class EditingDataSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12.sp),
+      padding: EdgeInsets.all(12.r),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -29,7 +29,7 @@ class EditingDataSection extends StatelessWidget {
             CustomTextFormField(
               controller: nameController,
               name: 'الاسم',
-              hintText: 'احمد محمد',
+              hintText: 'الاسم',
               readOnly: true,
               iconPath: 'assets/icons/profile.svg',
               height: 50.h,
@@ -37,7 +37,7 @@ class EditingDataSection extends StatelessWidget {
             CustomTextFormField(
               controller: phoneController,
               name: 'رقم الجوال',
-              hintText: '+966 25676461668',
+              hintText: 'رقم الجوال',
               readOnly: true,
               iconPath: 'assets/icons/phone.svg',
               height: 50.h,

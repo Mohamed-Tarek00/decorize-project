@@ -19,7 +19,7 @@ class ShowUserProfile extends StatelessWidget {
         child: Center(
           child: CustomButton(
             onPressed: () {
-              context.go(AppRouterNames.editUserProfileView);
+              context.push(AppRouterNames.editUserProfileView);
             },
             text: 'تعديل',
           ),

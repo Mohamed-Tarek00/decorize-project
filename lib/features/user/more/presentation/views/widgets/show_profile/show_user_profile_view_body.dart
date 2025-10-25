@@ -3,7 +3,7 @@ import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/more/presentation/views/widgets/show_profile/change_picture_section.dart';
-import 'package:decorize_project/features/user/more/presentation/views/widgets/show_profile/editing_data_section.dart';
+import 'package:decorize_project/features/user/more/presentation/views/widgets/show_profile/data_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,7 +52,7 @@ class _EditUserProfileViewBodyState extends State<ShowUserProfileBody> {
           ChangePictureSection(),
           SizedBox(height: 10.h),
           Text(nameController.text, style: Styles.textStyle18),
-          EditingDataSection(
+          DataSection(
             nameController: nameController,
             phoneController: phoneController,
           ),
