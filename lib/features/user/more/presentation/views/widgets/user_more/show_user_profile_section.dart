@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class EditUserProfileSection extends StatelessWidget {
-  const EditUserProfileSection({super.key});
+class ShowUserProfileSection extends StatelessWidget {
+  const ShowUserProfileSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(AppRouterNames.editUserProfileView);
+        context.push(AppRouterNames.showUserProfile);
       },
       child: Padding(
         padding: EdgeInsets.all(12.sp),

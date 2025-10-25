@@ -2,30 +2,29 @@ import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
-import 'package:decorize_project/features/user/more/presentation/views/widgets/edit_profile/change_picture_section.dart';
-import 'package:decorize_project/features/user/more/presentation/views/widgets/edit_profile/editing_data_section.dart';
+import 'package:decorize_project/features/user/more/presentation/views/widgets/show_profile/change_picture_section.dart';
+import 'package:decorize_project/features/user/more/presentation/views/widgets/show_profile/editing_data_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EditUserProfileViewBody extends StatefulWidget {
-  const EditUserProfileViewBody({super.key});
+class ShowUserProfileBody extends StatefulWidget {
+  const ShowUserProfileBody({super.key});
 
   @override
-  State<EditUserProfileViewBody> createState() =>
-      _EditUserProfileViewBodyState();
+  State<ShowUserProfileBody> createState() => _EditUserProfileViewBodyState();
 }
 
-class _EditUserProfileViewBodyState extends State<EditUserProfileViewBody> {
+class _EditUserProfileViewBodyState extends State<ShowUserProfileBody> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
   Future<void> _loadUserData() async {
-    final _cacheHelper = await getIt<CacheHelper>();
-    final _cacheUser = await _cacheHelper.getUserProfile();
-    if (_cacheUser != null) {
+    final cacheHelper = await getIt<CacheHelper>();
+    final cacheUser = await cacheHelper.getUserProfile();
+    if (cacheUser != null) {
       setState(() {
-        nameController.text = _cacheUser.name;
-        phoneController.text = _cacheUser.phone;
+        nameController.text = cacheUser.name;
+        phoneController.text = cacheUser.phone;
       });
     }
   }

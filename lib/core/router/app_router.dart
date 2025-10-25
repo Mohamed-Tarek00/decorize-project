@@ -15,6 +15,7 @@ import 'package:decorize_project/features/user/ads/presentation/ad_details_view.
 import 'package:decorize_project/features/user/ads/presentation/widgets/ad_model.dart';
 import 'package:decorize_project/features/user/more/presentation/views/edit_password_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/edit_user_profile_view.dart';
+import 'package:decorize_project/features/user/more/presentation/views/show_user_profile_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/contact_us_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/privacy_policy_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/saved_design_view.dart';
@@ -213,9 +214,9 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: AppRouterNames.editUserProfileView,
+        path: AppRouterNames.showUserProfile,
         builder: (BuildContext context, GoRouterState state) {
-          return EditUserProfileView();
+          return ShowUserProfile();
         },
       ),
       GoRoute(
@@ -234,6 +235,12 @@ abstract class AppRouter {
         path: AppRouterNames.editPasswordView,
         builder: (BuildContext context, GoRouterState state) {
           return EditPasswordView();
+        },
+      ),
+      GoRoute(
+        path: AppRouterNames.editUserProfileView,
+        builder: (BuildContext context, GoRouterState state) {
+          return EditUserProfileView();
         },
       ),
     ],
