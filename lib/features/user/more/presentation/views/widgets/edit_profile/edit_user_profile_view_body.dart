@@ -1,3 +1,5 @@
+import 'package:decorize_project/core/utils/cache_helper.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/more/presentation/views/widgets/edit_profile/change_picture_section.dart';
@@ -15,6 +17,25 @@ class EditUserProfileViewBody extends StatefulWidget {
 
 class _EditUserProfileViewBodyState extends State<EditUserProfileViewBody> {
   TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
+  Future<void> _loadUserData() async {
+    final _cacheHelper = await getIt<CacheHelper>();
+    final _cacheUser = await _cacheHelper.getUserProfile();
+    if (_cacheUser != null) {
+      setState(() {
+        nameController.text = _cacheUser.name;
+        phoneController.text = _cacheUser.phone;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +52,11 @@ class _EditUserProfileViewBodyState extends State<EditUserProfileViewBody> {
           SizedBox(height: 10.h),
           ChangePictureSection(),
           SizedBox(height: 10.h),
-          Text('احمد محمد', style: Styles.textStyle18),
-          EditingDataSection(),
+          Text(nameController.text, style: Styles.textStyle18),
+          EditingDataSection(
+            nameController: nameController,
+            phoneController: phoneController,
+          ),
         ],
       ),
     );

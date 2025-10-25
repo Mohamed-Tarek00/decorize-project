@@ -55,6 +55,10 @@ class CustomTextFormField extends StatelessWidget {
               maxLines: isDescription ? null : 1,
               validator: validator,
               controller: controller,
+              style: Styles.textStyle14.copyWith(
+                color: readOnly ? Colors.grey : Colors.black,
+              ),
+
               keyboardType: textInputType,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
