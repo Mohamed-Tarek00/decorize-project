@@ -36,7 +36,9 @@ import 'package:decorize_project/features/shared/splash/domain/use_cases/check_t
 import 'package:decorize_project/features/user/more/data/data_source/more_data_source.dart';
 import 'package:decorize_project/features/user/more/data/repo_impl/more_repo_imp.dart';
 import 'package:decorize_project/features/user/more/domain/usecases/edit_password_use_case.dart';
+import 'package:decorize_project/features/user/more/domain/usecases/edit_profile_use_case.dart';
 import 'package:decorize_project/features/user/more/presentation/cubits/edit_password/edit_password_cubit.dart';
+import 'package:decorize_project/features/user/more/presentation/cubits/edit_profile/edit_profile_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -170,5 +172,11 @@ Future<void> setupServiceLocator() async {
   );
   getIt.registerFactory<EditPasswordCubit>(
     () => EditPasswordCubit(getIt<EditPasswordUseCase>()),
+  );
+  getIt.registerLazySingleton<EditProfileUseCase>(
+    () => EditProfileUseCase(repo: getIt<MoreRepoImp>()),
+  );
+  getIt.registerFactory<EditProfileCubit>(
+    () => EditProfileCubit(getIt<EditProfileUseCase>()),
   );
 }

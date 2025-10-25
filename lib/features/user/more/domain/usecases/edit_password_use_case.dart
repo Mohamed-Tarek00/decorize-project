@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:decorize_project/core/errors/failure.dart';
-import 'package:decorize_project/features/user/more/data/repo_impl/more_repo_imp.dart';
 import 'package:decorize_project/features/user/more/domain/entities/edit_password_entity.dart';
+import 'package:decorize_project/features/user/more/domain/repo/more_repo.dart';
 
 class EditPasswordUseCase {
-  final MoreRepoImp repo;
+  final MoreRepo repo;
   EditPasswordUseCase(this.repo);
   Future<Either<Failure, Map<String, dynamic>>> call(
     EditPasswordEntity entity,
