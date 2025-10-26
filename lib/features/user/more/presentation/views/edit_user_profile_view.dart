@@ -1,6 +1,4 @@
 import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/core/router/app_router.dart';
-import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
@@ -28,10 +26,8 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
     final cacheHelper = getIt<CacheHelper>();
     final cacheUser = await cacheHelper.getUserProfile();
     if (cacheUser != null) {
-      setState(() {
-        nameController.text = cacheUser.name;
-        phoneController.text = cacheUser.phone;
-      });
+      nameController.text = cacheUser.name;
+      phoneController.text = cacheUser.phone;
     }
   }
 
@@ -55,7 +51,7 @@ class _EditUserProfileViewState extends State<EditUserProfileView> {
               ),
             );
             if (context.mounted) {
-              Navigator.pop(context, true);
+              context.pop(true);
             }
           } else if (state is EditProfileFailure) {
             ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,3 @@
-import 'package:decorize_project/core/utils/cache_helper.dart';
-import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/user/more/presentation/views/widgets/show_profile/change_picture_section.dart';
@@ -7,39 +5,11 @@ import 'package:decorize_project/features/user/more/presentation/views/widgets/s
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ShowUserProfileViewBody extends StatefulWidget {
-  const ShowUserProfileViewBody({super.key});
-  static _EditUserProfileViewBodyState? of(BuildContext context) {
-    return context.findAncestorStateOfType<_EditUserProfileViewBodyState>();
-  }
+class ShowUserProfileViewBody extends StatelessWidget {
+  const ShowUserProfileViewBody({super.key, required this.nameController, required this.phoneController});
 
-  @override
-  State<ShowUserProfileViewBody> createState() =>
-      _EditUserProfileViewBodyState();
-}
-
-class _EditUserProfileViewBodyState extends State<ShowUserProfileViewBody> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-
-  Future<void> loadUserProfile() async {
-    final cacheHelper = await getIt<CacheHelper>();
-    final cacheUser = await cacheHelper.getUserProfile();
-    if (cacheUser != null) {
-      setState(() {
-        nameController.text = cacheUser.name;
-        phoneController.text = cacheUser.phone;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    loadUserProfile();
-  }
-
+ final   TextEditingController nameController;
+  final TextEditingController phoneController ;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

@@ -22,9 +22,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         emit(EditProfileFailure(failure.toString()));
       },
       (data) async {
-        emit(EditProfileSuccess(data));
-
         await getIt<CacheHelper>().saveUserData(user: data);
+        emit(EditProfileSuccess(data));
       },
     );
   }
