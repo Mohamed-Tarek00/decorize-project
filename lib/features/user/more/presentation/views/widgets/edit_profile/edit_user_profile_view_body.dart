@@ -1,4 +1,3 @@
-import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/core/utils/validator.dart';
 import 'package:decorize_project/core/widgets/custom_app_bar.dart';
 import 'package:decorize_project/features/shared/auth/presentation/widgets/register_widgets/custom_text_form_field.dart';
@@ -39,7 +38,6 @@ class _EditUserProfileViewBodyState extends State<EditUserProfileViewBody> {
             ),
             SizedBox(height: 10.h),
             ChangePictureSection(),
-            Text(widget.nameController.text, style: Styles.textStyle18),
 
             SizedBox(height: 10.h),
             Padding(

@@ -5,21 +5,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class ShowUserProfile extends StatelessWidget {
+class ShowUserProfile extends StatefulWidget {
   const ShowUserProfile({super.key});
 
+  @override
+  State<ShowUserProfile> createState() => _ShowUserProfileState();
+}
+
+class _ShowUserProfileState extends State<ShowUserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffF2F2F2),
-      body: ShowUserProfileBody(),
+      body: ShowUserProfileViewBody(),
       bottomNavigationBar: Container(
         height: 80.h,
         color: Colors.white,
         child: Center(
           child: CustomButton(
-            onPressed: () {
-              context.push(AppRouterNames.editUserProfileView);
+            onPressed: () async {
+              final result = await context.push<bool>(
+                AppRouterNames.editUserProfileView,
+              );
+
+              if (result == true) {}
             },
             text: 'تعديل',
           ),

@@ -7,18 +7,22 @@ import 'package:decorize_project/features/user/more/presentation/views/widgets/s
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ShowUserProfileBody extends StatefulWidget {
-  const ShowUserProfileBody({super.key});
+class ShowUserProfileViewBody extends StatefulWidget {
+  const ShowUserProfileViewBody({super.key});
+  static _EditUserProfileViewBodyState? of(BuildContext context) {
+    return context.findAncestorStateOfType<_EditUserProfileViewBodyState>();
+  }
 
   @override
-  State<ShowUserProfileBody> createState() => _EditUserProfileViewBodyState();
+  State<ShowUserProfileViewBody> createState() =>
+      _EditUserProfileViewBodyState();
 }
 
-class _EditUserProfileViewBodyState extends State<ShowUserProfileBody> {
+class _EditUserProfileViewBodyState extends State<ShowUserProfileViewBody> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  Future<void> _loadUserData() async {
+  Future<void> loadUserProfile() async {
     final cacheHelper = await getIt<CacheHelper>();
     final cacheUser = await cacheHelper.getUserProfile();
     if (cacheUser != null) {
@@ -33,7 +37,7 @@ class _EditUserProfileViewBodyState extends State<ShowUserProfileBody> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _loadUserData();
+    loadUserProfile();
   }
 
   @override

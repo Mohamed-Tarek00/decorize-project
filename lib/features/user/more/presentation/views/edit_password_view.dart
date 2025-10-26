@@ -12,46 +12,59 @@ class EditPasswordView extends StatefulWidget {
   const EditPasswordView({super.key});
 
   @override
-  State<EditPasswordView> createState() => _EditPassowrdViewState();
+  State<EditPasswordView> createState() => _EditPasswordViewState();
 }
 
-class _EditPassowrdViewState extends State<EditPasswordView> {
+class _EditPasswordViewState extends State<EditPasswordView> {
   final oldPasswordController = TextEditingController();
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
   @override
+  void dispose() {
+    oldPasswordController.dispose();
+    newPasswordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<EditPasswordCubit>(),
-      child: Scaffold(
-        body: EditPasswordViewBody(
-          oldPasswordController: oldPasswordController,
-          newPasswordController: newPasswordController,
-          confirmPasswordController: confirmPasswordController,
-        ),
-        backgroundColor: kScaffoldColor,
-        bottomNavigationBar: Container(
-          height: 80.h,
-          color: Colors.white,
-          child: BlocConsumer<EditPasswordCubit, EditPasswordState>(
-            listener: (context, state) {
-              if (state is EditPasswordSuccess) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('تم تعديل كلمة المرور بنجاح')),
-                );
-                Navigator.pop(context);
-              } else if (state is EditPasswordFailure) {
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text(state.error)));
-              }
-            },
-
-            builder: (context, state) {
-              return Center(
+      child: BlocConsumer<EditPasswordCubit, EditPasswordState>(
+        listener: (context, state) {
+          if (state is EditPasswordSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('تم تعديل كلمة المرور بنجاح ✅'),
+                backgroundColor: Colors.green,
+              ),
+            );
+            if (context.mounted) Navigator.pop(context);
+          } else if (state is EditPasswordFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.error), backgroundColor: Colors.red),
+            );
+          }
+        },
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: kScaffoldColor,
+            body: AbsorbPointer(
+              absorbing: state is EditPasswordLoading,
+              child: EditPasswordViewBody(
+                oldPasswordController: oldPasswordController,
+                newPasswordController: newPasswordController,
+                confirmPasswordController: confirmPasswordController,
+              ),
+            ),
+            bottomNavigationBar: Container(
+              height: 80.h,
+              color: Colors.white,
+              child: Center(
                 child: state is EditPasswordLoading
-                    ? CustomLoadingIndicator()
+                    ? const AbsorbPointer(child: CustomLoadingIndicator())
                     : CustomButton(
                         onPressed: () {
                           if (!mounted) return;
@@ -64,10 +77,10 @@ class _EditPassowrdViewState extends State<EditPasswordView> {
                         },
                         text: 'تعديل',
                       ),
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

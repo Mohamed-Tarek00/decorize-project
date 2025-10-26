@@ -7,18 +7,29 @@ class CustomLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: ScreenSize.getWidgethighet(percantage: .07, context: context),
-      width: ScreenSize.getWidgetWidth(percantage: .9, context: context),
-      decoration: BoxDecoration(
-        color: Color(0xff0C5137),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
-        child: SizedBox(
-          height: 24.h,
-          width: 24.w,
-          child: CircularProgressIndicator(color: Colors.white),
+    final height = ScreenSize.getWidgethighet(
+      percantage: .06,
+      context: context,
+    );
+    final width = 335.w;
+
+    return SizedBox(
+      height: height,
+      width: width,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: const Color(0xff0C5137),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: SizedBox(
+            height: 20.h,
+            width: 20.w,
+            child: const CircularProgressIndicator(
+              strokeWidth: 2.5,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
+          ),
         ),
       ),
     );
