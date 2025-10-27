@@ -18,7 +18,7 @@ class ChangePictureSection extends StatelessWidget {
           left: 0,
           child: CircleAvatar(
             radius: 15.r,
-            backgroundColor: Colors.grey.shade200, // لون خلفية اختياري
+            backgroundColor: Colors.grey.shade200,
             child: SvgPicture.asset(
               'assets/icons/edit.svg',
               width: 20.w,

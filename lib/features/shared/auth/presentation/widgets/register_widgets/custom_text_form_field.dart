@@ -12,13 +12,14 @@ class CustomTextFormField extends StatelessWidget {
 
     this.iconPath,
     this.validator,
-    required this.controller,
+    this.controller,
     this.nameTextStyle,
     this.suffixIcon,
     this.isDescription = false,
     this.textInputType = TextInputType.text,
-    this.enabled = true,
+    this.readOnly = false,
     this.height,
+    this.obscureText = false,
   });
   final String name;
   final TextStyle? nameTextStyle;
@@ -29,8 +30,9 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool isDescription;
   final TextInputType textInputType;
-  final bool enabled;
+  final bool readOnly;
   final double? height;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -47,11 +49,16 @@ class CustomTextFormField extends StatelessWidget {
             height: height,
             width: 335.w,
             child: TextFormField(
-              enabled: enabled,
+              obscureText: obscureText,
+              readOnly: readOnly,
               minLines: isDescription ? 3 : 1,
               maxLines: isDescription ? null : 1,
               validator: validator,
               controller: controller,
+              style: Styles.textStyle14.copyWith(
+                color: readOnly ? Colors.grey : Colors.black,
+              ),
+
               keyboardType: textInputType,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
@@ -91,7 +98,10 @@ class CustomTextFormField extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: kPrimaryColor, width: 1.5),
+                  borderSide: BorderSide(
+                    color: readOnly ? Colors.grey.shade300 : kPrimaryColor,
+                    width: 1.5,
+                  ),
                 ),
                 disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
