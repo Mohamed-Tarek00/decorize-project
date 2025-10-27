@@ -1,34 +1,44 @@
 import 'package:decorize_project/features/worker/home/domain/entites/job_city_entity.dart';
 
 class JobCityModel {
-  final JobCityEntity entity;
+  final int id;
+  final String name;
+  final JobMultiName? multiName;
 
-  JobCityModel({required this.entity});
+  JobCityModel({required this.id, required this.name, this.multiName});
 
   factory JobCityModel.fromJson(Map<String, dynamic> json) {
     return JobCityModel(
-      entity: JobCityEntity(
-        id: json['id'],
-        name: json['name'],
-        multiName: json['multi_name'] != null
-            ? JobMultiName(
-                ar: json['multi_name']['ar'],
-                en: json['multi_name']['en'],
-              )
-            : null,
-      ),
+      id: json['id'],
+      name: json['name'],
+      multiName: json['multi_name'] != null
+          ? JobMultiName(
+              ar: json['multi_name']['ar'],
+              en: json['multi_name']['en'],
+            )
+          : null,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': entity.id,
-      'name': entity.name,
-      'multi_name': entity.multiName != null
-          ? {'ar': entity.multiName!.ar, 'en': entity.multiName!.en}
+      'id': id,
+      'name': name,
+      'multi_name': multiName != null
+          ? {'ar': multiName!.ar, 'en': multiName!.en}
           : null,
     };
   }
 
-  JobCityEntity toEntity() => entity;
+  JobCityEntity toEntity() {
+    return JobCityEntity(id: id, name: name, multiName: multiName);
+  }
+
+  factory JobCityModel.fromEntity(JobCityEntity entity) {
+    return JobCityModel(
+      id: entity.id,
+      name: entity.name,
+      multiName: entity.multiName,
+    );
+  }
 }

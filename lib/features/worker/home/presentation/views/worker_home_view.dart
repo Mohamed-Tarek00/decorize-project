@@ -1,5 +1,6 @@
-import 'package:decorize_project/core/constants.dart';
-import 'package:decorize_project/features/shared/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
+import 'package:decorize_project/core/utils/service_locator.dart';
+import 'package:decorize_project/features/worker/home/domain/usecases/worker_jobs_usecase.dart';
+import 'package:decorize_project/features/worker/home/presentation/cubits/worker_jobs_cubit/worker_jobs_cubit.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/worker_home_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,19 +10,10 @@ class WorkerHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kScaffoldColor,
-      body: BlocBuilder<ProfileCubit, ProfileState>(
-        builder: (context, state) {
-          if (state is ProfileLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is ProfileLoaded) {
-            return WorkerHomeViewBody(user: state.response);
-          } else {
-            return const Center(child: Text('حدث خطأ'));
-          }
-        },
-      ),
+    return BlocProvider(
+      create: (context) =>
+          WorkerJobsCubit(getIt.get<WorkerJobsUsecase>())..getJobs(),
+      child: WorkerHomeViewBody(),
     );
   }
 }

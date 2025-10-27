@@ -1,11 +1,8 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
-import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/foreget_password_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/login_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/reset_password_view.dart';
 import 'package:decorize_project/features/shared/onboarding/presentation/on_boarding_view.dart';
-import 'package:decorize_project/features/shared/profile/domain/usecases/profile_usecase.dart';
-import 'package:decorize_project/features/shared/profile/presentation/cubits/profile_cubit/profile_cubit.dart';
 import 'package:decorize_project/features/shared/splash/presentation/splash_view.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/otp_auth.dart';
 import 'package:decorize_project/features/shared/auth/presentation/views/register_view.dart';
@@ -18,6 +15,7 @@ import 'package:decorize_project/features/user/more/presentation/views/contact_u
 import 'package:decorize_project/features/user/more/presentation/views/privacy_policy_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/saved_design_view.dart';
 import 'package:decorize_project/features/user/more/presentation/views/terms_and_conditions_view.dart';
+import 'package:decorize_project/features/worker/home/domain/entites/job_entity.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/job_details_view.dart';
 import 'package:decorize_project/features/user/user_navigation_bar.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/worker_home_view.dart';
@@ -31,7 +29,6 @@ import 'package:decorize_project/features/worker/more/presentation/view/worker_p
 import 'package:decorize_project/features/worker/my_orders/presentation/view/my_orders_view.dart';
 import 'package:decorize_project/features/worker/navigation/presentation/widgets/custom_worker_buttom_navbar.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 
@@ -40,10 +37,14 @@ final GlobalKey<NavigatorState> routerKey = GlobalKey<NavigatorState>();
 abstract class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: routerKey,
+    initialLocation: AppRouterNames.splashView,
+
     routes: <RouteBase>[
       GoRoute(
         path: AppRouterNames.splashView,
         builder: (BuildContext context, GoRouterState state) {
+          print('🧱 Building SplashView');
+
           return const SplashView();
         },
       ),
@@ -106,11 +107,9 @@ abstract class AppRouter {
         path: AppRouterNames.workerNavigationBar,
         builder: (BuildContext context, GoRouterState state) {
           final position = state.extra as Position?;
-          return BlocProvider(
-            create: (context) =>
-                ProfileCubit(getIt.get<ProfileUsecase>())..loadProfile(),
-            child: CustomWorkerBottomNavBar(position: position),
-          );
+          print('🧱 Building WorkerNavigationBar');
+
+          return CustomWorkerBottomNavBar(position: position);
         },
       ),
       GoRoute(
@@ -123,7 +122,8 @@ abstract class AppRouter {
       GoRoute(
         path: AppRouterNames.jobDetailsView,
         builder: (BuildContext context, GoRouterState state) {
-          return JobDetailsView();
+          final job = state.extra as WorkerJobEntity;
+          return JobDetailsView(job: job);
         },
       ),
       GoRoute(

@@ -50,7 +50,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
         child: Row(
           children: [
             CustomNetworkImage(
-              imageUrl: widget.userImage!,
+              imageUrl: widget.userImage ?? '',
               height: 40.h,
               width: 40.w,
               shape: ImageShape.circle,

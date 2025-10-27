@@ -1,20 +1,24 @@
-// file_model.dart
 import 'package:decorize_project/features/worker/home/domain/entites/job_file_entity.dart';
 
 class JobFileModel {
-  final JobFileEntity entity;
+  final int id;
+  final String url;
 
-  JobFileModel({required this.entity});
+  JobFileModel({required this.id, required this.url});
 
   factory JobFileModel.fromJson(Map<String, dynamic> json) {
-    return JobFileModel(
-      entity: JobFileEntity(id: json['id'], url: json['url']),
-    );
+    return JobFileModel(id: json['id'], url: json['url']);
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': entity.id, 'url': entity.url};
+    return {'id': id, 'url': url};
   }
 
-  JobFileEntity toEntity() => entity;
+  JobFileEntity toEntity() {
+    return JobFileEntity(id: id, url: url);
+  }
+
+  factory JobFileModel.fromEntity(JobFileEntity entity) {
+    return JobFileModel(id: entity.id, url: entity.url);
+  }
 }

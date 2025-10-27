@@ -3,6 +3,7 @@ import 'package:decorize_project/core/utils/cache_helper.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/widgets/custom_button.dart';
 import 'package:decorize_project/core/widgets/custom_loading_indicator.dart';
+import 'package:decorize_project/core/widgets/failuer_snackbar.dart';
 import 'package:decorize_project/features/shared/auth/domain/entities/login_request_entity.dart';
 import 'package:decorize_project/features/shared/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
@@ -47,9 +48,7 @@ class LoginButtonSection extends StatelessWidget {
             );
           }
         } else if (state is LoginFailure) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+          SnackBarHelper.showFailure(context, message: state.errorMessage);
         }
       },
       builder: (context, state) {

@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
+import 'package:decorize_project/features/worker/home/domain/entites/job_entity.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_details_widgets/address_card.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
 import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_details_widgets/job_details_appbar.dart';
@@ -8,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class JobDetailsViewBody extends StatelessWidget {
-  const JobDetailsViewBody({super.key});
+  const JobDetailsViewBody({super.key, required this.job});
+  final WorkerJobEntity job;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class JobDetailsViewBody extends StatelessWidget {
               children: [
                 const JobDetailsAppBar(),
                 SizedBox(height: 12.h),
-                const JobDetailsCard(),
+                JobDetailsCard(job: job),
                 SizedBox(height: 12.h),
                 const AddressCard(),
                 SizedBox(height: 50.h),

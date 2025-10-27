@@ -29,7 +29,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   Future<void> _initSplash() async {
     currentPosition = await SetLocation.getLocation();
     Future.delayed(const Duration(seconds: 2), () {
+      print('🚀 Calling checkAuth()...');
       context.read<SplashCubit>().checkAuth();
+      print('✅ checkAuth() called');
     });
   }
 
@@ -38,19 +40,23 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashAuthenticated) {
-          if (state.userType == 'client') {
-            context.go(
-              AppRouterNames.userNavigationBar,
-              extra: currentPosition,
-            );
-          } else if (state.userType == 'worker') {
-            context.go(
-              AppRouterNames.workerNavigationBar,
-              extra: currentPosition,
-            );
+          if (mounted) {
+            if (state.userType == 'worker') {
+              context.go(
+                AppRouterNames.workerNavigationBar,
+                extra: currentPosition,
+              );
+            } else {
+              context.go(
+                AppRouterNames.userNavigationBar,
+                extra: currentPosition,
+              );
+            }
           }
         } else if (state is SplashUnauthenticated) {
-          context.go(AppRouterNames.onBoardingView, extra: currentPosition);
+          if (mounted) {
+            context.go(AppRouterNames.onBoardingView, extra: currentPosition);
+          }
         }
       },
       child: Center(

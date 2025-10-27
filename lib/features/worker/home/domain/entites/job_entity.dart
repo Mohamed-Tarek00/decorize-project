@@ -3,7 +3,7 @@ import 'package:decorize_project/features/worker/home/domain/entites/job_file_en
 import 'package:decorize_project/features/worker/home/domain/entites/job_governate_entity.dart';
 import 'package:decorize_project/features/worker/home/domain/entites/job_type_entity.dart';
 
-class JobEntity {
+class WorkerJobEntity {
   final int id;
   final String title;
   final String content;
@@ -20,11 +20,11 @@ class JobEntity {
   final String createdAt;
   final JobGovernorateEntity? governorate;
   final JobCityEntity? city;
-  final List<JobFileEntity> files;
+  final List<JobFileEntity>? files;
   final List<JobTypeEntity> types;
   final dynamic authUserStatus;
 
-  JobEntity({
+  WorkerJobEntity({
     required this.id,
     required this.title,
     required this.content,
@@ -41,7 +41,7 @@ class JobEntity {
     required this.createdAt,
     this.governorate,
     this.city,
-    this.files = const [],
+    this.files,
     this.types = const [],
     this.authUserStatus,
   });

@@ -33,6 +33,10 @@ import 'package:decorize_project/features/shared/splash/data/data_source/splash_
 import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
 import 'package:decorize_project/features/shared/splash/domain/repo/splash_repo.dart';
 import 'package:decorize_project/features/shared/splash/domain/use_cases/check_token_usecase.dart';
+import 'package:decorize_project/features/worker/home/data/data_source/job_data_source.dart';
+import 'package:decorize_project/features/worker/home/data/repo_impl/job_repo_impl.dart';
+import 'package:decorize_project/features/worker/home/domain/repos/job_repo.dart';
+import 'package:decorize_project/features/worker/home/domain/usecases/worker_jobs_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,23 +57,33 @@ Future<void> setupServiceLocator() async {
 
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
   //location api service
-// dio options for location api service
- final dioLocation = Dio(BaseOptions(
-    baseUrl: LocationApiService.baseUrl,
-     headers: {
+  // dio options for location api service
+  final dioLocation = Dio(
+    BaseOptions(
+      baseUrl: LocationApiService.baseUrl,
+      headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-  ));
+    ),
+  );
 
- getIt.registerLazySingleton<LocationApiService>(() => LocationApiService(dioLocation));
- getIt.registerLazySingleton<LocationDataSourceImpl>(() => LocationDataSourceImpl(getIt<LocationApiService>()));
- getIt.registerLazySingleton<LocationRepoImpl>(() => LocationRepoImpl(getIt<LocationDataSourceImpl>()));
- getIt.registerLazySingleton<LocationUseCase>(() => LocationUseCase(getIt<LocationRepoImpl>()));
- getIt.registerFactory<LocationCubit>(
+  getIt.registerLazySingleton<LocationApiService>(
+    () => LocationApiService(dioLocation),
+  );
+  getIt.registerLazySingleton<LocationDataSourceImpl>(
+    () => LocationDataSourceImpl(getIt<LocationApiService>()),
+  );
+  getIt.registerLazySingleton<LocationRepoImpl>(
+    () => LocationRepoImpl(getIt<LocationDataSourceImpl>()),
+  );
+  getIt.registerLazySingleton<LocationUseCase>(
+    () => LocationUseCase(getIt<LocationRepoImpl>()),
+  );
+  getIt.registerFactory<LocationCubit>(
     () => LocationCubit(getIt<LocationUseCase>()),
   );
-////////////////
+  ////////////////
   getIt.registerLazySingleton<SplashRemoteDataSource>(
     () => SplashRemoteDataSourceImpl(apiService: getIt<ApiService>()),
   );
@@ -144,5 +158,14 @@ Future<void> setupServiceLocator() async {
 
   getIt.registerLazySingleton<WorkerDetailsUsecase>(
     () => WorkerDetailsUsecase(getIt.get<ProfileRepo>()),
+  );
+  getIt.registerLazySingleton<JobDataSource>(
+    () => JobDataSourceImpl(getIt.get<ApiService>()),
+  );
+  getIt.registerLazySingleton<JobRepo>(
+    () => JobRepoImpl(getIt.get<JobDataSource>()),
+  );
+  getIt.registerLazySingleton<WorkerJobsUsecase>(
+    () => WorkerJobsUsecase(getIt.get<JobRepo>()),
   );
 }
