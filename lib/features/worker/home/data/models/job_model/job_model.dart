@@ -47,7 +47,6 @@ class WorkerJobModel {
     this.authUserStatus,
   });
 
-  /// ✅ fromJson
   factory WorkerJobModel.fromJson(Map<String, dynamic> json) {
     return WorkerJobModel(
       id: json['id'],
@@ -84,7 +83,6 @@ class WorkerJobModel {
     );
   }
 
-  /// ✅ toJson
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -109,7 +107,6 @@ class WorkerJobModel {
     };
   }
 
-  /// ✅ toEntity
   WorkerJobEntity toEntity() {
     return WorkerJobEntity(
       id: id,
@@ -117,47 +114,13 @@ class WorkerJobModel {
       content: content,
       budget: budget,
       numberOfDays: numberOfDays,
-      slug: slug,
       lat: lat,
       long: long,
-      location: location,
       status: status,
-      reason: reason,
-      serialNumber: serialNumber,
       acceptedOffersCount: acceptedOffersCount,
       createdAt: createdAt,
-      governorate: governorate?.toEntity(),
-      city: city?.toEntity(),
       files: files.map((e) => e.toEntity()).toList(),
       types: types.map((e) => e.toEntity()).toList(),
-      authUserStatus: authUserStatus,
-    );
-  }
-
-  factory WorkerJobModel.fromEntity(WorkerJobEntity entity) {
-    return WorkerJobModel(
-      id: entity.id,
-      title: entity.title,
-      content: entity.content,
-      budget: entity.budget,
-      numberOfDays: entity.numberOfDays,
-      slug: entity.slug,
-      lat: entity.lat,
-      long: entity.long,
-      location: entity.location,
-      status: entity.status,
-      reason: entity.reason,
-      serialNumber: entity.serialNumber,
-      acceptedOffersCount: entity.acceptedOffersCount,
-      createdAt: entity.createdAt,
-      governorate: entity.governorate != null
-          ? JobGovernateModel.fromEntity(entity.governorate!)
-          : null,
-      city: entity.city != null ? JobCityModel.fromEntity(entity.city!) : null,
-      files:
-          entity.files?.map((e) => JobFileModel.fromEntity(e)).toList() ?? [],
-      types: entity.types.map((e) => JobTypeModel.fromEntity(e)).toList(),
-      authUserStatus: entity.authUserStatus,
     );
   }
 }

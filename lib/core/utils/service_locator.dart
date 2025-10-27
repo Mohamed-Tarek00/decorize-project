@@ -33,19 +33,16 @@ import 'package:decorize_project/features/shared/splash/data/data_source/splash_
 import 'package:decorize_project/features/shared/splash/data/repo_impl/splash_repo_impl.dart';
 import 'package:decorize_project/features/shared/splash/domain/repo/splash_repo.dart';
 import 'package:decorize_project/features/shared/splash/domain/use_cases/check_token_usecase.dart';
-<<<<<<< HEAD
-import 'package:decorize_project/features/worker/home/data/data_source/job_data_source.dart';
-import 'package:decorize_project/features/worker/home/data/repo_impl/job_repo_impl.dart';
-import 'package:decorize_project/features/worker/home/domain/repos/job_repo.dart';
-import 'package:decorize_project/features/worker/home/domain/usecases/worker_jobs_usecase.dart';
-=======
 import 'package:decorize_project/features/user/more/data/data_source/more_data_source.dart';
 import 'package:decorize_project/features/user/more/data/repo_impl/more_repo_imp.dart';
 import 'package:decorize_project/features/user/more/domain/usecases/edit_password_use_case.dart';
 import 'package:decorize_project/features/user/more/domain/usecases/edit_profile_use_case.dart';
 import 'package:decorize_project/features/user/more/presentation/cubits/edit_password/edit_password_cubit.dart';
 import 'package:decorize_project/features/user/more/presentation/cubits/edit_profile/edit_profile_cubit.dart';
->>>>>>> fe6bba55d745c95f00ad23ce60f6e80c7ff62528
+import 'package:decorize_project/features/worker/home/data/data_source/job_data_source.dart';
+import 'package:decorize_project/features/worker/home/data/repo_impl/job_repo_impl.dart';
+import 'package:decorize_project/features/worker/home/domain/repos/job_repo.dart';
+import 'package:decorize_project/features/worker/home/domain/usecases/worker_jobs_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -168,7 +165,6 @@ Future<void> setupServiceLocator() async {
   getIt.registerLazySingleton<WorkerDetailsUsecase>(
     () => WorkerDetailsUsecase(getIt.get<ProfileRepo>()),
   );
-<<<<<<< HEAD
   getIt.registerLazySingleton<JobDataSource>(
     () => JobDataSourceImpl(getIt.get<ApiService>()),
   );
@@ -177,7 +173,7 @@ Future<void> setupServiceLocator() async {
   );
   getIt.registerLazySingleton<WorkerJobsUsecase>(
     () => WorkerJobsUsecase(getIt.get<JobRepo>()),
-=======
+  );
   getIt.registerLazySingleton<MoreDataSourceImpl>(
     () => MoreDataSourceImpl(getIt<ApiService>()),
   );
@@ -195,6 +191,5 @@ Future<void> setupServiceLocator() async {
   );
   getIt.registerFactory<EditProfileCubit>(
     () => EditProfileCubit(getIt<EditProfileUseCase>()),
->>>>>>> fe6bba55d745c95f00ad23ce60f6e80c7ff62528
   );
 }
