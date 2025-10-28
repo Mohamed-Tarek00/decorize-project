@@ -1,5 +1,5 @@
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/custom_worker_button.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/edit_profile_form.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/worker_profile_header.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/custom_worker_appbar.dart';

@@ -1,7 +1,7 @@
 import 'package:decorize_project/core/widgets/failuer_snackbar.dart';
 import 'package:decorize_project/features/worker/home/presentation/cubits/worker_jobs_cubit/worker_jobs_cubit.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/job_request_card_loading.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/jobs_list.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/home_widgets/job_request_card_loading.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/home_widgets/jobs_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

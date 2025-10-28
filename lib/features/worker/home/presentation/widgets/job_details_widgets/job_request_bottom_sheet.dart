@@ -1,8 +1,8 @@
 import 'package:decorize_project/core/constants.dart';
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_details_widgets/custome_bottomsheet.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/job_details_widgets/job_request_text_field.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/custom_worker_button.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/job_details_widgets/custome_bottomsheet.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/job_details_widgets/job_request_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

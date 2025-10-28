@@ -1,4 +1,5 @@
 import 'package:decorize_project/core/constants.dart';
+import 'package:decorize_project/core/location/cubit/location_cubit_cubit.dart';
 import 'package:decorize_project/core/utils/service_locator.dart';
 import 'package:decorize_project/core/utils/styles.dart';
 import 'package:decorize_project/features/shared/profile/domain/usecases/profile_usecase.dart';
@@ -33,9 +34,14 @@ class _CustomWorkerBottomNavBarState extends State<CustomWorkerBottomNavBar> {
       WorkerMoreView(onBackToHome: () => setState(() => currentIndex = 0)),
     ];
 
-    return BlocProvider(
-      create: (context) =>
-          ProfileCubit(getIt.get<ProfileUsecase>())..loadProfile(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              ProfileCubit(getIt.get<ProfileUsecase>())..loadProfile(),
+        ),
+        BlocProvider(create: (context) => getIt<LocationCubit>()),
+      ],
       child: Scaffold(
         body: IndexedStack(index: currentIndex, children: screens),
         bottomNavigationBar: BottomNavigationBar(

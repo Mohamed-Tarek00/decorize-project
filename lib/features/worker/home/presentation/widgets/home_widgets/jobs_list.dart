@@ -1,5 +1,5 @@
 import 'package:decorize_project/features/worker/home/domain/entites/job_entity.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/home_widgets/job_request_card.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/home_widgets/job_request_card.dart';
 import 'package:flutter/material.dart';
 
 class JobsList extends StatelessWidget {

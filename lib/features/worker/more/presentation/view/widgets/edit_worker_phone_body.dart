@@ -1,6 +1,6 @@
 import 'package:decorize_project/core/router/app_router_names.dart';
 import 'package:decorize_project/core/utils/styles.dart';
-import 'package:decorize_project/features/worker/home/presentation/views/widgets/custom_worker_button.dart';
+import 'package:decorize_project/features/worker/home/presentation/widgets/custom_worker_button.dart';
 import 'package:decorize_project/features/worker/more/presentation/view/widgets/custom_profile_text_field.dart';
 import 'package:decorize_project/features/worker/my_orders/presentation/view/widgets/custom_worker_appbar.dart';
 import 'package:flutter/material.dart';
