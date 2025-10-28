@@ -13,7 +13,12 @@ class JobDataSourceImpl implements JobDataSource {
   @override
   Future<List<WorkerJobModel>> getJobs() async {
     final response = await apiService.get(endPoint: 'auth/worker/home');
-    final data = response['data'];
-    return data.map((json) => WorkerJobModel.fromJson(json)).toList();
+
+    final List<dynamic> data = response['data'];
+    final List<WorkerJobModel> jobs = data
+        .map((json) => WorkerJobModel.fromJson(json as Map<String, dynamic>))
+        .toList();
+
+    return jobs;
   }
 }

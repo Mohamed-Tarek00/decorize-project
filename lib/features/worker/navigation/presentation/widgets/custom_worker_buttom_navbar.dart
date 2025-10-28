@@ -34,14 +34,10 @@ class _CustomWorkerBottomNavBarState extends State<CustomWorkerBottomNavBar> {
       WorkerMoreView(onBackToHome: () => setState(() => currentIndex = 0)),
     ];
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              ProfileCubit(getIt.get<ProfileUsecase>())..loadProfile(),
-        ),
-        BlocProvider(create: (context) => getIt<LocationCubit>()),
-      ],
+    return BlocProvider(
+      create: (context) =>
+          ProfileCubit(getIt.get<ProfileUsecase>())..loadProfile(),
+
       child: Scaffold(
         body: IndexedStack(index: currentIndex, children: screens),
         bottomNavigationBar: BottomNavigationBar(

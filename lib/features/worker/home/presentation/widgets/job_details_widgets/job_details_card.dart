@@ -50,8 +50,6 @@ class JobDetailsCard extends StatelessWidget {
                       ),
                     ),
                     CustomWorkerButton(
-                      height: 22.h,
-                      width: 67.w,
                       text: '${job.budget} \$',
                       color: Color(0xffE7EEEB),
                       textStyle: Styles.textStyle16.copyWith(

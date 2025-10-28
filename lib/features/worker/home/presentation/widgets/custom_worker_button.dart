@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class CustomWorkerButton extends StatelessWidget {
   const CustomWorkerButton({
     super.key,
-    this.height = 20,
-    this.width = 20,
+    this.height,
+    this.width,
     this.color = kPrimaryColor,
 
     this.onTap,
@@ -14,8 +14,8 @@ class CustomWorkerButton extends StatelessWidget {
   });
   final TextStyle textStyle;
   final String text;
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
   final Color color;
   final void Function()? onTap;
   @override
@@ -23,6 +23,7 @@ class CustomWorkerButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         width: width,
         height: height,
         decoration: BoxDecoration(
